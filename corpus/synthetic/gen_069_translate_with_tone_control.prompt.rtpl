@@ -1,0 +1,58 @@
+Translate the following text into {{ target_language }}. Adjust the tone according to the specified instructions.
+
+**Original Text:** {{ source_text }}
+
+**Target Language:** {{ target_language }}
+
+**Tone:** {{ desired_tone }}
+
+{% if user.role == "admin" %}
+// @rule RULE:AdminOverride category=policy priority=10
+// Allows admin users to override tone instructions.
+Instructions: As an administrator, you have the final say. If the tone instructions are unclear or conflicting, prioritize clarity and accuracy.
+{% else %}
+// @rule RULE:ToneAdherence category=policy priority=5
+// Ensures the AI adheres to the requested tone.
+Instructions: Carefully consider the requested tone and ensure the translation reflects it.
+{% endif %}
+
+{% if desired_tone == "formal" %}
+// @rule RULE:FormalTranslation category=style priority=7
+// Guides formal translations.
+Instructions: Use sophisticated vocabulary and a respectful tone. Avoid contractions and slang.
+{% elif desired_tone == "informal" %}
+// @rule RULE:InformalTranslation category=style priority=7
+// Guides informal translations.
+Instructions: Use casual language and contractions. Feel free to use slang, but only if appropriate for the context.
+{% elif desired_tone == "humorous" %}
+// @rule RULE:HumorousTranslation category=style priority=7
+// Guides humorous translations.
+Instructions: Inject humor into the translation where appropriate, but ensure it doesn't detract from the meaning.
+{% else %}
+// @rule RULE:NeutralTranslation category=style priority=7
+// Guides neutral translations.
+Instructions: Maintain a neutral and objective tone. Avoid expressing personal opinions or emotions.
+{% endif %}
+
+// @condition CONDITION:IsAdmin
+// Checks if the user is an administrator.
+{% if user.role == "admin" %}
+Admin User
+{% else %}
+Regular User
+{% endif %}
+
+// @condition CONDITION:ToneSpecified
+// Checks if a tone is specified.
+{% if desired_tone %}
+Tone Specified: {{ desired_tone }}
+{% else %}
+No Tone Specified - Use a neutral tone.
+{% endif %}
+
+
+// @rule RULE:AccuracyPriority category=safety priority=10
+// Ensures the translation is accurate.
+Instructions: Prioritize accuracy over style. The meaning of the original text must be preserved.
+
+// @breakpoint BREAKPOINT:TranslationStart conditionRef=CONDITION:ToneSpecified

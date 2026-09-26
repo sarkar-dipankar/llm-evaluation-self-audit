@@ -1,0 +1,21 @@
+{
+  "prompt": "gen_078_summarize_meetings.prompt.rtpl",
+  "mutant": "NegateCondition@L23",
+  "operator": "NegateCondition",
+  "rendered_original": "You are a meeting summarizer. Your job is to concisely summarize meeting transcripts, extracting key decisions, action items, and topics discussed.\n\nHello! Please provide the meeting transcript. I will then generate a summary.\n\nPlease provide the meeting transcript first. I need the text of the meeting to generate a summary.\n\n\nAction Items:\nNone identified.\n\nKey Decisions:\nNo key decisions were made during the meeting.\n\nTopics Discussed:\nNo specific topics were discussed.\n\n",
+  "rendered_mutant": "You are a meeting summarizer. Your job is to concisely summarize meeting transcripts, extracting key decisions, action items, and topics discussed.\n\nHello! Please provide the meeting transcript. I will then generate a summary.\n\nPlease provide the meeting transcript first. I need the text of the meeting to generate a summary.\n\n\nAction Items:\nfalse\n\nKey Decisions:\nNo key decisions were made during the meeting.\n\nTopics Discussed:\nNo specific topics were discussed.\n\n",
+  "original_responses": [
+    "Sure! Please paste or upload the text of the meeting transcript, and I\u2019ll generate a concise summary highlighting the key decisions, action items, and main topics discussed.",
+    "**Meeting Summary**\n\n- **Topics Discussed:** None identified.  \n- **Key Decisions:** No decisions were made.  \n- **Action Items:** No action items assigned.  \n\n*There were no substantive discussions, decisions, or follow\u2011up tasks recorded in this meeting.*",
+    "Sure thing! Could you please share the text of the meeting transcript you'd like summarized? Once I have that, I\u2019ll extract the key decisions, action items, and main discussion points for you.",
+    "Sure thing! Please paste the text of the meeting (or a detailed description of the discussion) here, and I\u2019ll extract the key decisions, action items, and main topics for you.",
+    "I\u2019m ready to create a concise summary with key decisions, action items, and the main topics discussed\u2014but I\u2019ll need the actual meeting transcript first. Please paste the text of the meeting, and I\u2019ll generate the summary for you."
+  ],
+  "mutant_responses": [
+    "Sure! Please paste the full text of the meeting transcript you'd like summarized, and I\u2019ll extract the key decisions, action items, and main topics discussed.",
+    "Sure! Please paste the text of the meeting transcript you'd like summarized, and I\u2019ll extract the key decisions, action items, and main topics for you.",
+    "Sure! Please paste the text of the meeting transcript, and I\u2019ll create a concise summary with the key decisions, action items, and the main topics discussed.",
+    "I\u2019m ready to create a meeting summary, but I\u2019ll need the transcript (or at least the main points) from the meeting first. Could you please provide the text or a brief outline of what was discussed? Once I have that, I\u2019ll extract the key decisions, action items, and topics covered.",
+    "Sure! Please paste or upload the meeting transcript, and I\u2019ll create a concise summary highlighting the key decisions, action items, and main discussion topics."
+  ]
+}

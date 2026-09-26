@@ -1,0 +1,66 @@
+[
+  {
+    "feedback": {
+      "text": "x"
+    },
+    "has_tests": false,
+    "is_admin": false,
+    "pull_request": {
+      "code_changes": "x",
+      "description": "x",
+      "has_tests": "x",
+      "title": "x"
+    },
+    "user": {
+      "role": "__not_reviewer__"
+    }
+  },
+  {
+    "feedback": {
+      "text": "x"
+    },
+    "has_tests": false,
+    "is_admin": true,
+    "pull_request": {
+      "code_changes": "x",
+      "description": "x",
+      "has_tests": "x",
+      "title": "x"
+    },
+    "user": {
+      "role": "__not_reviewer__"
+    }
+  },
+  {
+    "feedback": {
+      "text": "x"
+    },
+    "has_tests": true,
+    "is_admin": false,
+    "pull_request": {
+      "code_changes": "x",
+      "description": "x",
+      "has_tests": "x",
+      "title": "x"
+    },
+    "user": {
+      "role": "__not_reviewer__"
+    }
+  },
+  {
+    "feedback": {
+      "text": "x"
+    },
+    "has_tests": false,
+    "is_admin": false,
+    "pull_request": {
+      "code_changes": "x",
+      "description": "x",
+      "has_tests": "x",
+      "title": "x"
+    },
+    "user": {
+      "role": "reviewer"
+    }
+  }
+]

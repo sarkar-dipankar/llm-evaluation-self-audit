@@ -1,0 +1,20 @@
+[
+  {
+    "comment": {
+      "contains_excessive_caps": false,
+      "contains_url": false
+    }
+  },
+  {
+    "comment": {
+      "contains_excessive_caps": false,
+      "contains_url": true
+    }
+  },
+  {
+    "comment": {
+      "contains_excessive_caps": true,
+      "contains_url": true
+    }
+  }
+]

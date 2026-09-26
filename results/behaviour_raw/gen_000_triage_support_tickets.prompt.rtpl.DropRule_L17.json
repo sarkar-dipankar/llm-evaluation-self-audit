@@ -1,0 +1,21 @@
+{
+  "prompt": "gen_000_triage_support_tickets.prompt.rtpl",
+  "mutant": "DropRule@L17",
+  "operator": "DropRule",
+  "rendered_original": "You are a support ticket triage assistant. Your goal is to categorize incoming support tickets and assign them to the appropriate team.\n\nCategorize the ticket based on its description. Possible categories are: \"Technical Issue\", \"Billing Question\", \"Feature Request\", \"Account Management\", \"Other\".\n\nAssess the urgency of the ticket. Possible urgency levels are: \"High\", \"Medium\", \"Low\".  A \"High\" urgency ticket indicates a critical system outage or immediate user impact.\n\nAssign the ticket to the appropriate team based on the category.\n* \"Technical Issue\" -> \"Engineering Team\"\n* \"Billing Question\" -> \"Billing Team\"\n* \"Feature Request\" -> \"Product Team\"\n* \"Account Management\" -> \"Account Support Team\"\n* \"Other\" -> \"General Support Team\"\n\nFormat your response as a JSON object with the following keys: \"category\", \"urgency\", and \"team\".\n\nLogin page returns a 500 error after the latest deploy; affects all users. contains \"critical error\" or \"Login page returns a 500 error after the latest deploy; affects all users.\" contains \"system outage\".\n\nx contains \"billing\" or \"x\" contains \"payment\".\n\nCategory: Other\nUrgency: Low\nTeam: General Support Team\n",
+  "rendered_mutant": "You are a support ticket triage assistant. Your goal is to categorize incoming support tickets and assign them to the appropriate team.\n\nCategorize the ticket based on its description. Possible categories are: \"Technical Issue\", \"Billing Question\", \"Feature Request\", \"Account Management\", \"Other\".\n\nAssess the urgency of the ticket. Possible urgency levels are: \"High\", \"Medium\", \"Low\".  A \"High\" urgency ticket indicates a critical system outage or immediate user impact.\n\nAssign the ticket to the appropriate team based on the category.\n* \"Technical Issue\" -> \"Engineering Team\"\n* \"Billing Question\" -> \"Billing Team\"\n* \"Feature Request\" -> \"Product Team\"\n* \"Account Management\" -> \"Account Support Team\"\n* \"Other\" -> \"General Support Team\"\n\n\nLogin page returns a 500 error after the latest deploy; affects all users. contains \"critical error\" or \"Login page returns a 500 error after the latest deploy; affects all users.\" contains \"system outage\".\n\nx contains \"billing\" or \"x\" contains \"payment\".\n\nCategory: Other\nUrgency: Low\nTeam: General Support Team\n",
+  "original_responses": [
+    "{\n  \"category\": \"Technical Issue\",\n  \"urgency\": \"High\",\n  \"team\": \"Engineering Team\"\n}",
+    "{\n  \"category\": \"Technical Issue\",\n  \"urgency\": \"High\",\n  \"team\": \"Engineering Team\"\n}",
+    "{\n  \"category\": \"Technical Issue\",\n  \"urgency\": \"High\",\n  \"team\": \"Engineering Team\"\n}",
+    "{\n  \"category\": \"Technical Issue\",\n  \"urgency\": \"High\",\n  \"team\": \"Engineering Team\"\n}",
+    "{\n  \"category\": \"Technical Issue\",\n  \"urgency\": \"High\",\n  \"team\": \"Engineering Team\"\n}"
+  ],
+  "mutant_responses": [
+    "**Category:** Technical Issue  \n**Urgency:** High  \n**Team:** Engineering Team",
+    "**Category:** Technical Issue  \n**Urgency:** High  \n**Team:** Engineering Team",
+    "**Category:** Technical Issue  \n**Urgency:** High  \n**Team:** Engineering Team",
+    "**Category:** Technical Issue  \n**Urgency:** High  \n**Team:** Engineering Team",
+    "**Correct Classification**\n\n- **Category:** Technical Issue  \n- **Urgency:** High  \n- **Team:** Engineering Team  \n\n**Reasoning**\n\n- The description (\u201cLogin page returns a 500 error after the latest deploy; affects all users\u201d) indicates a system\u2011wide failure, which is a **critical technical problem**.\n- Because it impacts every user and the service is down, the urgency is **High**.\n- Technical issues of this severity belong to the **Engineering Team**."
+  ]
+}

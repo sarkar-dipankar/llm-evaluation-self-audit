@@ -1,0 +1,77 @@
+{
+  "uri": "./corpus/synthetic/content_moderation.prompt.rtpl",
+  "num_inputs": 2,
+  "total_mutants": 17,
+  "killed": 12,
+  "survived": 5,
+  "mutation_score": 0.7058823529411765,
+  "by_operator": {
+    "ChangeCategory": {
+      "total": 5,
+      "killed": 2,
+      "metadata_only": 5
+    },
+    "ChangePriority": {
+      "total": 3,
+      "killed": 1,
+      "metadata_only": 3
+    },
+    "DropCondition": {
+      "total": 2,
+      "killed": 2,
+      "metadata_only": 2
+    },
+    "DropRule": {
+      "total": 5,
+      "killed": 5,
+      "metadata_only": 0
+    },
+    "NegateCondition": {
+      "total": 2,
+      "killed": 2,
+      "metadata_only": 0
+    }
+  },
+  "survivors": [
+    {
+      "id": "ChangeCategory@L1",
+      "operator": "ChangeCategory",
+      "description": "change annotation category",
+      "line": 0,
+      "metadata_only": true,
+      "killed": false
+    },
+    {
+      "id": "ChangePriority@L10",
+      "operator": "ChangePriority",
+      "description": "bump rule priority by 1000",
+      "line": 9,
+      "metadata_only": true,
+      "killed": false
+    },
+    {
+      "id": "ChangePriority@L14",
+      "operator": "ChangePriority",
+      "description": "bump rule priority by 1000",
+      "line": 13,
+      "metadata_only": true,
+      "killed": false
+    },
+    {
+      "id": "ChangeCategory@L14",
+      "operator": "ChangeCategory",
+      "description": "change annotation category",
+      "line": 13,
+      "metadata_only": true,
+      "killed": false
+    },
+    {
+      "id": "ChangeCategory@L18",
+      "operator": "ChangeCategory",
+      "description": "change annotation category",
+      "line": 17,
+      "metadata_only": true,
+      "killed": false
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+[
+  {
+    "agent": {
+      "api_key": true
+    }
+  },
+  {
+    "agent": {
+      "api_key": false
+    }
+  }
+]

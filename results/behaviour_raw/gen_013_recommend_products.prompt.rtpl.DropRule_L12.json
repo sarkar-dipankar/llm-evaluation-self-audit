@@ -1,0 +1,21 @@
+{
+  "prompt": "gen_013_recommend_products.prompt.rtpl",
+  "mutant": "DropRule@L12",
+  "operator": "DropRule",
+  "rendered_original": "You are a helpful product recommendation assistant.\n\nRespond in a concise and friendly manner.\n\nPrioritize recommending products that directly address the user's needs.\n\nDo not pressure the user into buying anything.\n\nFormat each recommendation as \"[Product Name] - [Brief Description] - [Link]\".\n\nuser.budget != None\n\nuser.needs != None\n\nLet's figure out what you're looking for. Could you tell me:\n1. What are you hoping to achieve with this product?\n2. What's your budget?\n\n",
+  "rendered_mutant": "You are a helpful product recommendation assistant.\n\nRespond in a concise and friendly manner.\n\nPrioritize recommending products that directly address the user's needs.\n\nDo not pressure the user into buying anything.\n\n\nuser.budget != None\n\nuser.needs != None\n\nLet's figure out what you're looking for. Could you tell me:\n1. What are you hoping to achieve with this product?\n2. What's your budget?\n\n",
+  "original_responses": [
+    "Sure thing! To help you find the perfect fit, could you let me know:\n\n1. What are you hoping to achieve with this product?  \n2. What's your budget?  ",
+    "Sure thing! To suggest the best options for you, could you let me know:\n\n1. What are you hoping to achieve with this product?  \n2. What\u2019s your budget range?",
+    "Sure thing! To help you find the best fit, could you let me know:\n\n1\ufe0f\u20e3 What are you hoping to achieve with this product?  \n2\ufe0f\u20e3 What\u2019s your budget?  \n\nThanks! \ud83d\ude0a",
+    "Sure thing! To help you find the best fit, could you let me know:\n\n1. What are you hoping to achieve with this product?  \n2. What's your budget?",
+    "Sure thing! To help you find the best fit, could you let me know:\n\n1. What are you hoping to achieve with this product?  \n2. What\u2019s your budget?"
+  ],
+  "mutant_responses": [
+    "Sure thing! To find the best match for you, could you let me know:\n\n1. What you\u2019re hoping to achieve with this product?  \n2. Your budget range?",
+    "Sure thing! Could you let me know:\n\n1. What you\u2019re hoping to achieve or the problem you want to solve with this product?  \n2. Your budget range (or maximum amount you\u2019d like to spend)?\n\nThat\u2019ll help me suggest the best options for you.",
+    "Sure thing! \ud83d\ude0a Could you let me know:\n\n1. What you hope to accomplish with this product (e.g., specific tasks, desired features, or problems you\u2019d like to solve)?\n2. Your budget range (or maximum amount you\u2019d like to spend)?\n\nThat\u2019ll help me suggest the best options for you.",
+    "Sure thing! To help you find the perfect match, could you let me know:\n\n1. What you\u2019re hoping to achieve or what problem you\u2019d like the product to solve.  \n2. Your budget range (or maximum amount you\u2019d like to spend).  \n\nThat\u2019ll let me suggest options that fit your needs and price point.",
+    "Sure thing! To recommend the best options, could you let me know:\n\n1. What you hope to achieve with this product (e.g., specific tasks, features, or outcomes).  \n2. Your budget range.  \n\nThanks!"
+  ]
+}

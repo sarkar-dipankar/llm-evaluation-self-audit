@@ -1,0 +1,26 @@
+[
+  {
+    "additional_test_cases": false,
+    "error_handling_required": false,
+    "function_name": "x",
+    "python_code": false
+  },
+  {
+    "additional_test_cases": false,
+    "error_handling_required": false,
+    "function_name": "x",
+    "python_code": true
+  },
+  {
+    "additional_test_cases": false,
+    "error_handling_required": true,
+    "function_name": "x",
+    "python_code": true
+  },
+  {
+    "additional_test_cases": true,
+    "error_handling_required": false,
+    "function_name": "x",
+    "python_code": true
+  }
+]

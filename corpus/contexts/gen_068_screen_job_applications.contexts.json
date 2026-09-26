@@ -1,0 +1,70 @@
+[
+  {
+    "application": {
+      "email": false,
+      "experience": [],
+      "name": false,
+      "notes": false,
+      "skills": [],
+      "summary": "x"
+    },
+    "experience": {
+      "company": "x",
+      "endDate": "x",
+      "startDate": "x",
+      "title": "x"
+    },
+    "skill": "x"
+  },
+  {
+    "application": {
+      "email": false,
+      "experience": [],
+      "name": true,
+      "notes": false,
+      "skills": [],
+      "summary": "x"
+    },
+    "experience": {
+      "company": "x",
+      "endDate": "x",
+      "startDate": "x",
+      "title": "x"
+    },
+    "skill": "x"
+  },
+  {
+    "application": {
+      "email": true,
+      "experience": [],
+      "name": false,
+      "notes": false,
+      "skills": [],
+      "summary": "x"
+    },
+    "experience": {
+      "company": "x",
+      "endDate": "x",
+      "startDate": "x",
+      "title": "x"
+    },
+    "skill": "x"
+  },
+  {
+    "application": {
+      "email": false,
+      "experience": [],
+      "name": false,
+      "notes": true,
+      "skills": [],
+      "summary": "x"
+    },
+    "experience": {
+      "company": "x",
+      "endDate": "x",
+      "startDate": "x",
+      "title": "x"
+    },
+    "skill": "x"
+  }
+]

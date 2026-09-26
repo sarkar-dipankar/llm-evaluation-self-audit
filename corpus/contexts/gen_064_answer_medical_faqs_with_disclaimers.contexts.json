@@ -1,0 +1,30 @@
+[
+  {
+    "user": {
+      "query": false,
+      "response": "x",
+      "role": "__not_patient__"
+    }
+  },
+  {
+    "user": {
+      "query": false,
+      "response": "x",
+      "role": "patient"
+    }
+  },
+  {
+    "user": {
+      "query": true,
+      "response": "x",
+      "role": "patient"
+    }
+  },
+  {
+    "user": {
+      "query": true,
+      "response": "x",
+      "role": "__not_patient__"
+    }
+  }
+]

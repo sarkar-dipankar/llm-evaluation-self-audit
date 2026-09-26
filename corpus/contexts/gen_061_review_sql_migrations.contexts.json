@@ -1,0 +1,14 @@
+[
+  {
+    "migration_script": "x",
+    "user": {
+      "role": "__not_expert__"
+    }
+  },
+  {
+    "migration_script": "x",
+    "user": {
+      "role": "expert"
+    }
+  }
+]

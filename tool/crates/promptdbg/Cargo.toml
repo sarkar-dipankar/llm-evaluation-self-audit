@@ -1,0 +1,34 @@
+[package]
+name = "promptdbg"
+description = "The PromptDbg command-line tool: run, debug, analyze, lint, and step through LLM prompts and Claude Skills."
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+authors.workspace = true
+rust-version.workspace = true
+readme = "README.md"
+keywords = ["llm", "prompt", "debugger", "cli", "openai"]
+categories = ["command-line-utilities", "development-tools::debugging"]
+
+[[bin]]
+name = "promptdbg"
+path = "src/main.rs"
+
+[dependencies]
+prompt_ir = { workspace = true }
+prompt_config = { workspace = true }
+prompt_template = { workspace = true }
+prompt_slm = { workspace = true }
+prompt_runtime = { workspace = true }
+prompt_lsp = { workspace = true }
+prompt_dap = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+thiserror = { workspace = true }
+tokio = { workspace = true }
+clap = { workspace = true }
+tracing = { workspace = true }
+tracing-subscriber = { workspace = true }
+anyhow = { workspace = true }

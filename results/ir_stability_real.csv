@@ -1,0 +1,13 @@
+prompt,model,successful_runs,mean_nodes,std_nodes,mean_jaccard,id_stability,mean_confidence
+038cfacfd142_SKILL.md,gemma3:12b,3,5,0.0,1.0,1.0,0.95
+053136ecb86a_SKILL.md,gemma3:12b,3,16,0.0,1.0,1.0,1.0
+09e319ab5af3_skill.md,gemma3:12b,2,9,0.0,1.0,1.0,1.0
+194e3e6b9421_SKILL.md,gemma3:12b,2,10.5,1.5,0.05,0.05,0.95
+5e64dc9c673b_SKILL.md,gemma3:12b,2,6,0.0,1.0,1.0,0.95
+5ed27b1d7f4f_SKILL.md,gemma3:12b,3,11,0.0,1.0,1.0,1.0
+5ef1788d5522_SKILL.md,gemma3:12b,3,8,0.0,1.0,1.0,1.0
+728fe4446723_SKILL.md,gemma3:12b,2,8,1.0,0.455,0.455,1.0
+820c1514c86c_SKILL.md,gemma3:12b,3,6,0.0,1.0,1.0,0.95
+8ad9c110c8fc_SKILL.md,gemma3:12b,3,10,0.0,0.692,0.538,0.95
+910eaa1b7a29_SKILL.md,gemma3:12b,3,9,0.0,1.0,1.0,1.0
+a58cc347c542_SKILL.md,gemma3:12b,3,7,0.0,1.0,1.0,0.95

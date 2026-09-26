@@ -1,0 +1,50 @@
+[
+  {
+    "answer": "x",
+    "policy_available": false,
+    "user": {
+      "question_type": "__not_leave__",
+      "role": "__not_manager__"
+    }
+  },
+  {
+    "answer": "x",
+    "policy_available": false,
+    "user": {
+      "question_type": "__not_leave__",
+      "role": "employee"
+    }
+  },
+  {
+    "answer": "x",
+    "policy_available": true,
+    "user": {
+      "question_type": "__not_leave__",
+      "role": "__not_manager__"
+    }
+  },
+  {
+    "answer": "x",
+    "policy_available": false,
+    "user": {
+      "question_type": "__not_leave__",
+      "role": "manager"
+    }
+  },
+  {
+    "answer": "x",
+    "policy_available": false,
+    "user": {
+      "question_type": "benefits",
+      "role": "__not_manager__"
+    }
+  },
+  {
+    "answer": "x",
+    "policy_available": false,
+    "user": {
+      "question_type": "leave",
+      "role": "__not_manager__"
+    }
+  }
+]

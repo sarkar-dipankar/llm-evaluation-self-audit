@@ -1,0 +1,29 @@
+[
+  {
+    "request": {
+      "message": "x",
+      "type": "__not_refund__"
+    },
+    "user": {
+      "tier": "__not_vip__"
+    }
+  },
+  {
+    "request": {
+      "message": "x",
+      "type": "__not_refund__"
+    },
+    "user": {
+      "tier": "vip"
+    }
+  },
+  {
+    "request": {
+      "message": "x",
+      "type": "refund"
+    },
+    "user": {
+      "tier": "__not_vip__"
+    }
+  }
+]

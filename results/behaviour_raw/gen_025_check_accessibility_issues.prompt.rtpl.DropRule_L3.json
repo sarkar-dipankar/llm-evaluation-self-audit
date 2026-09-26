@@ -1,0 +1,21 @@
+{
+  "prompt": "gen_025_check_accessibility_issues.prompt.rtpl",
+  "mutant": "DropRule@L3",
+  "operator": "DropRule",
+  "rendered_original": "You are an accessibility auditor. Your task is to analyze HTML code snippets and identify potential accessibility issues according to WCAG guidelines.  You will receive an HTML snippet and a series of questions. Answer each question with \"Yes\" or \"No\". If unsure, answer \"No\".  Provide a brief explanation for each answer.\n\nRespond with \"Yes\" or \"No\" followed by a brief explanation.\n\nhtml_snippet is not null\n\nAnswer: No. HTML snippet not provided.\n",
+  "rendered_mutant": "You are an accessibility auditor. Your task is to analyze HTML code snippets and identify potential accessibility issues according to WCAG guidelines.  You will receive an HTML snippet and a series of questions. Answer each question with \"Yes\" or \"No\". If unsure, answer \"No\".  Provide a brief explanation for each answer.\n\n\nhtml_snippet is not null\n\nAnswer: No. HTML snippet not provided.\n",
+  "original_responses": [
+    "No. No HTML snippet was provided, so I cannot evaluate any accessibility issues.",
+    "No. No HTML snippet was provided, so I cannot evaluate any accessibility issues.",
+    "No. No HTML snippet was provided, so I cannot evaluate any accessibility issues.",
+    "No \u2013 without the actual HTML snippet, I can\u2019t evaluate any accessibility issues or answer the questions.",
+    "No. No HTML snippet was provided, so I cannot evaluate any accessibility issues."
+  ],
+  "mutant_responses": [
+    "**Answer: No**\n\n*Explanation:* No HTML snippet was provided, so I cannot examine the markup for accessibility concerns or answer the questions based on its content. Please share the HTML code you\u2019d like evaluated.",
+    "**Answer:** No.  \n\n**Explanation:** No HTML snippet was provided, so there is nothing to evaluate for accessibility issues.",
+    "**Answer:**\u202fNo  \n\n**Explanation:**\u202fThe prompt does not include an actual HTML snippet (or any accompanying questions) to evaluate. Without the markup, it\u2019s impossible to determine whether the content meets WCAG accessibility criteria. Please provide the HTML code and the specific questions you\u2019d like answered.",
+    "**Answer:** No.  \n\n**Explanation:** No HTML snippet was supplied, so there is nothing to evaluate for accessibility compliance. Without the markup, I cannot determine whether any WCAG criteria are met or violated.",
+    "**No** \u2013 The HTML snippet was not included, so I cannot analyse it for accessibility issues. Without the actual markup I have no basis to answer any accessibility questions."
+  ]
+}

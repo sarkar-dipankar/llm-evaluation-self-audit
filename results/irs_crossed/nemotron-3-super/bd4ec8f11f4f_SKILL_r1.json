@@ -1,0 +1,1 @@
+{"meta": {"confidence": 0.0, "engine": "llm", "parser_version": "1.0", "warnings": ["Unable to compute line/column ranges due to prompt length; no explicit annotations found."]}, "nodes": [], "uri": "corpus/github-crossed/bd4ec8f11f4f_SKILL.md", "version": 1}

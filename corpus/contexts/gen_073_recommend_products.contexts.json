@@ -1,0 +1,57 @@
+[
+  {
+    "recommendations": {
+      "list": "x"
+    },
+    "user": {
+      "budget_provided": false,
+      "feedback_requested": false,
+      "preferences_provided": false,
+      "specified_product": false
+    }
+  },
+  {
+    "recommendations": {
+      "list": "x"
+    },
+    "user": {
+      "budget_provided": false,
+      "feedback_requested": false,
+      "preferences_provided": false,
+      "specified_product": true
+    }
+  },
+  {
+    "recommendations": {
+      "list": "x"
+    },
+    "user": {
+      "budget_provided": true,
+      "feedback_requested": false,
+      "preferences_provided": false,
+      "specified_product": false
+    }
+  },
+  {
+    "recommendations": {
+      "list": "x"
+    },
+    "user": {
+      "budget_provided": false,
+      "feedback_requested": false,
+      "preferences_provided": true,
+      "specified_product": false
+    }
+  },
+  {
+    "recommendations": {
+      "list": "x"
+    },
+    "user": {
+      "budget_provided": false,
+      "feedback_requested": true,
+      "preferences_provided": false,
+      "specified_product": false
+    }
+  }
+]

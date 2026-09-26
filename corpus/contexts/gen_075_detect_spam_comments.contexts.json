@@ -1,0 +1,22 @@
+[
+  {
+    "comment": {
+      "length": "x",
+      "link_count": "x",
+      "text": "x"
+    },
+    "user": {
+      "role": "__not_admin__"
+    }
+  },
+  {
+    "comment": {
+      "length": "x",
+      "link_count": "x",
+      "text": "x"
+    },
+    "user": {
+      "role": "admin"
+    }
+  }
+]

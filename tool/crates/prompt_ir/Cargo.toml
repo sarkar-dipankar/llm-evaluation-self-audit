@@ -1,0 +1,18 @@
+[package]
+name = "prompt_ir"
+description = "Shared intermediate representation (IR), traces, diagnostics, and provider config for the PromptDbg LLM prompt debugger."
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+authors.workspace = true
+rust-version.workspace = true
+readme = "README.md"
+keywords = ["llm", "prompt", "debugger", "ir", "analysis"]
+categories = ["development-tools::debugging", "data-structures"]
+
+[dependencies]
+serde = { workspace = true }
+serde_json = { workspace = true }
+thiserror = { workspace = true }

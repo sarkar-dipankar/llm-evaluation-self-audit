@@ -1,0 +1,244 @@
+  code_review.prompt.rtpl [gpt-oss:120b] run 1/3: ok
+  code_review.prompt.rtpl [gpt-oss:120b] run 2/3: ok
+  code_review.prompt.rtpl [gpt-oss:120b] run 3/3: ok
+== code_review.prompt.rtpl [gpt-oss:120b]: jaccard=1.0 id_stability=1.0
+  code_review.prompt.rtpl [mistral-large-3:675b] run 1/3: ok
+  code_review.prompt.rtpl [mistral-large-3:675b] run 2/3: ok
+  code_review.prompt.rtpl [mistral-large-3:675b] run 3/3: ok
+== code_review.prompt.rtpl [mistral-large-3:675b]: jaccard=1.0 id_stability=1.0
+  code_review.prompt.rtpl [minimax-m2.7] run 1/3: ok
+  code_review.prompt.rtpl [minimax-m2.7] run 2/3: ok
+  code_review.prompt.rtpl [minimax-m2.7] run 3/3: FAILED
+== code_review.prompt.rtpl [minimax-m2.7]: jaccard=1.0 id_stability=1.0
+  content_moderation.prompt.rtpl [gpt-oss:120b] run 1/3: ok
+  content_moderation.prompt.rtpl [gpt-oss:120b] run 2/3: ok
+  content_moderation.prompt.rtpl [gpt-oss:120b] run 3/3: ok
+== content_moderation.prompt.rtpl [gpt-oss:120b]: jaccard=1.0 id_stability=1.0
+  content_moderation.prompt.rtpl [mistral-large-3:675b] run 1/3: ok
+  content_moderation.prompt.rtpl [mistral-large-3:675b] run 2/3: ok
+  content_moderation.prompt.rtpl [mistral-large-3:675b] run 3/3: ok
+== content_moderation.prompt.rtpl [mistral-large-3:675b]: jaccard=1.0 id_stability=1.0
+  content_moderation.prompt.rtpl [minimax-m2.7] run 1/3: ok
+  content_moderation.prompt.rtpl [minimax-m2.7] run 2/3: ok
+  content_moderation.prompt.rtpl [minimax-m2.7] run 3/3: ok
+== content_moderation.prompt.rtpl [minimax-m2.7]: jaccard=1.0 id_stability=1.0
+  customer_support.prompt.rtpl [gpt-oss:120b] run 1/3: ok
+  customer_support.prompt.rtpl [gpt-oss:120b] run 2/3: ok
+  customer_support.prompt.rtpl [gpt-oss:120b] run 3/3: ok
+== customer_support.prompt.rtpl [gpt-oss:120b]: jaccard=1.0 id_stability=1.0
+  customer_support.prompt.rtpl [mistral-large-3:675b] run 1/3: ok
+  customer_support.prompt.rtpl [mistral-large-3:675b] run 2/3: ok
+  customer_support.prompt.rtpl [mistral-large-3:675b] run 3/3: ok
+== customer_support.prompt.rtpl [mistral-large-3:675b]: jaccard=0.939 id_stability=0.909
+  customer_support.prompt.rtpl [minimax-m2.7] run 1/3: FAILED
+  customer_support.prompt.rtpl [minimax-m2.7] run 2/3: FAILED
+  customer_support.prompt.rtpl [minimax-m2.7] run 3/3: FAILED
+  customer_support.prompt.rtpl [minimax-m2.7]: <2 successful runs, skipping
+  gen_000_triage_support_tickets.prompt.rtpl [gpt-oss:120b] run 1/3: ok
+  gen_000_triage_support_tickets.prompt.rtpl [gpt-oss:120b] run 2/3: ok
+  gen_000_triage_support_tickets.prompt.rtpl [gpt-oss:120b] run 3/3: ok
+== gen_000_triage_support_tickets.prompt.rtpl [gpt-oss:120b]: jaccard=0.222 id_stability=0.0
+  gen_000_triage_support_tickets.prompt.rtpl [mistral-large-3:675b] run 1/3: ok
+  gen_000_triage_support_tickets.prompt.rtpl [mistral-large-3:675b] run 2/3: ok
+  gen_000_triage_support_tickets.prompt.rtpl [mistral-large-3:675b] run 3/3: ok
+== gen_000_triage_support_tickets.prompt.rtpl [mistral-large-3:675b]: jaccard=0.717 id_stability=0.615
+  gen_000_triage_support_tickets.prompt.rtpl [minimax-m2.7] run 1/3: ok
+  gen_000_triage_support_tickets.prompt.rtpl [minimax-m2.7] run 2/3: FAILED
+  gen_000_triage_support_tickets.prompt.rtpl [minimax-m2.7] run 3/3: FAILED
+  gen_000_triage_support_tickets.prompt.rtpl [minimax-m2.7]: <2 successful runs, skipping
+  gen_001_review_sql_migrations.prompt.rtpl [gpt-oss:120b] run 1/3: ok
+  gen_001_review_sql_migrations.prompt.rtpl [gpt-oss:120b] run 2/3: ok
+  gen_001_review_sql_migrations.prompt.rtpl [gpt-oss:120b] run 3/3: ok
+== gen_001_review_sql_migrations.prompt.rtpl [gpt-oss:120b]: jaccard=0.242 id_stability=0.0
+  gen_001_review_sql_migrations.prompt.rtpl [mistral-large-3:675b] run 1/3: ok
+  gen_001_review_sql_migrations.prompt.rtpl [mistral-large-3:675b] run 2/3: ok
+  gen_001_review_sql_migrations.prompt.rtpl [mistral-large-3:675b] run 3/3: ok
+== gen_001_review_sql_migrations.prompt.rtpl [mistral-large-3:675b]: jaccard=0.692 id_stability=0.562
+  gen_001_review_sql_migrations.prompt.rtpl [minimax-m2.7] run 1/3: FAILED
+  gen_001_review_sql_migrations.prompt.rtpl [minimax-m2.7] run 2/3: ok
+  gen_001_review_sql_migrations.prompt.rtpl [minimax-m2.7] run 3/3: FAILED
+  gen_001_review_sql_migrations.prompt.rtpl [minimax-m2.7]: <2 successful runs, skipping
+  gen_002_moderate_forum_posts.prompt.rtpl [gpt-oss:120b] run 1/3: ok
+  gen_002_moderate_forum_posts.prompt.rtpl [gpt-oss:120b] run 2/3: ok
+  gen_002_moderate_forum_posts.prompt.rtpl [gpt-oss:120b] run 3/3: ok
+== gen_002_moderate_forum_posts.prompt.rtpl [gpt-oss:120b]: jaccard=0.333 id_stability=0.0
+  gen_002_moderate_forum_posts.prompt.rtpl [mistral-large-3:675b] run 1/3: ok
+  gen_002_moderate_forum_posts.prompt.rtpl [mistral-large-3:675b] run 2/3: ok
+  gen_002_moderate_forum_posts.prompt.rtpl [mistral-large-3:675b] run 3/3: ok
+== gen_002_moderate_forum_posts.prompt.rtpl [mistral-large-3:675b]: jaccard=0.905 id_stability=0.857
+  gen_002_moderate_forum_posts.prompt.rtpl [minimax-m2.7] run 1/3: ok
+  gen_002_moderate_forum_posts.prompt.rtpl [minimax-m2.7] run 2/3: FAILED
+  gen_002_moderate_forum_posts.prompt.rtpl [minimax-m2.7] run 3/3: FAILED
+  gen_002_moderate_forum_posts.prompt.rtpl [minimax-m2.7]: <2 successful runs, skipping
+  gen_003_summarize_legal_contracts.prompt.rtpl [gpt-oss:120b] run 1/3: ok
+  gen_003_summarize_legal_contracts.prompt.rtpl [gpt-oss:120b] run 2/3: ok
+  gen_003_summarize_legal_contracts.prompt.rtpl [gpt-oss:120b] run 3/3: FAILED
+== gen_003_summarize_legal_contracts.prompt.rtpl [gpt-oss:120b]: jaccard=0.167 id_stability=0.167
+  gen_003_summarize_legal_contracts.prompt.rtpl [mistral-large-3:675b] run 1/3: ok
+  gen_003_summarize_legal_contracts.prompt.rtpl [mistral-large-3:675b] run 2/3: ok
+  gen_003_summarize_legal_contracts.prompt.rtpl [mistral-large-3:675b] run 3/3: ok
+== gen_003_summarize_legal_contracts.prompt.rtpl [mistral-large-3:675b]: jaccard=0.917 id_stability=0.875
+  gen_003_summarize_legal_contracts.prompt.rtpl [minimax-m2.7] run 1/3: FAILED
+  gen_003_summarize_legal_contracts.prompt.rtpl [minimax-m2.7] run 2/3: FAILED
+  gen_003_summarize_legal_contracts.prompt.rtpl [minimax-m2.7] run 3/3: FAILED
+  gen_003_summarize_legal_contracts.prompt.rtpl [minimax-m2.7]: <2 successful runs, skipping
+  gen_004_answer_medical_faqs_with_disclaimers.prompt.rtpl [gpt-oss:120b] run 1/3: FAILED
+  gen_004_answer_medical_faqs_with_disclaimers.prompt.rtpl [gpt-oss:120b] run 2/3: ok
+  gen_004_answer_medical_faqs_with_disclaimers.prompt.rtpl [gpt-oss:120b] run 3/3: ok
+== gen_004_answer_medical_faqs_with_disclaimers.prompt.rtpl [gpt-oss:120b]: jaccard=0.0 id_stability=0.0
+  gen_004_answer_medical_faqs_with_disclaimers.prompt.rtpl [mistral-large-3:675b] run 1/3: ok
+  gen_004_answer_medical_faqs_with_disclaimers.prompt.rtpl [mistral-large-3:675b] run 2/3: ok
+  gen_004_answer_medical_faqs_with_disclaimers.prompt.rtpl [mistral-large-3:675b] run 3/3: ok
+== gen_004_answer_medical_faqs_with_disclaimers.prompt.rtpl [mistral-large-3:675b]: jaccard=1.0 id_stability=1.0
+  gen_004_answer_medical_faqs_with_disclaimers.prompt.rtpl [minimax-m2.7] run 1/3: ok
+  gen_004_answer_medical_faqs_with_disclaimers.prompt.rtpl [minimax-m2.7] run 2/3: FAILED
+  gen_004_answer_medical_faqs_with_disclaimers.prompt.rtpl [minimax-m2.7] run 3/3: FAILED
+  gen_004_answer_medical_faqs_with_disclaimers.prompt.rtpl [minimax-m2.7]: <2 successful runs, skipping
+  gen_005_grade_student_essays.prompt.rtpl [gpt-oss:120b] run 1/3: ok
+  gen_005_grade_student_essays.prompt.rtpl [gpt-oss:120b] run 2/3: ok
+  gen_005_grade_student_essays.prompt.rtpl [gpt-oss:120b] run 3/3: ok
+== gen_005_grade_student_essays.prompt.rtpl [gpt-oss:120b]: jaccard=0.222 id_stability=0.0
+  gen_005_grade_student_essays.prompt.rtpl [mistral-large-3:675b] run 1/3: ok
+  gen_005_grade_student_essays.prompt.rtpl [mistral-large-3:675b] run 2/3: ok
+  gen_005_grade_student_essays.prompt.rtpl [mistral-large-3:675b] run 3/3: ok
+== gen_005_grade_student_essays.prompt.rtpl [mistral-large-3:675b]: jaccard=0.641 id_stability=0.462
+  gen_005_grade_student_essays.prompt.rtpl [minimax-m2.7] run 1/3: ok
+  gen_005_grade_student_essays.prompt.rtpl [minimax-m2.7] run 2/3: FAILED
+  gen_005_grade_student_essays.prompt.rtpl [minimax-m2.7] run 3/3: ok
+== gen_005_grade_student_essays.prompt.rtpl [minimax-m2.7]: jaccard=0.174 id_stability=0.174
+  gen_006_route_sales_leads.prompt.rtpl [gpt-oss:120b] run 1/3: ok
+  gen_006_route_sales_leads.prompt.rtpl [gpt-oss:120b] run 2/3: ok
+  gen_006_route_sales_leads.prompt.rtpl [gpt-oss:120b] run 3/3: ok
+== gen_006_route_sales_leads.prompt.rtpl [gpt-oss:120b]: jaccard=0.852 id_stability=0.778
+  gen_006_route_sales_leads.prompt.rtpl [mistral-large-3:675b] run 1/3: ok
+  gen_006_route_sales_leads.prompt.rtpl [mistral-large-3:675b] run 2/3: ok
+  gen_006_route_sales_leads.prompt.rtpl [mistral-large-3:675b] run 3/3: ok
+== gen_006_route_sales_leads.prompt.rtpl [mistral-large-3:675b]: jaccard=0.721 id_stability=0.625
+  gen_006_route_sales_leads.prompt.rtpl [minimax-m2.7] run 1/3: ok
+  gen_006_route_sales_leads.prompt.rtpl [minimax-m2.7] run 2/3: FAILED
+  gen_006_route_sales_leads.prompt.rtpl [minimax-m2.7] run 3/3: FAILED
+  gen_006_route_sales_leads.prompt.rtpl [minimax-m2.7]: <2 successful runs, skipping
+  gen_007_generate_release_notes.prompt.rtpl [gpt-oss:120b] run 1/3: ok
+  gen_007_generate_release_notes.prompt.rtpl [gpt-oss:120b] run 2/3: ok
+  gen_007_generate_release_notes.prompt.rtpl [gpt-oss:120b] run 3/3: ok
+== gen_007_generate_release_notes.prompt.rtpl [gpt-oss:120b]: jaccard=0.333 id_stability=0.0
+  gen_007_generate_release_notes.prompt.rtpl [mistral-large-3:675b] run 1/3: ok
+  gen_007_generate_release_notes.prompt.rtpl [mistral-large-3:675b] run 2/3: ok
+  gen_007_generate_release_notes.prompt.rtpl [mistral-large-3:675b] run 3/3: ok
+== gen_007_generate_release_notes.prompt.rtpl [mistral-large-3:675b]: jaccard=0.451 id_stability=0.304
+  gen_007_generate_release_notes.prompt.rtpl [minimax-m2.7] run 1/3: ok
+  gen_007_generate_release_notes.prompt.rtpl [minimax-m2.7] run 2/3: FAILED
+  gen_007_generate_release_notes.prompt.rtpl [minimax-m2.7] run 3/3: FAILED
+  gen_007_generate_release_notes.prompt.rtpl [minimax-m2.7]: <2 successful runs, skipping
+  gen_008_screen_job_applications.prompt.rtpl [gpt-oss:120b] run 1/3: ok
+  gen_008_screen_job_applications.prompt.rtpl [gpt-oss:120b] run 2/3: FAILED
+  gen_008_screen_job_applications.prompt.rtpl [gpt-oss:120b] run 3/3: ok
+== gen_008_screen_job_applications.prompt.rtpl [gpt-oss:120b]: jaccard=0.0 id_stability=0.0
+  gen_008_screen_job_applications.prompt.rtpl [mistral-large-3:675b] run 1/3: ok
+  gen_008_screen_job_applications.prompt.rtpl [mistral-large-3:675b] run 2/3: ok
+  gen_008_screen_job_applications.prompt.rtpl [mistral-large-3:675b] run 3/3: ok
+== gen_008_screen_job_applications.prompt.rtpl [mistral-large-3:675b]: jaccard=0.781 id_stability=0.684
+  gen_008_screen_job_applications.prompt.rtpl [minimax-m2.7] run 1/3: FAILED
+  gen_008_screen_job_applications.prompt.rtpl [minimax-m2.7] run 2/3: FAILED
+  gen_008_screen_job_applications.prompt.rtpl [minimax-m2.7] run 3/3: FAILED
+  gen_008_screen_job_applications.prompt.rtpl [minimax-m2.7]: <2 successful runs, skipping
+  gen_009_translate_with_tone_control.prompt.rtpl [gpt-oss:120b] run 1/3: ok
+  gen_009_translate_with_tone_control.prompt.rtpl [gpt-oss:120b] run 2/3: ok
+  gen_009_translate_with_tone_control.prompt.rtpl [gpt-oss:120b] run 3/3: ok
+== gen_009_translate_with_tone_control.prompt.rtpl [gpt-oss:120b]: jaccard=0.333 id_stability=0.0
+  gen_009_translate_with_tone_control.prompt.rtpl [mistral-large-3:675b] run 1/3: ok
+  gen_009_translate_with_tone_control.prompt.rtpl [mistral-large-3:675b] run 2/3: ok
+  gen_009_translate_with_tone_control.prompt.rtpl [mistral-large-3:675b] run 3/3: ok
+== gen_009_translate_with_tone_control.prompt.rtpl [mistral-large-3:675b]: jaccard=0.778 id_stability=0.667
+  gen_009_translate_with_tone_control.prompt.rtpl [minimax-m2.7] run 1/3: FAILED
+  gen_009_translate_with_tone_control.prompt.rtpl [minimax-m2.7] run 2/3: ok
+  gen_009_translate_with_tone_control.prompt.rtpl [minimax-m2.7] run 3/3: ok
+== gen_009_translate_with_tone_control.prompt.rtpl [minimax-m2.7]: jaccard=0.688 id_stability=0.688
+  gen_010_classify_incoming_emails.prompt.rtpl [gpt-oss:120b] run 1/3: ok
+  gen_010_classify_incoming_emails.prompt.rtpl [gpt-oss:120b] run 2/3: ok
+  gen_010_classify_incoming_emails.prompt.rtpl [gpt-oss:120b] run 3/3: ok
+== gen_010_classify_incoming_emails.prompt.rtpl [gpt-oss:120b]: jaccard=0.333 id_stability=0.0
+  gen_010_classify_incoming_emails.prompt.rtpl [mistral-large-3:675b] run 1/3: ok
+  gen_010_classify_incoming_emails.prompt.rtpl [mistral-large-3:675b] run 2/3: ok
+  gen_010_classify_incoming_emails.prompt.rtpl [mistral-large-3:675b] run 3/3: ok
+== gen_010_classify_incoming_emails.prompt.rtpl [mistral-large-3:675b]: jaccard=0.897 id_stability=0.846
+  gen_010_classify_incoming_emails.prompt.rtpl [minimax-m2.7] run 1/3: ok
+  gen_010_classify_incoming_emails.prompt.rtpl [minimax-m2.7] run 2/3: ok
+  gen_010_classify_incoming_emails.prompt.rtpl [minimax-m2.7] run 3/3: ok
+== gen_010_classify_incoming_emails.prompt.rtpl [minimax-m2.7]: jaccard=0.649 id_stability=0.538
+  gen_011_draft_incident_postmortems.prompt.rtpl [gpt-oss:120b] run 1/3: ok
+  gen_011_draft_incident_postmortems.prompt.rtpl [gpt-oss:120b] run 2/3: FAILED
+  gen_011_draft_incident_postmortems.prompt.rtpl [gpt-oss:120b] run 3/3: FAILED
+  gen_011_draft_incident_postmortems.prompt.rtpl [gpt-oss:120b]: <2 successful runs, skipping
+  gen_011_draft_incident_postmortems.prompt.rtpl [mistral-large-3:675b] run 1/3: ok
+  gen_011_draft_incident_postmortems.prompt.rtpl [mistral-large-3:675b] run 2/3: ok
+  gen_011_draft_incident_postmortems.prompt.rtpl [mistral-large-3:675b] run 3/3: ok
+== gen_011_draft_incident_postmortems.prompt.rtpl [mistral-large-3:675b]: jaccard=0.733 id_stability=0.619
+  gen_011_draft_incident_postmortems.prompt.rtpl [minimax-m2.7] run 1/3: FAILED
+  gen_011_draft_incident_postmortems.prompt.rtpl [minimax-m2.7] run 2/3: FAILED
+  gen_011_draft_incident_postmortems.prompt.rtpl [minimax-m2.7] run 3/3: FAILED
+  gen_011_draft_incident_postmortems.prompt.rtpl [minimax-m2.7]: <2 successful runs, skipping
+  gen_012_review_pull_requests.prompt.rtpl [gpt-oss:120b] run 1/3: ok
+  gen_012_review_pull_requests.prompt.rtpl [gpt-oss:120b] run 2/3: ok
+  gen_012_review_pull_requests.prompt.rtpl [gpt-oss:120b] run 3/3: ok
+== gen_012_review_pull_requests.prompt.rtpl [gpt-oss:120b]: jaccard=0.2 id_stability=0.0
+  gen_012_review_pull_requests.prompt.rtpl [mistral-large-3:675b] run 1/3: ok
+  gen_012_review_pull_requests.prompt.rtpl [mistral-large-3:675b] run 2/3: ok
+  gen_012_review_pull_requests.prompt.rtpl [mistral-large-3:675b] run 3/3: ok
+== gen_012_review_pull_requests.prompt.rtpl [mistral-large-3:675b]: jaccard=0.649 id_stability=0.5
+  gen_012_review_pull_requests.prompt.rtpl [minimax-m2.7] run 1/3: FAILED
+  gen_012_review_pull_requests.prompt.rtpl [minimax-m2.7] run 2/3: ok
+  gen_012_review_pull_requests.prompt.rtpl [minimax-m2.7] run 3/3: FAILED
+  gen_012_review_pull_requests.prompt.rtpl [minimax-m2.7]: <2 successful runs, skipping
+  gen_013_recommend_products.prompt.rtpl [gpt-oss:120b] run 1/3: ok
+  gen_013_recommend_products.prompt.rtpl [gpt-oss:120b] run 2/3: ok
+  gen_013_recommend_products.prompt.rtpl [gpt-oss:120b] run 3/3: ok
+== gen_013_recommend_products.prompt.rtpl [gpt-oss:120b]: jaccard=0.259 id_stability=0.0
+  gen_013_recommend_products.prompt.rtpl [mistral-large-3:675b] run 1/3: ok
+  gen_013_recommend_products.prompt.rtpl [mistral-large-3:675b] run 2/3: ok
+  gen_013_recommend_products.prompt.rtpl [mistral-large-3:675b] run 3/3: ok
+== gen_013_recommend_products.prompt.rtpl [mistral-large-3:675b]: jaccard=0.63 id_stability=0.467
+  gen_013_recommend_products.prompt.rtpl [minimax-m2.7] run 1/3: ok
+  gen_013_recommend_products.prompt.rtpl [minimax-m2.7] run 2/3: ok
+  gen_013_recommend_products.prompt.rtpl [minimax-m2.7] run 3/3: FAILED
+== gen_013_recommend_products.prompt.rtpl [minimax-m2.7]: jaccard=0.667 id_stability=0.667
+  gen_014_extract_invoice_fields.prompt.rtpl [gpt-oss:120b] run 1/3: ok
+  gen_014_extract_invoice_fields.prompt.rtpl [gpt-oss:120b] run 2/3: ok
+  gen_014_extract_invoice_fields.prompt.rtpl [gpt-oss:120b] run 3/3: ok
+== gen_014_extract_invoice_fields.prompt.rtpl [gpt-oss:120b]: jaccard=0.242 id_stability=0.0
+  gen_014_extract_invoice_fields.prompt.rtpl [mistral-large-3:675b] run 1/3: ok
+  gen_014_extract_invoice_fields.prompt.rtpl [mistral-large-3:675b] run 2/3: ok
+  gen_014_extract_invoice_fields.prompt.rtpl [mistral-large-3:675b] run 3/3: ok
+== gen_014_extract_invoice_fields.prompt.rtpl [mistral-large-3:675b]: jaccard=0.867 id_stability=0.8
+  gen_014_extract_invoice_fields.prompt.rtpl [minimax-m2.7] run 1/3: FAILED
+  gen_014_extract_invoice_fields.prompt.rtpl [minimax-m2.7] run 2/3: ok
+  gen_014_extract_invoice_fields.prompt.rtpl [minimax-m2.7] run 3/3: FAILED
+  gen_014_extract_invoice_fields.prompt.rtpl [minimax-m2.7]: <2 successful runs, skipping
+  gen_015_detect_spam_comments.prompt.rtpl [gpt-oss:120b] run 1/3: ok
+  gen_015_detect_spam_comments.prompt.rtpl [gpt-oss:120b] run 2/3: ok
+  gen_015_detect_spam_comments.prompt.rtpl [gpt-oss:120b] run 3/3: ok
+== gen_015_detect_spam_comments.prompt.rtpl [gpt-oss:120b]: jaccard=0.212 id_stability=0.0
+  gen_015_detect_spam_comments.prompt.rtpl [mistral-large-3:675b] run 1/3: FAILED
+  gen_015_detect_spam_comments.prompt.rtpl [mistral-large-3:675b] run 2/3: FAILED
+  gen_015_detect_spam_comments.prompt.rtpl [mistral-large-3:675b] run 3/3: FAILED
+  gen_015_detect_spam_comments.prompt.rtpl [mistral-large-3:675b]: <2 successful runs, skipping
+  gen_015_detect_spam_comments.prompt.rtpl [minimax-m2.7] run 1/3: ok
+  gen_015_detect_spam_comments.prompt.rtpl [minimax-m2.7] run 2/3: FAILED
+  gen_015_detect_spam_comments.prompt.rtpl [minimax-m2.7] run 3/3: FAILED
+  gen_015_detect_spam_comments.prompt.rtpl [minimax-m2.7]: <2 successful runs, skipping
+  gen_016_answer_hr_policy_questions.prompt.rtpl [gpt-oss:120b] run 1/3: FAILED
+  gen_016_answer_hr_policy_questions.prompt.rtpl [gpt-oss:120b] run 2/3: ok
+  gen_016_answer_hr_policy_questions.prompt.rtpl [gpt-oss:120b] run 3/3: FAILED
+  gen_016_answer_hr_policy_questions.prompt.rtpl [gpt-oss:120b]: <2 successful runs, skipping
+  gen_016_answer_hr_policy_questions.prompt.rtpl [mistral-large-3:675b] run 1/3: ok
+  gen_016_answer_hr_policy_questions.prompt.rtpl [mistral-large-3:675b] run 2/3: ok
+  gen_016_answer_hr_policy_questions.prompt.rtpl [mistral-large-3:675b] run 3/3: ok
+== gen_016_answer_hr_policy_questions.prompt.rtpl [mistral-large-3:675b]: jaccard=0.847 id_stability=0.778
+  gen_016_answer_hr_policy_questions.prompt.rtpl [minimax-m2.7] run 1/3: FAILED
+  gen_016_answer_hr_policy_questions.prompt.rtpl [minimax-m2.7] run 2/3: FAILED
+  gen_016_answer_hr_policy_questions.prompt.rtpl [minimax-m2.7] run 3/3: FAILED
+  gen_016_answer_hr_policy_questions.prompt.rtpl [minimax-m2.7]: <2 successful runs, skipping
+
+Wrote 43 rows to results/ir_stability_paid_tierD.csv
+Corpus mean: jaccard=0.611  id_stability=0.502
+(1.0 = perfectly reproducible structure; lower = inference drift)

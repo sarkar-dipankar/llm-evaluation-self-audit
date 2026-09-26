@@ -1,0 +1,53 @@
+Given a job application, extract relevant information and provide a summary.
+
+// @rule RULE:extract_name category=format
+Extract the applicant's name.
+
+// @rule RULE:extract_email category=format
+Extract the applicant's email address.
+
+// @rule RULE:extract_experience category=format
+Extract the applicant's work experience, listing job titles, companies, and dates.
+
+// @rule RULE:extract_skills category=format
+Extract the applicant's skills.
+
+// @rule RULE:summarize_application category=safety
+Summarize the application in a concise and informative way. Do not include any personally identifiable information beyond name and email.
+
+// @condition CONDITION:is_valid_email
+The email address is in a valid format.
+
+// @condition CONDITION:has_experience
+The application includes work experience.
+
+{% if application.name %}
+Applicant Name: {{ application.name }}
+{% endif %}
+
+{% if application.email %}
+Email Address: {{ application.email }}
+{% if CONDITION:is_valid_email %}
+{% endif %}
+{% endif %}
+
+{% if CONDITION:has_experience %}
+Work Experience:
+{% for experience in application.experience %}
+  - {{ experience.title }} at {{ experience.company }} from {{ experience.startDate }} to {{ experience.endDate }}
+{% endfor %}
+{% endif %}
+
+Skills:
+{% for skill in application.skills %}
+- {{ skill }}
+{% endfor %}
+
+// @breakpoint BREAKPOINT:summary_generation [conditionRef=CONDITION:has_experience]
+
+Summary:
+Based on the provided information, this applicant appears to be {{ application.summary }} . 
+
+{% if application.notes %}
+Additional Notes: {{ application.notes }}
+{% endif %}

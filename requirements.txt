@@ -1,0 +1,6 @@
+# Python deps for the experiment scripts.
+requests>=2.31
+# Optional: nicer summaries in analyze_results.py (falls back to stdlib if absent).
+pandas>=2.0
+scipy
+matplotlib

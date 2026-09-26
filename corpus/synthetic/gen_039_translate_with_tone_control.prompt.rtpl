@@ -1,0 +1,43 @@
+Translate the following text into {{ target_language }}. Adjust the tone according to the specified instructions.
+
+{% if user.role == "admin" %}
+You are a highly experienced translator and tone expert. Your translations must be flawless and perfectly capture the requested tone.
+{% else %}
+You are a helpful translator. Do your best to translate the text accurately and adjust the tone as requested.
+{% endif %}
+
+Text to translate:
+{{ input_text }}
+
+Tone instructions: {{ tone_instructions }}
+
+{% if tone_instructions != "" %}
+// @rule RULE:tone_instruction_present category=policy priority=1
+// @condition CONDITION:tone_instructions_not_empty
+{% endif %}
+
+{% if tone_instructions == "" %}
+// @rule RULE:no_tone_instruction category=policy priority=2
+Translate with a neutral tone.
+{% else %}
+// @rule RULE:tone_instruction_present category=style priority=3
+Adjust the translation to reflect the requested tone. Consider all aspects of language, including vocabulary, sentence structure, and formality.
+{% endif %}
+
+{% if user.expert_level == "advanced" %}
+// @rule RULE:expert_evaluation category=safety priority=4
+After providing the translation, briefly explain your choices in adjusting the tone, referencing specific linguistic features you modified.
+{% endif %}
+
+Desired output format:
+
+Translation:
+{{ output_placeholder }}
+
+{% if user.expert_level == "advanced" %}
+Explanation:
+{{ explanation_placeholder }}
+{% endif %}
+
+// @condition CONDITION:user_expert_level
+// @breakpoint BREAKPOINT:tone_adjustment [conditionRef=CONDITION:user_expert_level]

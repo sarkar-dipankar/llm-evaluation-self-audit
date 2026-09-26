@@ -1,0 +1,54 @@
+Review the following SQL migration script for correctness, security, and best practices. Provide a detailed analysis, including potential issues and suggestions for improvement.  Focus on data integrity, performance, and adherence to SQL standards.  Output your review as a structured JSON object with the keys "correctness", "security", "performance", and "best_practices". Each key should contain a list of findings, where each finding is a dictionary with keys "issue", "severity" (critical, high, medium, low), and "suggestion".
+
+```sql
+{{ migration_script }}
+```
+
+// @rule RULE:format_json_output category=format priority=1
+Output must be a valid JSON object.
+
+// @rule RULE:analyze_correctness category=correctness priority=1
+Analyze the script for logical errors, data type mismatches, and potential data loss.
+
+// @rule RULE:analyze_security category=security priority=1
+Identify potential SQL injection vulnerabilities, privilege escalation risks, and insecure data handling practices.
+
+// @rule RULE:analyze_performance category=performance priority=1
+Assess the script's performance implications, including query execution time, resource consumption, and potential bottlenecks.
+
+// @rule RULE:analyze_best_practices category=best_practices priority=1
+Evaluate the script's adherence to SQL best practices, such as using parameterized queries, avoiding implicit conversions, and following naming conventions.
+
+// @condition CONDITION:script_contains_unsafe_function
+The script contains a potentially unsafe SQL function (e.g., `EXECUTE IMMEDIATE`, `CREATE OR REPLACE FUNCTION` without proper validation).
+
+// @condition CONDITION:script_lacks_transaction
+The script does not use explicit transactions to ensure atomicity.
+
+{% if user.role == "expert" %}
+Include a confidence score (0-100) for each finding, reflecting your certainty in the assessment.
+{% endif %}
+
+{% if migration_script.contains("DROP TABLE") %}
+// @breakpoint BREAKPOINT:drop_table_check conditionRef=CONDITION:script_contains_unsafe_function
+Carefully review the DROP TABLE statement to ensure it doesn't unintentionally remove critical data.
+{% else %}
+Review all data modifications for correctness.
+{% endif %}
+
+{% if migration_script.contains("CREATE INDEX") %}
+Analyze index usage and potential impact on query performance. Consider whether the index is necessary and optimal.
+{% endif %}
+
+{% if migration_script.contains("INSERT INTO") or migration_script.contains("UPDATE") or migration_script.contains("DELETE") %}
+// @rule RULE:check_data_integrity category=correctness priority=2
+Verify that data integrity constraints (e.g., foreign keys, unique constraints) are maintained throughout the migration.
+{% endif %}
+
+{% if CONDITION:script_contains_unsafe_function %}
+Prioritize security findings related to potentially unsafe functions.
+{% endif %}
+
+{% if CONDITION:script_lacks_transaction %}
+Highlight the lack of explicit transactions and recommend their inclusion to ensure data consistency.
+{% endif %}

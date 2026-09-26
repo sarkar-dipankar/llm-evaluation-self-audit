@@ -1,0 +1,12 @@
+[
+  {
+    "env": {
+      "mansplain_cli": false
+    }
+  },
+  {
+    "env": {
+      "mansplain_cli": true
+    }
+  }
+]

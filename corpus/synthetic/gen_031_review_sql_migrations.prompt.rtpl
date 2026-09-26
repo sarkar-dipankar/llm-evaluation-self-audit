@@ -1,0 +1,51 @@
+Review the following SQL migration script and provide feedback. Focus on correctness, efficiency, and potential issues.  Your response should include a summary of the script's purpose, a detailed review of each step, and suggestions for improvement.  If the script contains errors, clearly identify them and propose corrections.
+
+// @rule RULE:general category=style priority=1
+Provide a comprehensive review of the SQL migration script.
+
+// @rule RULE:correctness category=safety priority=2
+Identify any potential correctness issues in the script.
+
+// @rule RULE:efficiency category=style priority=3
+Suggest improvements to enhance the script's efficiency.
+
+// @rule RULE:potential_issues category=safety priority=4
+Highlight any potential issues or risks associated with the script.
+
+// @condition CONDITION:is_empty
+{{ script | length }} == 0
+
+{% if CONDITION:is_empty %}
+The provided script is empty.  Please provide a script to review.
+{% else %}
+SQL Migration Script:
+
+```sql
+{{ script }}
+```
+
+Review:
+
+Purpose: {{ purpose }}
+
+Detailed Review:
+
+{% if review_steps %}
+{% for step in review_steps %}
+Step {{ step.number }}: {{ step.description }}
+{% if step.correctness_issues %}
+  Correctness Issues: {{ step.correctness_issues }}
+{% endif %}
+{% if step.efficiency_suggestions %}
+  Efficiency Suggestions: {{ step.efficiency_suggestions }}
+{% endif %}
+{% endfor %}
+{% else %}
+No specific steps to review were provided.
+{% endif %}
+
+Overall Assessment: {{ overall_assessment }}
+
+Recommendations: {{ recommendations }}
+
+{% endif %}

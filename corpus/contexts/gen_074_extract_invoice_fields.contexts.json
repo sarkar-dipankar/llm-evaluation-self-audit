@@ -1,0 +1,10 @@
+[
+  {
+    "invoice_text": "x",
+    "is_valid_invoice": false
+  },
+  {
+    "invoice_text": "x",
+    "is_valid_invoice": true
+  }
+]

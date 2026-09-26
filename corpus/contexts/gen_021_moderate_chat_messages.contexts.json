@@ -1,0 +1,80 @@
+[
+  {
+    "response": {
+      "text": "x"
+    },
+    "toxicity_detected": false,
+    "user": {
+      "message_contains_personal_info and user": {
+        "role": "admin"
+      },
+      "message_contains_url": false,
+      "role": "__not_new_user__"
+    }
+  },
+  {
+    "response": {
+      "text": "x"
+    },
+    "toxicity_detected": false,
+    "user": {
+      "message_contains_personal_info and user": {
+        "role": "admin"
+      },
+      "message_contains_url": false,
+      "role": "admin"
+    }
+  },
+  {
+    "response": {
+      "text": "x"
+    },
+    "toxicity_detected": false,
+    "user": {
+      "message_contains_personal_info and user": {
+        "role": "admin"
+      },
+      "message_contains_url": true,
+      "role": "__not_new_user__"
+    }
+  },
+  {
+    "response": {
+      "text": "x"
+    },
+    "toxicity_detected": false,
+    "user": {
+      "message_contains_personal_info and user": {
+        "role": "admin"
+      },
+      "message_contains_url": false,
+      "role": "new_user"
+    }
+  },
+  {
+    "response": {
+      "text": "x"
+    },
+    "toxicity_detected": false,
+    "user": {
+      "message_contains_personal_info and user": {
+        "role": "__not_admin__"
+      },
+      "message_contains_url": false,
+      "role": "__not_new_user__"
+    }
+  },
+  {
+    "response": {
+      "text": "x"
+    },
+    "toxicity_detected": true,
+    "user": {
+      "message_contains_personal_info and user": {
+        "role": "admin"
+      },
+      "message_contains_url": false,
+      "role": "__not_new_user__"
+    }
+  }
+]

@@ -1,0 +1,1 @@
+{"meta": {"confidence": 1.0, "engine": "llm", "parser_version": "1.0"}, "nodes": [{"id": "RULE:prompt_to_analyze", "kind": "Section", "label": "Full prompt content", "meta": {"category": "format", "inferred": false}, "range": {"end_col": 0, "end_line": 333, "start_col": 0, "start_line": 40}}], "uri": "corpus/github-crossed/c478da30e0af_SKILL.md", "version": 1}

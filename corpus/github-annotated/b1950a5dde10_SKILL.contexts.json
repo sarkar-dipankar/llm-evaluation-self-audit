@@ -1,0 +1,12 @@
+[
+  {
+    "question": {
+      "type": "__not_company__"
+    }
+  },
+  {
+    "question": {
+      "type": "company"
+    }
+  }
+]

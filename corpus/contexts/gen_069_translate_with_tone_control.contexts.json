@@ -1,0 +1,34 @@
+[
+  {
+    "desired_tone": false,
+    "source_text": "x",
+    "target_language": "x",
+    "user": {
+      "role": "__not_admin__"
+    }
+  },
+  {
+    "desired_tone": false,
+    "source_text": "x",
+    "target_language": "x",
+    "user": {
+      "role": "admin"
+    }
+  },
+  {
+    "desired_tone": "formal",
+    "source_text": "x",
+    "target_language": "x",
+    "user": {
+      "role": "__not_admin__"
+    }
+  },
+  {
+    "desired_tone": true,
+    "source_text": "x",
+    "target_language": "x",
+    "user": {
+      "role": "__not_admin__"
+    }
+  }
+]

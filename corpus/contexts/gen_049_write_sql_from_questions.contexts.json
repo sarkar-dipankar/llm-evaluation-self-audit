@@ -1,0 +1,58 @@
+[
+  {
+    "question": {
+      "complexity": "__not_complex__",
+      "text": "x"
+    },
+    "schema": {
+      "available": false,
+      "tables": "x"
+    },
+    "sql": {
+      "explanation": "x",
+      "query": false
+    }
+  },
+  {
+    "question": {
+      "complexity": "__not_complex__",
+      "text": "x"
+    },
+    "schema": {
+      "available": true,
+      "tables": "x"
+    },
+    "sql": {
+      "explanation": "x",
+      "query": false
+    }
+  },
+  {
+    "question": {
+      "complexity": "complex",
+      "text": "x"
+    },
+    "schema": {
+      "available": false,
+      "tables": "x"
+    },
+    "sql": {
+      "explanation": "x",
+      "query": false
+    }
+  },
+  {
+    "question": {
+      "complexity": "__not_complex__",
+      "text": "x"
+    },
+    "schema": {
+      "available": false,
+      "tables": "x"
+    },
+    "sql": {
+      "explanation": "x",
+      "query": true
+    }
+  }
+]

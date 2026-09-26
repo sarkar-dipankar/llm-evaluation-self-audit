@@ -1,0 +1,14 @@
+[
+  {
+    "ticket": {
+      "category": "__not_Bug Report__",
+      "content": "x"
+    }
+  },
+  {
+    "ticket": {
+      "category": "Bug Report",
+      "content": "x"
+    }
+  }
+]

@@ -1,0 +1,21 @@
+{
+  "prompt": "gen_045_detect_spam_comments.prompt.rtpl",
+  "mutant": "NegateCondition@L16",
+  "operator": "NegateCondition",
+  "rendered_original": "You are a spam detection assistant. Your task is to classify comments as either \"spam\" or \"not spam\".\n\n\nAnalyze the following comment and provide your classification.\n\nComment: Login page returns a 500 error after the latest deploy; affects all users.\n\n\n\nBe cautious of unverified users.\n\n\n\nClassification:\n\nnot spam\n\n",
+  "rendered_mutant": "You are a spam detection assistant. Your task is to classify comments as either \"spam\" or \"not spam\".\n\n\nAnalyze the following comment and provide your classification.\n\nComment: Login page returns a 500 error after the latest deploy; affects all users.\n\nThis comment is exceptionally long. Proceed with caution.\n\n\nBe cautious of unverified users.\n\n\n\nClassification:\n\nnot spam\n\n",
+  "original_responses": [
+    "Classification: not spam",
+    "not spam",
+    "not spam",
+    "Classification: not spam",
+    "not spam"
+  ],
+  "mutant_responses": [
+    "not spam",
+    "Classification: not spam",
+    "not spam",
+    "not spam",
+    "not spam"
+  ]
+}

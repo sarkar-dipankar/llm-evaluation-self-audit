@@ -1,0 +1,17 @@
+[
+  {
+    "contract_type": "x",
+    "is_employment": false,
+    "is_nda": false
+  },
+  {
+    "contract_type": "x",
+    "is_employment": false,
+    "is_nda": true
+  },
+  {
+    "contract_type": "x",
+    "is_employment": true,
+    "is_nda": false
+  }
+]

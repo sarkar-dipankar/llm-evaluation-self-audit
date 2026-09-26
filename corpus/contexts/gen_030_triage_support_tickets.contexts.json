@@ -1,0 +1,23 @@
+[
+  {
+    "ticket": {
+      "category": "__not_Billing__",
+      "description": "x",
+      "urgency": "__not_high__"
+    }
+  },
+  {
+    "ticket": {
+      "category": "__not_Billing__",
+      "description": "x",
+      "urgency": "high"
+    }
+  },
+  {
+    "ticket": {
+      "category": "Billing",
+      "description": "x",
+      "urgency": "__not_high__"
+    }
+  }
+]

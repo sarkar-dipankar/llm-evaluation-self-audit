@@ -1,0 +1,46 @@
+[
+  {
+    "explanation_placeholder": "x",
+    "input_text": "x",
+    "output_placeholder": "x",
+    "target_language": "x",
+    "tone_instructions": "__not___",
+    "user": {
+      "expert_level": "__not_advanced__",
+      "role": "__not_admin__"
+    }
+  },
+  {
+    "explanation_placeholder": "x",
+    "input_text": "x",
+    "output_placeholder": "x",
+    "target_language": "x",
+    "tone_instructions": "__not___",
+    "user": {
+      "expert_level": "__not_advanced__",
+      "role": "admin"
+    }
+  },
+  {
+    "explanation_placeholder": "x",
+    "input_text": "x",
+    "output_placeholder": "x",
+    "target_language": "x",
+    "tone_instructions": "",
+    "user": {
+      "expert_level": "__not_advanced__",
+      "role": "__not_admin__"
+    }
+  },
+  {
+    "explanation_placeholder": "x",
+    "input_text": "x",
+    "output_placeholder": "x",
+    "target_language": "x",
+    "tone_instructions": "__not___",
+    "user": {
+      "expert_level": "advanced",
+      "role": "__not_admin__"
+    }
+  }
+]

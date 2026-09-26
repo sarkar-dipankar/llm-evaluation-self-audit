@@ -1,0 +1,21 @@
+{
+  "prompt": "gen_044_extract_invoice_fields.prompt.rtpl",
+  "mutant": "NegateCondition@L18",
+  "operator": "NegateCondition",
+  "rendered_original": "You are an invoice field extractor. You will be given an invoice text and your task is to extract specific fields.\n\nExtract the following fields from the invoice text: Invoice Number, Invoice Date, Due Date, Total Amount, Vendor Name, Vendor Address.  Return the fields as a JSON object.  If a field is not found, set its value to \"N/A\".\n\nThe output must be valid JSON.\n\nIf any of the required fields are not present in the invoice text, set their corresponding values in the JSON output to \"N/A\".\n\nInvoice dates should be extracted in YYYY-MM-DD format.\n\nAn invoice text is provided.\n\nNo invoice text provided. Please provide an invoice text to extract fields.\n```\n",
+  "rendered_mutant": "You are an invoice field extractor. You will be given an invoice text and your task is to extract specific fields.\n\nExtract the following fields from the invoice text: Invoice Number, Invoice Date, Due Date, Total Amount, Vendor Name, Vendor Address.  Return the fields as a JSON object.  If a field is not found, set its value to \"N/A\".\n\nThe output must be valid JSON.\n\nIf any of the required fields are not present in the invoice text, set their corresponding values in the JSON output to \"N/A\".\n\nInvoice dates should be extracted in YYYY-MM-DD format.\n\nAn invoice text is provided.\n\nExtract the fields from the following invoice text:\n\nLogin page returns a 500 error after the latest deploy; affects all users.\n\nReturn the extracted fields as a JSON object:\n\n```json\n{\n  \"Invoice Number\": \"x\",\n  \"Invoice Date\": \"x\",\n  \"Due Date\": \"x\",\n  \"Total Amount\": \"x\",\n  \"Vendor Name\": \"x\",\n  \"Vendor Address\": \"x\"\n}\n```\n\n",
+  "original_responses": [
+    "No invoice text was provided. Please supply the invoice text you\u2019d like me to extract the fields from.",
+    "I\u2019m ready to extract the requested fields, but I don\u2019t see any invoice text in your message. Could you please provide the invoice text you\u2019d like me to process?",
+    "I\u2019m ready to extract the requested fields, but it looks like the invoice text is missing. Could you please provide the invoice text you\u2019d like me to process?",
+    "No invoice text provided. Please provide an invoice text to extract fields.",
+    "I\u2019m ready to extract the requested fields, but I don\u2019t see the invoice text in your message. Could you please provide the invoice content you\u2019d like me to process?"
+  ],
+  "mutant_responses": [
+    "```json\n{\n  \"Invoice Number\": \"N/A\",\n  \"Invoice Date\": \"N/A\",\n  \"Due Date\": \"N/A\",\n  \"Total Amount\": \"N/A\",\n  \"Vendor Name\": \"N/A\",\n  \"Vendor Address\": \"N/A\"\n}\n```",
+    "```json\n{\n  \"Invoice Number\": \"N/A\",\n  \"Invoice Date\": \"N/A\",\n  \"Due Date\": \"N/A\",\n  \"Total Amount\": \"N/A\",\n  \"Vendor Name\": \"N/A\",\n  \"Vendor Address\": \"N/A\"\n}\n```",
+    "```json\n{\n  \"Invoice Number\": \"N/A\",\n  \"Invoice Date\": \"N/A\",\n  \"Due Date\": \"N/A\",\n  \"Total Amount\": \"N/A\",\n  \"Vendor Name\": \"N/A\",\n  \"Vendor Address\": \"N/A\"\n}\n```",
+    "```json\n{\n  \"Invoice Number\": \"N/A\",\n  \"Invoice Date\": \"N/A\",\n  \"Due Date\": \"N/A\",\n  \"Total Amount\": \"N/A\",\n  \"Vendor Name\": \"N/A\",\n  \"Vendor Address\": \"N/A\"\n}\n```",
+    "```json\n{\n  \"Invoice Number\": \"N/A\",\n  \"Invoice Date\": \"N/A\",\n  \"Due Date\": \"N/A\",\n  \"Total Amount\": \"N/A\",\n  \"Vendor Name\": \"N/A\",\n  \"Vendor Address\": \"N/A\"\n}\n```"
+  ]
+}

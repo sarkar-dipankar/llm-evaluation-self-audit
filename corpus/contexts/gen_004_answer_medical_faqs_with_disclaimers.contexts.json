@@ -1,0 +1,44 @@
+[
+  {
+    "answer": {
+      "text": "x"
+    },
+    "question": {
+      "contains_sensitive_topic": false
+    },
+    "review": {
+      "text": "x"
+    },
+    "user": {
+      "role": "__not_patient__"
+    }
+  },
+  {
+    "answer": {
+      "text": "x"
+    },
+    "question": {
+      "contains_sensitive_topic": false
+    },
+    "review": {
+      "text": "x"
+    },
+    "user": {
+      "role": "patient"
+    }
+  },
+  {
+    "answer": {
+      "text": "x"
+    },
+    "question": {
+      "contains_sensitive_topic": true
+    },
+    "review": {
+      "text": "x"
+    },
+    "user": {
+      "role": "patient"
+    }
+  }
+]

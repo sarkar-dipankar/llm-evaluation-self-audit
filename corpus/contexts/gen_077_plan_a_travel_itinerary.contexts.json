@@ -1,0 +1,42 @@
+[
+  {
+    "user": {
+      "accommodation_preferences": "__not_hotel__",
+      "destination": false,
+      "has_destination": false,
+      "interests": false
+    }
+  },
+  {
+    "user": {
+      "accommodation_preferences": "__not_hotel__",
+      "destination": false,
+      "has_destination": true,
+      "interests": false
+    }
+  },
+  {
+    "user": {
+      "accommodation_preferences": "__not_hotel__",
+      "destination": true,
+      "has_destination": false,
+      "interests": false
+    }
+  },
+  {
+    "user": {
+      "accommodation_preferences": "__not_hotel__",
+      "destination": true,
+      "has_destination": false,
+      "interests": true
+    }
+  },
+  {
+    "user": {
+      "accommodation_preferences": "hotel",
+      "destination": true,
+      "has_destination": false,
+      "interests": true
+    }
+  }
+]

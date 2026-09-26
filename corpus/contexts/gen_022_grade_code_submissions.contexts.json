@@ -1,0 +1,14 @@
+[
+  {
+    "criteria": false,
+    "submission": false
+  },
+  {
+    "criteria": false,
+    "submission": true
+  },
+  {
+    "criteria": true,
+    "submission": true
+  }
+]

@@ -1,0 +1,20 @@
+[
+  {
+    "response": {
+      "answer": "x",
+      "disclaimer": "x"
+    },
+    "user": {
+      "role": "__not_patient__"
+    }
+  },
+  {
+    "response": {
+      "answer": "x",
+      "disclaimer": "x"
+    },
+    "user": {
+      "role": "patient"
+    }
+  }
+]

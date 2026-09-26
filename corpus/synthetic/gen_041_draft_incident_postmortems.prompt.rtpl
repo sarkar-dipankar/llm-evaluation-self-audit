@@ -1,0 +1,140 @@
+{% if incident.severity == "critical" %}
+## Critical Incident Postmortem: {{ incident.title }}
+
+**Date:** {{ incident.date }}
+**Incident ID:** {{ incident.incident_id }}
+**Severity:** Critical
+**Service(s) Impacted:** {{ incident.services | join(", ") }}
+
+### Executive Summary
+
+{{ incident.executive_summary }}
+
+// @rule SUMMARY:CRITICAL_INCIDENT category=policy priority=1
+// Ensure a concise summary of the incident is provided.
+
+### Timeline
+
+{{ incident.timeline }}
+
+// @rule TIMELINE:DETAILED category=format priority=2
+// A detailed timeline of events is required for critical incidents.
+
+### Root Cause
+
+{{ incident.root_cause }}
+
+// @rule ROOT_CAUSE:ACCURATE category=safety priority=3
+// The root cause must be accurately identified and explained.
+
+### Corrective Actions
+
+{% if incident.corrective_actions %}
+* {% for action in incident.corrective_actions %}
+    - {{ action.description }}
+    {% if action.owner %}
+        (Owner: {{ action.owner }})
+    {% endif %}
+    {% if action.due_date %}
+        (Due Date: {{ action.due_date }})
+    {% endif %}
+{% endfor %}
+{% else %}
+No corrective actions identified.
+{% endif %}
+
+// @rule CORRECTIVE_ACTIONS:COMPLETE category=policy priority=4
+// All necessary corrective actions must be listed with owners and due dates.
+
+### Lessons Learned
+
+{{ incident.lessons_learned }}
+
+// @condition INCIDENT_TYPE:SOFTWARE category=safety
+{% if incident.type == "software" %}
+// @rule LESSONS_LEARNED:SOFTWARE category=safety priority=5
+// Software incidents require specific lessons related to code quality and testing.
+{% endif %}
+
+{% if incident.lessons_learned %}
+    {% if incident.lessons_learned.preventative_measures %}
+        #### Preventative Measures
+        {{ incident.lessons_learned.preventative_measures }}
+    {% endif %}
+{% else %}
+    No lessons learned identified.
+{% endif %}
+
+### Follow-up
+
+{{ incident.follow_up }}
+
+// @breakpoint FOLLOWUP_REVIEW category=safety conditionRef=INCIDENT_TYPE:SOFTWARE
+// Review follow-up actions for software incidents.
+
+### Participants
+
+{{ incident.participants | join(", ") }}
+
+// @condition INCIDENT_RESPONSE:SLOW category=safety
+{% if incident.response_time > 60 %}
+// @rule PARTICIPANTS:COMPLETE category=policy priority=6
+// For incidents with slow response times, ensure all relevant participants are listed.
+{% endif %}
+
+### Further Information
+
+{{ incident.further_information }}
+
+{% else %}
+## Incident Postmortem: {{ incident.title }}
+
+**Date:** {{ incident.date }}
+**Incident ID:** {{ incident.incident_id }}
+**Severity:** {{ incident.severity }}
+**Service(s) Impacted:** {{ incident.services | join(", ") }}
+
+### Executive Summary
+
+{{ incident.executive_summary }}
+
+### Timeline
+
+{{ incident.timeline }}
+
+### Root Cause
+
+{{ incident.root_cause }}
+
+### Corrective Actions
+
+{% if incident.corrective_actions %}
+* {% for action in incident.corrective_actions %}
+    - {{ action.description }}
+    {% if action.owner %}
+        (Owner: {{ action.owner }})
+    {% endif %}
+    {% if action.due_date %}
+        (Due Date: {{ action.due_date }})
+    {% endif %}
+{% endfor %}
+{% else %}
+No corrective actions identified.
+{% endif %}
+
+### Lessons Learned
+
+{{ incident.lessons_learned }}
+
+### Follow-up
+
+{{ incident.follow_up }}
+
+### Participants
+
+{{ incident.participants | join(", ") }}
+
+### Further Information
+
+{{ incident.further_information }}
+{% endif %}

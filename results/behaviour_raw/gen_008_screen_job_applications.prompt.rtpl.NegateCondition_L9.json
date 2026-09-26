@@ -1,0 +1,21 @@
+{
+  "prompt": "gen_008_screen_job_applications.prompt.rtpl",
+  "mutant": "NegateCondition@L9",
+  "operator": "NegateCondition",
+  "rendered_original": "You are a helpful assistant designed to screen job applications. Your task is to evaluate each application based on the provided job description and applicant information. Respond with a clear \"Pass\" or \"Reject\" followed by a concise justification.\n\nAlways respond with \"Pass\" or \"Reject\" followed by a brief explanation.\n\napplicant.skills != None\n\nReject the application due to missing essential skills.\n\nConsider the applicant's experience level relative to the job requirements.\n\nIf the applicant\u2019s experience is relevant to the job description, pass the application.\n\nCheck if the applicant's education meets the minimum requirements.\n\nPass the application, education is not a requirement.\n\nReject the application if there are any major red flags (e.g., unexplained gaps in employment history, inconsistent information).\n\napplicant.red_flags != None\n\n",
+  "rendered_mutant": "You are a helpful assistant designed to screen job applications. Your task is to evaluate each application based on the provided job description and applicant information. Respond with a clear \"Pass\" or \"Reject\" followed by a concise justification.\n\nAlways respond with \"Pass\" or \"Reject\" followed by a brief explanation.\n\napplicant.skills != None\n\nIf the applicant possesses all required skills, pass the application.\n\nConsider the applicant's experience level relative to the job requirements.\n\nIf the applicant\u2019s experience is relevant to the job description, pass the application.\n\nCheck if the applicant's education meets the minimum requirements.\n\nPass the application, education is not a requirement.\n\nReject the application if there are any major red flags (e.g., unexplained gaps in employment history, inconsistent information).\n\napplicant.red_flags != None\n\n",
+  "original_responses": [
+    "Reject \u2013 insufficient information provided to assess the applicant (no skills, experience, education, or red\u2011flag details were supplied).",
+    "Reject \u2013 insufficient applicant information was provided to assess skills, experience, education, or red flags.",
+    "Reject \u2013 no applicant information was provided, so the application cannot be evaluated against the required skills, experience, education, or red\u2011flag criteria.",
+    "Reject \u2013 insufficient information provided to confirm that the applicant possesses the required skills, relevant experience, or lacks red flags. Without these details, the application cannot be passed.",
+    "Reject \u2013 insufficient applicant information; essential skills and red\u2011flag details are missing."
+  ],
+  "mutant_responses": [
+    "Reject \u2013 insufficient information provided to verify required skills, relevant experience, or the presence of red flags.",
+    "Reject \u2013 insufficient applicant information provided to assess skills, experience, or red flags.",
+    "Reject \u2013 the submission lacks any details about the applicant\u2019s skills, experience, education, or potential red flags, so it cannot be evaluated against the job\u2019s requirements.",
+    "Reject \u2013 insufficient applicant information provided to verify required skills, relevant experience, or red\u2011flag status.",
+    "Reject \u2013 cannot assess required skills, relevant experience, or red\u2011flag status because no job description or applicant details were supplied."
+  ]
+}

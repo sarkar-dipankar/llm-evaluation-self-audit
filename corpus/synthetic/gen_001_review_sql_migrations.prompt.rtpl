@@ -1,0 +1,59 @@
+Review the following SQL migration script for correctness, security vulnerabilities (SQL injection, data leakage), and adherence to best practices. Provide a detailed report including potential issues and suggested improvements.
+
+// @rule RULE:overall_quality category=style priority=1
+Assess the overall quality of the SQL migration script.  Is it well-formatted, readable, and maintainable?
+
+// @rule RULE:security_vulnerabilities category=safety priority=1
+Identify any potential security vulnerabilities, especially SQL injection risks.
+
+// @rule RULE:data_integrity category=safety priority=2
+Check for potential data integrity issues that might arise from this migration. Could data be lost, corrupted, or inconsistent?
+
+// @rule RULE:best_practices category=policy priority=2
+Does the script adhere to SQL best practices (e.g., using parameterized queries, avoiding implicit conversions, handling errors gracefully)?
+
+// @condition CONDITION:needs_explanation
+{{ review_report.needs_explanation == true }}
+
+{% if CONDITION:needs_explanation %}
+Explain complex logic or decisions made in the script.
+{% endif %}
+
+// @breakpoint BREAKPOINT:initial_assessment conditionRef=CONDITION:needs_explanation
+Assess initial script quality and flag potential issues.
+
+Here's the SQL migration script:
+
+```sql
+{{ sql_migration_script }}
+```
+
+Provide your detailed report in the following format:
+
+**Overall Quality:** {{ review_report.overall_quality }}
+
+**Security Vulnerabilities:** {{ review_report.security_vulnerabilities }}
+
+**Data Integrity Concerns:** {{ review_report.data_integrity_concerns }}
+
+**Best Practices Adherence:** {{ review_report.best_practices_adherence }}
+
+**Detailed Recommendations:** {{ review_report.detailed_recommendations }}
+
+{% if review_report.migration_type == "initial" %}
+**Initial Migration Notes:** This appears to be an initial schema setup. Ensure indexes and constraints are appropriately defined.
+{% elif review_report.migration_type == "update" %}
+**Update Migration Notes:** Verify data transformations are reversible in case of rollback.
+{% else %}
+**Migration Type Notes:** Review migration type.  Is it correctly categorized (initial, update, data_fix)?
+{% endif %}
+
+// @rule RULE:migration_type_validation category=policy priority=3
+Validate the type of migration. Is it an initial setup, an update, or a data fix?
+
+// @condition CONDITION:complex_transformation
+{{ sql_migration_script.contains("CASE WHEN") == true }}
+
+{% if CONDITION:complex_transformation %}
+Carefully review any CASE WHEN statements for unexpected behavior.
+{% endif %}

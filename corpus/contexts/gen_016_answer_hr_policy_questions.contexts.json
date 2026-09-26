@@ -1,0 +1,46 @@
+[
+  {
+    "QUESTION_ABOUT_LEAVE": false,
+    "USER_IS_EMPLOYEE": false,
+    "question": {
+      "contains": "x"
+    },
+    "user": {
+      "isEmployee": "x",
+      "role": "__not_manager__"
+    }
+  },
+  {
+    "QUESTION_ABOUT_LEAVE": false,
+    "USER_IS_EMPLOYEE": true,
+    "question": {
+      "contains": "x"
+    },
+    "user": {
+      "isEmployee": "x",
+      "role": "__not_manager__"
+    }
+  },
+  {
+    "QUESTION_ABOUT_LEAVE": true,
+    "USER_IS_EMPLOYEE": false,
+    "question": {
+      "contains": "x"
+    },
+    "user": {
+      "isEmployee": "x",
+      "role": "__not_manager__"
+    }
+  },
+  {
+    "QUESTION_ABOUT_LEAVE": false,
+    "USER_IS_EMPLOYEE": false,
+    "question": {
+      "contains": "x"
+    },
+    "user": {
+      "isEmployee": "x",
+      "role": "manager"
+    }
+  }
+]

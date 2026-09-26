@@ -1,0 +1,42 @@
+[
+  {
+    "code_changes": "x",
+    "pr": {
+      "contains_migrations": false,
+      "description": "x",
+      "includes_new_features": false,
+      "is_merge_request": false,
+      "lines_changed": "x"
+    }
+  },
+  {
+    "code_changes": "x",
+    "pr": {
+      "contains_migrations": false,
+      "description": "x",
+      "includes_new_features": false,
+      "is_merge_request": true,
+      "lines_changed": "x"
+    }
+  },
+  {
+    "code_changes": "x",
+    "pr": {
+      "contains_migrations": false,
+      "description": "x",
+      "includes_new_features": true,
+      "is_merge_request": false,
+      "lines_changed": "x"
+    }
+  },
+  {
+    "code_changes": "x",
+    "pr": {
+      "contains_migrations": true,
+      "description": "x",
+      "includes_new_features": false,
+      "is_merge_request": false,
+      "lines_changed": "x"
+    }
+  }
+]

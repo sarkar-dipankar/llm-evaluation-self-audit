@@ -1,0 +1,14 @@
+[
+  {
+    "is_high_school": false,
+    "student": {
+      "grade_level": "x"
+    }
+  },
+  {
+    "is_high_school": true,
+    "student": {
+      "grade_level": "x"
+    }
+  }
+]

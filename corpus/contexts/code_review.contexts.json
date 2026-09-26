@@ -1,0 +1,29 @@
+[
+  {
+    "diff": {
+      "body": "x",
+      "large": false
+    },
+    "file": {
+      "language": "__not_rust__"
+    }
+  },
+  {
+    "diff": {
+      "body": "x",
+      "large": false
+    },
+    "file": {
+      "language": "rust"
+    }
+  },
+  {
+    "diff": {
+      "body": "x",
+      "large": true
+    },
+    "file": {
+      "language": "__not_rust__"
+    }
+  }
+]

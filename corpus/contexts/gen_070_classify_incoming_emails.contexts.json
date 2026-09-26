@@ -1,0 +1,50 @@
+[
+  {
+    "email": {
+      "content": "x",
+      "sender": "x",
+      "subject": "x"
+    },
+    "is_known_contact": false,
+    "is_spam_likely": false,
+    "user": {
+      "role": "__not_admin__"
+    }
+  },
+  {
+    "email": {
+      "content": "x",
+      "sender": "x",
+      "subject": "x"
+    },
+    "is_known_contact": false,
+    "is_spam_likely": false,
+    "user": {
+      "role": "admin"
+    }
+  },
+  {
+    "email": {
+      "content": "x",
+      "sender": "x",
+      "subject": "x"
+    },
+    "is_known_contact": true,
+    "is_spam_likely": false,
+    "user": {
+      "role": "__not_admin__"
+    }
+  },
+  {
+    "email": {
+      "content": "x",
+      "sender": "x",
+      "subject": "x"
+    },
+    "is_known_contact": false,
+    "is_spam_likely": true,
+    "user": {
+      "role": "__not_admin__"
+    }
+  }
+]

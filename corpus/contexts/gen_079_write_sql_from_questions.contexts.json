@@ -1,0 +1,14 @@
+[
+  {
+    "needs_clarification": false,
+    "question": {
+      "find": "x"
+    }
+  },
+  {
+    "needs_clarification": true,
+    "question": {
+      "find": "x"
+    }
+  }
+]

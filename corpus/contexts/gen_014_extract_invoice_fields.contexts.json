@@ -1,0 +1,17 @@
+[
+  {
+    "extracted_invoice_fields": "x",
+    "fields_extracted": false,
+    "invoice_present": false
+  },
+  {
+    "extracted_invoice_fields": "x",
+    "fields_extracted": false,
+    "invoice_present": true
+  },
+  {
+    "extracted_invoice_fields": "x",
+    "fields_extracted": true,
+    "invoice_present": false
+  }
+]

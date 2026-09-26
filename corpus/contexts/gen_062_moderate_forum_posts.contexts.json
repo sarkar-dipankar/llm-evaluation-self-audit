@@ -1,0 +1,80 @@
+[
+  {
+    "post": {
+      "contains_profanity": false,
+      "contains_url": false,
+      "profanity_level": "__not_high__",
+      "url": {
+        "domain": "__not_example.com__"
+      }
+    },
+    "user": {
+      "role": "__not_moderator__"
+    }
+  },
+  {
+    "post": {
+      "contains_profanity": false,
+      "contains_url": true,
+      "profanity_level": "__not_high__",
+      "url": {
+        "domain": "__not_example.com__"
+      }
+    },
+    "user": {
+      "role": "__not_moderator__"
+    }
+  },
+  {
+    "post": {
+      "contains_profanity": false,
+      "contains_url": true,
+      "profanity_level": "__not_high__",
+      "url": {
+        "domain": "__not_example.com__"
+      }
+    },
+    "user": {
+      "role": "moderator"
+    }
+  },
+  {
+    "post": {
+      "contains_profanity": false,
+      "contains_url": true,
+      "profanity_level": "__not_high__",
+      "url": {
+        "domain": "example.com"
+      }
+    },
+    "user": {
+      "role": "__not_moderator__"
+    }
+  },
+  {
+    "post": {
+      "contains_profanity": true,
+      "contains_url": false,
+      "profanity_level": "__not_high__",
+      "url": {
+        "domain": "__not_example.com__"
+      }
+    },
+    "user": {
+      "role": "__not_moderator__"
+    }
+  },
+  {
+    "post": {
+      "contains_profanity": true,
+      "contains_url": false,
+      "profanity_level": "high",
+      "url": {
+        "domain": "__not_example.com__"
+      }
+    },
+    "user": {
+      "role": "__not_moderator__"
+    }
+  }
+]

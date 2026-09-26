@@ -1,0 +1,35 @@
+[
+  {
+    "lead": {
+      "email": "x",
+      "name": "x",
+      "product_interest": "x",
+      "purchase_timeline": "x",
+      "status": "x",
+      "territory": "",
+      "urgency": "__not_high__"
+    }
+  },
+  {
+    "lead": {
+      "email": "x",
+      "name": "x",
+      "product_interest": "x",
+      "purchase_timeline": "x",
+      "status": "x",
+      "territory": "",
+      "urgency": "high"
+    }
+  },
+  {
+    "lead": {
+      "email": "x",
+      "name": "x",
+      "product_interest": "x",
+      "purchase_timeline": "x",
+      "status": "x",
+      "territory": "__not___",
+      "urgency": "__not_high__"
+    }
+  }
+]

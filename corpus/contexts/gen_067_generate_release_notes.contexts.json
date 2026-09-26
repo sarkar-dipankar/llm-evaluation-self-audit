@@ -1,0 +1,39 @@
+[
+  {
+    "change": {
+      "description": "x",
+      "issue_link": false,
+      "type": "x"
+    },
+    "changes": [],
+    "notes": "x",
+    "summary": "x",
+    "version": "x"
+  },
+  {
+    "change": {
+      "description": "x",
+      "issue_link": false,
+      "type": "x"
+    },
+    "changes": [
+      "item"
+    ],
+    "notes": "x",
+    "summary": "x",
+    "version": "x"
+  },
+  {
+    "change": {
+      "description": "x",
+      "issue_link": true,
+      "type": "x"
+    },
+    "changes": [
+      "item"
+    ],
+    "notes": "x",
+    "summary": "x",
+    "version": "x"
+  }
+]

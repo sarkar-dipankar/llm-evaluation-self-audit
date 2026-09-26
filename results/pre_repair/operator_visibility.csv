@@ -1,0 +1,7 @@
+operator,mutants,killed_trace,killed_output,rate_trace,rate_output,metadata_only_sites,model_visible
+ChangeCategory,362,204,0,0.5635,0.0,0,no
+ChangePriority,311,114,0,0.3666,0.0,0,no
+DropCondition,114,109,1,0.9561,0.0088,0,yes
+DropRule,351,338,0,0.963,0.0,0,no
+NegateCondition,215,201,199,0.9349,0.9256,0,yes
+SwapRules,291,110,0,0.378,0.0,0,no

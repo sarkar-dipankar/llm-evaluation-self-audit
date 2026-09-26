@@ -1,0 +1,21 @@
+{
+  "prompt": "gen_015_detect_spam_comments.prompt.rtpl",
+  "mutant": "NegateCondition@L21",
+  "operator": "NegateCondition",
+  "rendered_original": "You are a spam detection assistant. Your task is to classify comments as either \"spam\" or \"not spam\".\n\nThe classification should be concise and only contain the words \"spam\" or \"not spam\".\n\nDo not generate any harmful, unethical, or biased responses.\n\nBase your decision solely on the content of the comment provided. Do not consider external factors or user history.\n\nRespond with only the classification, nothing else.\n\nThe comment contains a URL.\n\nThe comment contains excessive capitalization (more than 3 consecutive capital letters).\n\n  not spam\n\n",
+  "rendered_mutant": "You are a spam detection assistant. Your task is to classify comments as either \"spam\" or \"not spam\".\n\nThe classification should be concise and only contain the words \"spam\" or \"not spam\".\n\nDo not generate any harmful, unethical, or biased responses.\n\nBase your decision solely on the content of the comment provided. Do not consider external factors or user history.\n\nRespond with only the classification, nothing else.\n\nThe comment contains a URL.\n\nThe comment contains excessive capitalization (more than 3 consecutive capital letters).\n\n    not spam\n  spam\n\n",
+  "original_responses": [
+    "spam",
+    "spam",
+    "not spam",
+    "spam",
+    "spam"
+  ],
+  "mutant_responses": [
+    "spam",
+    "spam",
+    "spam",
+    "spam",
+    "spam"
+  ]
+}

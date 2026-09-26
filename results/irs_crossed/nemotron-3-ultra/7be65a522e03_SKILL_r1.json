@@ -1,0 +1,1 @@
+{"meta": {"confidence": 1.0, "engine": "llm", "parser_version": "1.0", "warnings": ["No template syntax detected (no {{ variables }}, {% logic %}, or // @annotations). Input appears to be markdown documentation, not a prompt template."]}, "nodes": [], "uri": "corpus/github-crossed/7be65a522e03_SKILL.md", "version": 1}

@@ -1,0 +1,56 @@
+[
+  {
+    "text": {
+      "contains_address": false,
+      "contains_email": false,
+      "contains_name": false,
+      "contains_phone": false,
+      "contains_ssn": false
+    }
+  },
+  {
+    "text": {
+      "contains_address": false,
+      "contains_email": false,
+      "contains_name": false,
+      "contains_phone": false,
+      "contains_ssn": true
+    }
+  },
+  {
+    "text": {
+      "contains_address": false,
+      "contains_email": true,
+      "contains_name": false,
+      "contains_phone": false,
+      "contains_ssn": false
+    }
+  },
+  {
+    "text": {
+      "contains_address": false,
+      "contains_email": false,
+      "contains_name": false,
+      "contains_phone": true,
+      "contains_ssn": false
+    }
+  },
+  {
+    "text": {
+      "contains_address": true,
+      "contains_email": false,
+      "contains_name": false,
+      "contains_phone": false,
+      "contains_ssn": false
+    }
+  },
+  {
+    "text": {
+      "contains_address": false,
+      "contains_email": false,
+      "contains_name": true,
+      "contains_phone": false,
+      "contains_ssn": false
+    }
+  }
+]

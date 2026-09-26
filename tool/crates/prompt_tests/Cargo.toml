@@ -1,0 +1,28 @@
+[package]
+name = "prompt_tests"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+authors.workspace = true
+rust-version.workspace = true
+description = "Integration and regression tests for PromptDbg (internal — not published to crates.io)"
+publish = false
+readme = "README.md"
+
+[dependencies]
+prompt_ir = { workspace = true }
+prompt_config = { workspace = true }
+prompt_template = { workspace = true }
+prompt_slm = { workspace = true }
+prompt_runtime = { workspace = true }
+
+serde = { workspace = true }
+serde_json = { workspace = true }
+tokio = { workspace = true }
+async-trait = { workspace = true }
+anyhow = { workspace = true }
+
+[dev-dependencies]
+pretty_assertions = { workspace = true }

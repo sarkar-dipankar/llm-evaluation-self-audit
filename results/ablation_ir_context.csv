@@ -1,0 +1,4 @@
+prompt,diagnostics_with_ir,diagnostics_without_ir,codes_only_with_ir,codes_only_without_ir
+code_review.prompt.rtpl,5,4,3,4
+content_moderation.prompt.rtpl,4,4,2,3
+customer_support.prompt.rtpl,4,4,3,4

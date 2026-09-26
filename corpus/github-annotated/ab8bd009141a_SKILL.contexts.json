@@ -1,0 +1,46 @@
+[
+  {
+    "hub": {
+      "config_exists": false
+    },
+    "invocation": {
+      "topic": true
+    },
+    "timing": {
+      "enabled": true
+    }
+  },
+  {
+    "hub": {
+      "config_exists": false
+    },
+    "invocation": {
+      "topic": false
+    },
+    "timing": {
+      "enabled": true
+    }
+  },
+  {
+    "hub": {
+      "config_exists": true
+    },
+    "invocation": {
+      "topic": true
+    },
+    "timing": {
+      "enabled": true
+    }
+  },
+  {
+    "hub": {
+      "config_exists": false
+    },
+    "invocation": {
+      "topic": true
+    },
+    "timing": {
+      "enabled": false
+    }
+  }
+]

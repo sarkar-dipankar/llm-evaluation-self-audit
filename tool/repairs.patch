@@ -1,0 +1,1121 @@
+diff --git a/crates/prompt_ir/src/config.rs b/crates/prompt_ir/src/config.rs
+index c9d5211..6027d8b 100644
+--- a/crates/prompt_ir/src/config.rs
++++ b/crates/prompt_ir/src/config.rs
+@@ -81,8 +81,25 @@ pub struct AnalysisConfig {
+     pub timeout_ms: u64,
+ }
+ 
++/// Wall-clock budget for a single analysis request, in milliseconds.
++///
++/// The default is 60s and was, until this became configurable, the only value:
++/// a request slower than it surfaced as a connection failure, with nothing to
++/// indicate a deadline had passed. That is a poor default for current models,
++/// many of which emit a long reasoning trace before their answer and
++/// legitimately need more than a minute on a large prompt. Silently treating
++/// "slow" as "unavailable" is how a property of this client can be mistaken for
++/// a property of a model family.
++///
++/// Override with `PROMPTDBG_ANALYSIS_TIMEOUT_MS` (accepted range 1s to 30min).
++/// The default is deliberately unchanged so that previously published
++/// measurements remain reproducible.
+ fn default_analysis_timeout() -> u64 {
+-    60000
++    std::env::var("PROMPTDBG_ANALYSIS_TIMEOUT_MS")
++        .ok()
++        .and_then(|v| v.parse::<u64>().ok())
++        .filter(|ms| (1_000..=1_800_000).contains(ms))
++        .unwrap_or(60_000)
+ }
+ 
+ impl Default for AnalysisConfig {
+diff --git a/crates/prompt_runtime/src/lint.rs b/crates/prompt_runtime/src/lint.rs
+index fdcdb18..f0b1f35 100644
+--- a/crates/prompt_runtime/src/lint.rs
++++ b/crates/prompt_runtime/src/lint.rs
+@@ -10,51 +10,17 @@
+ //! renders, `D` does too. This avoids false positives across mutually exclusive
+ //! branches and is intentionally conservative (strictly-higher priority only, so
+ //! equal-priority peers are not flagged).
++//!
++//! That argument only holds if the guard chains this analysis reasons about are the
++//! ones the renderer actually enforces. They are: [`prompt_template::guard_chains`]
++//! is computed from the renderer's own block scanners, so a tag the renderer treats
++//! as a branch separator is one this analysis sees too, and vice versa. Deriving the
++//! chains separately here is what previously let the analyser report a rule as
++//! unreachable in a template the renderer in fact rendered it in (see
++//! `test_embedded_else_is_a_real_separator`).
+ 
+ use prompt_ir::{IRKind, PromptDiagnostic, PromptIR};
+-
+-/// A single enclosing guard on a source line.
+-#[derive(Clone, Copy, PartialEq, Eq, Debug)]
+-enum Guard {
+-    IfTrue(u32),
+-    IfElse(u32),
+-    For(u32),
+-}
+-
+-/// The guard chain (enclosing `{% if %}`/`{% for %}` context) for every source line.
+-fn guard_chains(template: &str) -> Vec<Vec<Guard>> {
+-    let mut stack: Vec<Guard> = Vec::new();
+-    let mut per_line: Vec<Vec<Guard>> = Vec::new();
+-
+-    for line in template.lines() {
+-        let idx = per_line.len() as u32;
+-        // A line's guards are the enclosing stack as it stands before this line opens
+-        // or closes a block.
+-        per_line.push(stack.clone());
+-
+-        if let Some(inner) = line
+-            .trim()
+-            .strip_prefix("{%")
+-            .and_then(|s| s.strip_suffix("%}"))
+-            .map(str::trim)
+-        {
+-            if inner.strip_prefix("if ").is_some() {
+-                stack.push(Guard::IfTrue(idx));
+-            } else if inner == "else" {
+-                if let Some(Guard::IfTrue(l)) = stack.last().copied() {
+-                    *stack.last_mut().unwrap() = Guard::IfElse(l);
+-                }
+-            } else if inner == "endif" {
+-                stack.pop();
+-            } else if inner.starts_with("for ") {
+-                stack.push(Guard::For(idx));
+-            } else if inner == "endfor" {
+-                stack.pop();
+-            }
+-        }
+-    }
+-    per_line
+-}
++use prompt_template::{guard_chains, Guard};
+ 
+ /// True when `outer` is a prefix of `inner` (outer encloses or equals inner's region).
+ fn is_prefix(outer: &[Guard], inner: &[Guard]) -> bool {
+@@ -134,6 +100,39 @@ mod tests {
+         assert!(unreachable_rules(&build_ir(uncat, "f", 1), uncat).is_empty());
+     }
+ 
++    /// Regression: an `{% else %}` embedded in prose is a real branch separator to
++    /// the renderer, so the analyser must see it too.
++    ///
++    /// With `flag = false` the renderer emits `RULE:R` and not `RULE:D`, so `R` is
++    /// not shadowed. The analyser used to recognise a control tag only when it was
++    /// alone on its line, put both rules in the same region, and report `R`
++    /// unreachable: a false positive, and a hole in the soundness argument above.
++    #[test]
++    fn test_embedded_else_is_a_real_separator() {
++        let t = "{% if flag %}\n\
++                 // @rule RULE:D category=p priority=2\n\
++                 D body\n\
++                 literal {% else %} marker\n\
++                 // @rule RULE:R category=p priority=1\n\
++                 R body\n\
++                 {% endif %}";
++
++        // The renderer really does treat the embedded tag as the separator.
++        let out = prompt_template::render(t, &serde_json::json!({ "flag": false }))
++            .unwrap()
++            .output;
++        assert!(out.contains("R body"), "renderer should emit R: {out:?}");
++        assert!(!out.contains("D body"), "renderer should not emit D: {out:?}");
++
++        // So the analyser must not claim R is always shadowed by D.
++        let d = unreachable_rules(&build_ir(t, "f", 1), t);
++        assert!(d.is_empty(), "expected no diagnostics, got {d:?}");
++
++        // The stricter reading (a control tag must be alone on its line) flags the
++        // line, for callers that prefer to reject such templates outright.
++        assert_eq!(prompt_template::embedded_control_tags(t), vec![3]);
++    }
++
+     #[test]
+     fn test_flags_nested_rule_dominated_by_outer() {
+         // Outer top-level HIGH dominates a nested LOW of the same category.
+diff --git a/crates/prompt_runtime/src/mutate.rs b/crates/prompt_runtime/src/mutate.rs
+index 9e07b16..56452b5 100644
+--- a/crates/prompt_runtime/src/mutate.rs
++++ b/crates/prompt_runtime/src/mutate.rs
+@@ -55,6 +55,24 @@ pub struct Mutant {
+     pub description: String,
+     /// 0-based source line the mutation targets.
+     pub line: u32,
++    /// True when the edit touches annotation comment lines only.
++    ///
++    /// Annotations are stripped before the prompt reaches the model, so a
++    /// metadata-only mutant renders byte-identically to the original: it can be
++    /// killed by the structural [`TraceOracle`] but never by an output-only
++    /// oracle. The two classes answer different questions — a body-carrying
++    /// mutant is a fault in the text the model reads, a metadata-only mutant is a
++    /// fault in the toolchain's view of the prompt — so they are tagged rather
++    /// than mixed, and reported separately in [`OperatorStats::metadata_only`].
++    ///
++    /// This is also how a `DropRule` site with no body is handled. `block_extent`
++    /// stops at the next annotation or control tag, so a rule annotation
++    /// immediately followed by another annotation or by `{% if %}` labels no body
++    /// at all and its extent is a single line. Dropping it removes a label and
++    /// nothing else. Such sites are still generated (they are real prompt edits,
++    /// and the structural oracle does distinguish them) but are tagged here so
++    /// callers never have to infer the distinction from the description string.
++    pub metadata_only: bool,
+     /// The full mutated prompt source.
+     pub source: String,
+ }
+@@ -95,10 +113,77 @@ fn is_condition_line(line: &str) -> bool {
+     matches!(annotation_parts(line), Some((_, k, _)) if k.starts_with("condition"))
+ }
+ 
+-/// Rebuild a source string from lines (newline-joined, no trailing newline) to
+-/// match how templates are typically stored.
+-fn join(lines: &[String]) -> String {
+-    lines.join("\n")
++/// Split a template into lines, remembering whether it was newline-terminated.
++///
++/// The flag is what makes line edits newline-consistent. `str::lines` drops the
++/// final terminator, so rebuilding with a plain `join` silently rewrites a
++/// newline-terminated template into an unterminated one. That is invisible for a
++/// mutation in the middle of the file but not for one that removes the last line:
++/// the original still renders its final (blank) line while the mutant does not,
++/// and the rendered outputs then differ by a trailing newline that no prompt
++/// author ever wrote. `DropCondition` scored exactly one output-oracle kill
++/// across the corpus that way. Carrying the flag through [`join`] keeps
++/// `join(split_lines(t)) == t` for every template.
++fn split_lines(template: &str) -> (Vec<String>, bool) {
++    (
++        template.lines().map(|s| s.to_string()).collect(),
++        template.ends_with('\n'),
++    )
++}
++
++/// Rebuild a source string from lines, restoring the original trailing newline.
++fn join(lines: &[String], trailing_newline: bool) -> String {
++    let mut s = lines.join("\n");
++    if trailing_newline && !lines.is_empty() {
++        s.push('\n');
++    }
++    s
++}
++
++/// The span of lines owned by the annotation at `start`: the annotation line
++/// itself plus the instruction body that follows it, stopping before the next
++/// annotation, the next control-flow tag, or the end of the template. Trailing
++/// blank lines are left out so that removing a block does not also collapse the
++/// spacing around it.
++///
++/// This matters because annotations are comments and are stripped at render
++/// time. An operator that edits only the annotation line cannot change the text
++/// the model receives, so mutants generated that way are equivalent under any
++/// output-based oracle. Operators that delete or move a rule must carry the
++/// body with them to correspond to a fault a prompt author could actually make.
++fn block_extent(lines: &[String], start: usize) -> std::ops::Range<usize> {
++    let mut end = start + 1;
++    while end < lines.len() {
++        let is_annotation = lines[end].trim_start().starts_with("// @");
++        // Uses the renderer's own dispatch rule so that a line the renderer would
++        // treat as control flow always ends the body, and a tag embedded in prose
++        // (which the renderer renders as text) never does.
++        if is_annotation || prompt_template::is_control_line(&lines[end]) {
++            break;
++        }
++        end += 1;
++    }
++    while end > start + 1 && lines[end - 1].trim().is_empty() {
++        end -= 1;
++    }
++    start..end
++}
++
++/// Swap two non-overlapping line blocks, `a` occurring before `b`, preserving
++/// everything between and around them.
++fn swap_blocks(
++    lines: &[String],
++    a: std::ops::Range<usize>,
++    b: std::ops::Range<usize>,
++) -> Vec<String> {
++    debug_assert!(a.end <= b.start, "blocks must not overlap");
++    let mut out = Vec::with_capacity(lines.len());
++    out.extend_from_slice(&lines[..a.start]);
++    out.extend_from_slice(&lines[b.start..b.end]);
++    out.extend_from_slice(&lines[a.end..b.start]);
++    out.extend_from_slice(&lines[a.start..a.end]);
++    out.extend_from_slice(&lines[b.end..]);
++    out
+ }
+ 
+ /// Replace the `key=value` attribute on an annotation line, or append it if absent.
+@@ -120,16 +205,21 @@ fn set_attribute(line: &str, key: &str, value: &str) -> String {
+ 
+ /// Generate all mutants for a prompt. One mutant per applicable operator site.
+ pub fn generate_mutants(template: &str) -> Vec<Mutant> {
+-    let lines: Vec<String> = template.lines().map(|s| s.to_string()).collect();
++    let (lines, trailing_newline) = split_lines(template);
+     let mut mutants = Vec::new();
+ 
+-    let mut push = |op: MutationOperator, line: u32, desc: String, new_lines: Vec<String>| {
++    let mut push = |op: MutationOperator,
++                    line: u32,
++                    desc: String,
++                    metadata_only: bool,
++                    new_lines: Vec<String>| {
+         mutants.push(Mutant {
+             id: format!("{}@L{}", op.as_str(), line + 1),
+             operator: op,
+             description: desc,
+             line,
+-            source: join(&new_lines),
++            metadata_only,
++            source: join(&new_lines, trailing_newline),
+         });
+     };
+ 
+@@ -138,13 +228,24 @@ pub fn generate_mutants(template: &str) -> Vec<Mutant> {
+         let li = i as u32;
+ 
+         if is_rule_line(line) {
+-            // DropRule
++            // DropRule: remove the rule annotation *and* the instruction body it
++            // labels, which is the fault an author makes when deleting a rule.
++            let span = block_extent(&lines, i);
+             let mut m = lines.clone();
+-            m.remove(i);
++            m.drain(span.clone());
++            // An extent of one line means the annotation labels no body, so this
++            // drop removes metadata and nothing the model reads. See
++            // `Mutant::metadata_only` for why such sites are tagged, not skipped.
++            let metadata_only = span.len() == 1;
+             push(
+                 MutationOperator::DropRule,
+                 li,
+-                format!("drop rule annotation: {}", line.trim()),
++                format!(
++                    "drop rule and its body ({} line(s)): {}",
++                    span.len(),
++                    line.trim()
++                ),
++                metadata_only,
+                 m,
+             );
+ 
+@@ -161,6 +262,7 @@ pub fn generate_mutants(template: &str) -> Vec<Mutant> {
+                     MutationOperator::ChangePriority,
+                     li,
+                     "bump rule priority by 1000".to_string(),
++                    true,
+                     m,
+                 );
+             }
+@@ -173,6 +275,7 @@ pub fn generate_mutants(template: &str) -> Vec<Mutant> {
+                 MutationOperator::DropCondition,
+                 li,
+                 format!("drop condition annotation: {}", line.trim()),
++                true,
+                 m,
+             );
+         }
+@@ -184,6 +287,7 @@ pub fn generate_mutants(template: &str) -> Vec<Mutant> {
+                 MutationOperator::ChangeCategory,
+                 li,
+                 "change annotation category".to_string(),
++                true,
+                 m,
+             );
+         }
+@@ -206,14 +310,27 @@ pub fn generate_mutants(template: &str) -> Vec<Mutant> {
+                     MutationOperator::NegateCondition,
+                     li,
+                     format!("negate condition: {}", cond.trim()),
++                    false,
+                     m,
+                 );
+             }
+         }
+     }
+ 
+-    // SwapRules: swap each consecutive pair of rule annotation lines (in order of
+-    // appearance), which reorders rule precedence as seen by the model.
++    // SwapRules: exchange each consecutive pair of rule blocks, annotation and
++    // instruction body together, so the order the model reads the instructions
++    // in actually changes. Swapping the annotation lines alone would only
++    // relabel the bodies and leave the rendered prompt untouched.
++    //
++    // The pair must sit in the same control-flow region. Two rules under
++    // different guard chains do not both render under the same conditions, so
++    // exchanging them moves an instruction *into* or *out of* a branch or a loop
++    // body. That is a guard-changing edit — it adds and removes text rather than
++    // reordering it — and attributing its kills to a reordering operator
++    // overstates what reordering alone is worth. Equal chains give exactly the
++    // property the operator claims: both rules render together, in the swapped
++    // order, in every context that renders either.
++    let chains = prompt_template::guard_chains(template);
+     let rule_indices: Vec<usize> = lines
+         .iter()
+         .enumerate()
+@@ -222,14 +339,24 @@ pub fn generate_mutants(template: &str) -> Vec<Mutant> {
+         .collect();
+     for w in rule_indices.windows(2) {
+         let (a, b) = (w[0], w[1]);
+-        let mut m = lines.clone();
+-        m.swap(a, b);
++        if chains.get(a) != chains.get(b) {
++            continue;
++        }
++        let (ra, rb) = (block_extent(&lines, a), block_extent(&lines, b));
++        // Adjacent rules can share a boundary; overlapping spans cannot be swapped.
++        if ra.end > rb.start {
++            continue;
++        }
++        // Two bodiless annotations exchange labels only; nothing rendered moves.
++        let metadata_only = ra.len() == 1 && rb.len() == 1;
++        let m = swap_blocks(&lines, ra, rb);
+         mutants.push(Mutant {
+             id: format!("SwapRules@L{}-{}", a + 1, b + 1),
+             operator: MutationOperator::SwapRules,
+-            description: format!("swap rules at lines {} and {}", a + 1, b + 1),
++            description: format!("swap rule blocks at lines {} and {}", a + 1, b + 1),
+             line: a as u32,
+-            source: join(&m),
++            metadata_only,
++            source: join(&m, trailing_newline),
+         });
+     }
+ 
+@@ -241,6 +368,9 @@ pub fn generate_mutants(template: &str) -> Vec<Mutant> {
+ pub struct OperatorStats {
+     pub total: usize,
+     pub killed: usize,
++    /// How many of `total` edit annotation comments only and therefore cannot
++    /// change the rendered prompt (see [`Mutant::metadata_only`]).
++    pub metadata_only: usize,
+ }
+ 
+ /// The status of a single mutant under a test suite.
+@@ -250,6 +380,8 @@ pub struct MutantStatus {
+     pub operator: MutationOperator,
+     pub description: String,
+     pub line: u32,
++    /// See [`Mutant::metadata_only`].
++    pub metadata_only: bool,
+     pub killed: bool,
+ }
+ 
+@@ -316,6 +448,9 @@ pub fn run_mutation_testing(
+             .entry(mutant.operator.as_str().to_string())
+             .or_default();
+         stats.total += 1;
++        if mutant.metadata_only {
++            stats.metadata_only += 1;
++        }
+         if killed {
+             stats.killed += 1;
+             killed_count += 1;
+@@ -325,6 +460,7 @@ pub fn run_mutation_testing(
+                 operator: mutant.operator,
+                 description: mutant.description.clone(),
+                 line: mutant.line,
++                metadata_only: mutant.metadata_only,
+                 killed: false,
+             });
+         }
+@@ -364,7 +500,10 @@ mod tests {
+     use prompt_template::build_ir;
+     use serde_json::json;
+ 
+-    const T: &str = "// @rule RULE:A category=style\nhello\n{% if admin %}\n// @condition CONDITION:X\n// @rule RULE:B priority=5\nadmin only\n{% else %}\n// @rule RULE:C\nguest\n{% endif %}";
++    // Two top-level rules (a same-region pair, so `SwapRules` applies), then a
++    // guarded rule in each arm of an if/else (pairs that straddle a branch, so
++    // `SwapRules` does not).
++    const T: &str = "// @rule RULE:A category=style\nhello\n// @rule RULE:A2 category=tone\nbe brief\n{% if admin %}\n// @condition CONDITION:X\n// @rule RULE:B priority=5\nadmin only\n{% else %}\n// @rule RULE:C\nguest\n{% endif %}";
+ 
+     #[test]
+     fn test_negate_condition_helper() {
+@@ -429,6 +568,141 @@ mod tests {
+         );
+     }
+ 
++    /// A `SwapRules` mutant may only pair rules that render under the same
++    /// conditions. Swapping across a branch or a loop boundary moves an
++    /// instruction in or out of a guarded region, which is not a reordering.
++    #[test]
++    fn test_swap_rules_only_within_one_guard_region() {
++        let swaps = |t: &str| -> Vec<String> {
++            generate_mutants(t)
++                .into_iter()
++                .filter(|m| m.operator == MutationOperator::SwapRules)
++                .map(|m| m.id)
++                .collect()
++        };
++
++        // Same region: swappable.
++        let same = "// @rule RULE:A\nA body\n// @rule RULE:B\nB body";
++        assert_eq!(swaps(same), vec!["SwapRules@L1-3"]);
++
++        // if-arm vs else-arm: never co-render, so not a reordering.
++        let arms = "{% if x %}\n// @rule RULE:A\nA body\n{% else %}\n// @rule RULE:B\nB body\n{% endif %}";
++        assert!(swaps(arms).is_empty(), "{:?}", swaps(arms));
++
++        // Outside vs inside an if: the swap would move B out of the guard.
++        let nested = "// @rule RULE:A\nA body\n{% if x %}\n// @rule RULE:B\nB body\n{% endif %}";
++        assert!(swaps(nested).is_empty(), "{:?}", swaps(nested));
++
++        // Outside vs inside a loop body: same problem, and it would also change
++        // how many times the instruction is emitted.
++        let loops = "// @rule RULE:A\nA body\n{% for i in xs %}\n// @rule RULE:B\nB body\n{% endfor %}";
++        assert!(swaps(loops).is_empty(), "{:?}", swaps(loops));
++
++        // Two rules inside the same if body: still a legitimate reordering.
++        let inside = "{% if x %}\n// @rule RULE:A\nA body\n// @rule RULE:B\nB body\n{% endif %}";
++        assert_eq!(swaps(inside), vec!["SwapRules@L2-4"]);
++
++        // Two separate if blocks with the same condition are still two regions:
++        // a context can render one and not the other.
++        let twin = "{% if x %}\n// @rule RULE:A\nA body\n{% endif %}\n{% if x %}\n// @rule RULE:B\nB body\n{% endif %}";
++        assert!(swaps(twin).is_empty(), "{:?}", swaps(twin));
++    }
++
++    /// A swap that survives the guard check really does reorder the rendered text.
++    #[test]
++    fn test_swap_rules_reorders_rendered_text() {
++        let t = "// @rule RULE:A\nA body\n// @rule RULE:B\nB body\n";
++        let m = generate_mutants(t)
++            .into_iter()
++            .find(|m| m.operator == MutationOperator::SwapRules)
++            .expect("a same-region swap");
++        let render = |src: &str| {
++            prompt_template::render(src, &json!({}))
++                .unwrap()
++                .output
++                .replace('\n', "|")
++        };
++        assert_eq!(render(t), "A body|B body");
++        assert_eq!(render(&m.source), "B body|A body");
++    }
++
++    /// A rule annotation with no body under it labels nothing, so dropping it is a
++    /// metadata-only edit. Such sites are kept but tagged, so the two classes can
++    /// be counted separately.
++    #[test]
++    fn test_bodiless_rule_drop_is_tagged_metadata_only() {
++        // RULE:A is followed immediately by another annotation, RULE:B by a
++        // control tag: neither labels a body.
++        let t = "// @rule RULE:A\n// @rule RULE:B\n{% if x %}\ntext\n{% endif %}\n// @rule RULE:C\nC body";
++        let drops: Vec<(u32, bool)> = generate_mutants(t)
++            .into_iter()
++            .filter(|m| m.operator == MutationOperator::DropRule)
++            .map(|m| (m.line, m.metadata_only))
++            .collect();
++        assert_eq!(drops, vec![(0, true), (1, true), (5, false)]);
++
++        // And the classification is reported per operator.
++        let ir = build_ir(t, "file:///t", 1);
++        let report = run_mutation_testing_default(&ir, t, &[json!({ "x": true })]).unwrap();
++        let dr = report.by_operator.get("DropRule").expect("DropRule op");
++        assert_eq!((dr.total, dr.metadata_only), (3, 2));
++        // Annotation-only operators are metadata-only by construction.
++        for op in ["ChangeCategory", "DropCondition", "ChangePriority"] {
++            if let Some(s) = report.by_operator.get(op) {
++                assert_eq!(s.total, s.metadata_only, "{op} should be metadata-only");
++            }
++        }
++        // NegateCondition edits template control flow, which the model does see.
++        let nc = report
++            .by_operator
++            .get("NegateCondition")
++            .expect("NegateCondition op");
++        assert_eq!(nc.metadata_only, 0);
++    }
++
++    /// Line removal must not rewrite the template's trailing newline. Dropping the
++    /// final annotation of a newline-terminated file used to also swallow the
++    /// terminator of the line before it, so the mutant rendered one newline short
++    /// of the original and the output oracle scored a kill nobody made.
++    #[test]
++    fn test_line_removal_is_newline_consistent() {
++        for t in [
++            "a\nb\n",
++            "a\nb",
++            "a\n\n",
++            "\n",
++            "// @rule RULE:A\nbody\n",
++            "",
++        ] {
++            let (lines, nl) = split_lines(t);
++            assert_eq!(join(&lines, nl), t, "round-trip failed for {t:?}");
++        }
++
++        // The corpus case: a trailing `// @condition` after a blank line.
++        let t = "{% if x %}\nyes\n{% else %}\nno\n{% endif %}\n\n// @condition CONDITION:C\n";
++        let m = generate_mutants(t)
++            .into_iter()
++            .find(|m| m.operator == MutationOperator::DropCondition)
++            .expect("a DropCondition mutant");
++        assert!(m.source.ends_with('\n'), "{:?}", m.source);
++
++        let ctx = json!({ "x": false });
++        assert_eq!(
++            prompt_template::render(t, &ctx).unwrap().output,
++            prompt_template::render(&m.source, &ctx).unwrap().output,
++            "dropping a stripped annotation must not change the rendered text"
++        );
++
++        use crate::diff::OutputOracle;
++        let ir = build_ir(t, "file:///t", 1);
++        let report = run_mutation_testing(&ir, t, &[ctx], &OutputOracle).unwrap();
++        let dc = report
++            .by_operator
++            .get("DropCondition")
++            .expect("DropCondition op");
++        assert_eq!(dc.killed, 0, "an annotation-only drop is invisible to output");
++    }
++
+     #[test]
+     fn test_mutation_score_improves_with_coverage() {
+         let ir = build_ir(T, "file:///t", 1);
+diff --git a/crates/prompt_template/src/lib.rs b/crates/prompt_template/src/lib.rs
+index 685b403..de9dd11 100644
+--- a/crates/prompt_template/src/lib.rs
++++ b/crates/prompt_template/src/lib.rs
+@@ -192,8 +192,276 @@ fn value_type(value: &Value) -> String {
+     .to_string()
+ }
+ 
++// ---------------------------------------------------------------------------
++// Control-tag recognition
++//
++// This is the *single* definition of what counts as a control tag. The renderer
++// (`render_internal`, `process_if_block`, `process_for_block`) and the static
++// guard-chain analysis ([`guard_chains`]) both go through these functions, so
++// the two cannot disagree about where a branch begins or ends. Before this was
++// shared, the renderer recognised `{% else %}` anywhere on a line while the
++// analyser recognised it only when it was alone on the line, which made the
++// analyser report a rule as unreachable in a template where the renderer in fact
++// rendered it (a false positive, and a hole in the analyser's soundness claim).
++//
++// Two distinct rules are involved, and keeping them distinct is deliberate
++// because it is what the renderer has always done:
++//
++//   * [`is_control_line`] is the *dispatch* rule. A line is handed to control
++//     handling only when its trimmed form starts with `{%`, so a tag embedded in
++//     prose (`* {% if x %}`) is ordinary text and opens nothing.
++//   * `opens_if` / `is_else` / `closes_if` / `opens_for` / `closes_for` are the
++//     *scanning* rules used to find the end of an already-open block. They match
++//     a tag anywhere on the line, so an embedded tag does act as a boundary once
++//     a block is open.
++//
++// Embedded control tags are therefore legal, and the analyser is made to see
++// exactly what the renderer sees rather than the renderer being tightened to the
++// analyser's stricter reading. [`embedded_control_tags`] exposes that stricter
++// reading (a control tag must be alone on its line) for callers that would
++// rather reject ambiguous templates up front.
++
++/// True when the renderer dispatches this line to control-flow handling: its
++/// trimmed form starts with `{%`.
++pub fn is_control_line(line: &str) -> bool {
++    line.trim().starts_with("{%")
++}
++
++/// The inside of a `{% ... %}` tag occupying a whole line, exactly as
++/// `process_control_block` parses it. Deliberately tolerant: it does not reject a
++/// second tag later on the same line, because the renderer does not either.
++fn control_inner(line: &str) -> Option<&str> {
++    line.trim()
++        .strip_prefix("{%")
++        .and_then(|s| s.strip_suffix("%}"))
++        .map(str::trim)
++}
++
++fn opens_if(line: &str) -> bool {
++    line.contains("{% if ")
++}
++
++fn is_else(line: &str) -> bool {
++    line.contains("{% else %}")
++}
++
++fn closes_if(line: &str) -> bool {
++    line.contains("{% endif %}")
++}
++
++fn opens_for(line: &str) -> bool {
++    line.contains("{% for ")
++}
++
++fn closes_for(line: &str) -> bool {
++    line.contains("{% endfor %}")
++}
++
++/// Source lines (0-based) carrying a control tag that is *not* alone on its line.
++///
++/// Such a tag is read one way when it would open a block (ordinary text) and
++/// another way when it would close or split one (a real boundary), so a template
++/// free of them has an unambiguous block structure. This is the precondition
++/// check for callers that want to enforce the stricter language and reject
++/// ambiguous templates; [`render`] itself accepts them, so existing templates
++/// keep rendering exactly as they did.
++pub fn embedded_control_tags(template: &str) -> Vec<u32> {
++    template
++        .lines()
++        .enumerate()
++        .filter(|(_, line)| {
++            line.contains("{%")
++                && control_inner(line)
++                    .map_or(true, |inner| inner.contains("{%") || inner.contains("%}"))
++        })
++        .map(|(i, _)| i as u32)
++        .collect()
++}
++
++/// Source lines (0-based) carrying a second or later `{% else %}` within one
++/// `{% if %}` block.
++///
++/// The renderer treats every depth-1 `else` as a separator but anchors the
++/// else-branch on the last, so with two separators it emits the text after the
++/// first while attributing provenance from the last. Rendering and coverage then
++/// disagree: a rule body can appear in the output while its rule is reported
++/// uncovered. Any analysis that reasons from guard chains to what renders,
++/// including the unreachable-rule soundness argument, loses its footing there.
++/// [`render`] rejects such templates so the precondition is enforced rather
++/// than assumed.
++pub fn duplicate_else_lines(template: &str) -> Vec<u32> {
++    let lines: Vec<&str> = template.lines().collect();
++    let mut dupes = Vec::new();
++    for (i, line) in lines.iter().enumerate() {
++        if !opens_if(line) {
++            continue;
++        }
++        let bounds = scan_if_block(&lines, i, lines.len());
++        dupes.extend(bounds.else_lines.iter().skip(1).map(|&l| l as u32));
++    }
++    dupes.sort_unstable();
++    dupes.dedup();
++    dupes
++}
++
++/// Boundaries of the `{% if %}` block opened at `start`.
++struct IfBounds {
++    /// Lines carrying a depth-1 `{% else %}`, in source order. A malformed
++    /// template can have more than one; the renderer treats every one of them as
++    /// a separator and anchors the else-branch on the last.
++    else_lines: Vec<usize>,
++    /// Index of the closing `{% endif %}`, or `limit` when the block is unclosed.
++    end: usize,
++}
++
++/// Find the extent of the `{% if %}` block opened at `start`, searching no
++/// further than `limit`.
++fn scan_if_block(lines: &[&str], start: usize, limit: usize) -> IfBounds {
++    let mut i = start + 1;
++    let mut depth = 1usize;
++    let mut else_lines = Vec::new();
++
++    while i < limit {
++        let line = lines[i];
++        if closes_if(line) {
++            depth -= 1;
++            if depth == 0 {
++                break;
++            }
++        } else if opens_if(line) {
++            depth += 1;
++        } else if is_else(line) && depth == 1 {
++            else_lines.push(i);
++        }
++        i += 1;
++    }
++
++    IfBounds { else_lines, end: i }
++}
++
++/// Index of the `{% endfor %}` closing the block opened at `start`, or `limit`
++/// when the block is unclosed.
++fn scan_for_block(lines: &[&str], start: usize, limit: usize) -> usize {
++    let mut i = start + 1;
++    let mut depth = 1usize;
++
++    while i < limit {
++        let line = lines[i];
++        if closes_for(line) {
++            depth -= 1;
++            if depth == 0 {
++                break;
++            }
++        } else if opens_for(line) {
++            depth += 1;
++        }
++        i += 1;
++    }
++    i
++}
++
++/// A single enclosing guard on a source line.
++#[derive(Clone, Copy, PartialEq, Eq, Hash, Debug)]
++pub enum Guard {
++    /// Inside the true-branch of the `{% if %}` opened on this 0-based line.
++    IfTrue(u32),
++    /// Inside the else-branch of the `{% if %}` opened on this 0-based line.
++    IfElse(u32),
++    /// Inside the body of the `{% for %}` opened on this 0-based line.
++    For(u32),
++}
++
++/// The enclosing guard chain (`{% if %}` / `{% else %}` / `{% for %}` context) of
++/// every source line, computed with exactly the block boundaries the renderer
++/// uses.
++///
++/// Two lines with equal chains render under identical conditions: whenever one is
++/// emitted the other is too. That is the property static analysis over rules
++/// depends on, and the reason this lives beside the renderer instead of being
++/// re-derived by each consumer.
++pub fn guard_chains(template: &str) -> Vec<Vec<Guard>> {
++    let lines: Vec<&str> = template.lines().collect();
++    let mut chains = vec![Vec::new(); lines.len()];
++    let mut stack: Vec<Guard> = Vec::new();
++    walk_guards(&lines, 0, lines.len(), &mut stack, &mut chains);
++    chains
++}
++
++/// Walk `lines[from..to]` the way the renderer does — dispatch on
++/// [`is_control_line`], delimit blocks with [`scan_if_block`] / [`scan_for_block`]
++/// — recording the guard stack in force on each line.
++fn walk_guards(
++    lines: &[&str],
++    from: usize,
++    to: usize,
++    stack: &mut Vec<Guard>,
++    chains: &mut [Vec<Guard>],
++) {
++    let mut i = from;
++    while i < to {
++        chains[i] = stack.clone();
++
++        let Some(inner) = (if is_control_line(lines[i]) {
++            control_inner(lines[i])
++        } else {
++            None
++        }) else {
++            // Ordinary text, or a line the renderer would skip as an unknown
++            // control block. Either way it opens nothing.
++            i += 1;
++            continue;
++        };
++
++        if inner.strip_prefix("if ").is_some() {
++            let bounds = scan_if_block(lines, i, to);
++            let if_end = bounds.else_lines.first().copied().unwrap_or(bounds.end);
++            stack.push(Guard::IfTrue(i as u32));
++            walk_guards(lines, i + 1, if_end.min(to), stack, chains);
++            stack.pop();
++
++            if let Some(first_else) = bounds.else_lines.first().copied() {
++                chains[first_else] = stack.clone();
++                stack.push(Guard::IfElse(i as u32));
++                walk_guards(lines, first_else + 1, bounds.end.min(to), stack, chains);
++                stack.pop();
++            }
++            if bounds.end < to {
++                chains[bounds.end] = stack.clone();
++            }
++            i = bounds.end + 1;
++            continue;
++        }
++
++        if inner.strip_prefix("for ").is_some() {
++            let end = scan_for_block(lines, i, to);
++            stack.push(Guard::For(i as u32));
++            walk_guards(lines, i + 1, end.min(to), stack, chains);
++            stack.pop();
++            if end < to {
++                chains[end] = stack.clone();
++            }
++            i = end + 1;
++            continue;
++        }
++
++        // A control tag the renderer does not act on (`{% elif %}`, a stray
++        // `{% endif %}`): it is skipped, and it changes no guard.
++        i += 1;
++    }
++}
++
+ /// Render a template with the given context.
+ pub fn render(template: &str, context: &Value) -> Result<RenderResult, TemplateError> {
++    // Enforce the block-structure precondition the guard-chain analyses rely on.
++    if let Some(&line) = duplicate_else_lines(template).first() {
++        return Err(TemplateError::ParseError {
++            line: line + 1,
++            message: "a second `{% else %}` in one `{% if %}` block makes rendering \
++                      and source provenance disagree; split it into separate blocks"
++                .to_string(),
++        });
++    }
++
+     let mut ctx = RenderContext::new(context);
+     let output = render_internal(template, &mut ctx)?;
+ 
+@@ -234,7 +502,7 @@ fn render_internal(template: &str, ctx: &mut RenderContext) -> Result<String, Te
+         }
+ 
+         // Handle control flow
+-        if trimmed.starts_with("{%") {
++        if is_control_line(line) {
+             let (new_i, block_output) = process_control_block(&lines, i, ctx)?;
+             output.push_str(&block_output);
+             i = new_i;
+@@ -542,41 +810,31 @@ fn process_if_block(
+     condition: &str,
+     ctx: &mut RenderContext,
+ ) -> Result<(usize, String), TemplateError> {
+-    let mut i = start + 1;
+-    let mut depth = 1;
+-    let mut in_else = false;
+-    let mut else_line: Option<usize> = None;
++    // Block boundaries come from the shared scanner, so the renderer and
++    // `guard_chains` agree by construction about where this block ends and where
++    // its else-branch starts.
++    let bounds = scan_if_block(lines, start, lines.len());
++    let first_else = bounds.else_lines.first().copied();
++    let else_line = bounds.else_lines.last().copied();
++    let i = bounds.end;
++
+     let mut if_content = String::new();
+     let mut else_content = String::new();
+-
+-    while i < lines.len() && depth > 0 {
+-        let line = lines[i].trim();
+-
+-        if line.contains("{% endif %}") {
+-            depth -= 1;
+-            if depth == 0 {
+-                break;
+-            }
+-        } else if line.contains("{% if ") {
+-            depth += 1;
+-        } else if line.contains("{% else %}") && depth == 1 {
+-            in_else = true;
+-            else_line = Some(i);
+-            i += 1;
++    for (idx, line) in lines
++        .iter()
++        .enumerate()
++        .take(i.min(lines.len()))
++        .skip(start + 1)
++    {
++        if bounds.else_lines.contains(&idx) {
+             continue;
+         }
+-
+-        if depth > 0 {
+-            if in_else {
+-                else_content.push_str(lines[i]);
+-                else_content.push('\n');
+-            } else {
+-                if_content.push_str(lines[i]);
+-                if_content.push('\n');
+-            }
+-        }
+-
+-        i += 1;
++        let target = match first_else {
++            Some(e) if idx > e => &mut else_content,
++            _ => &mut if_content,
++        };
++        target.push_str(line);
++        target.push('\n');
+     }
+ 
+     // Evaluate condition
+@@ -642,29 +900,12 @@ fn process_for_block(
+     let var_name = parts[0].trim();
+     let collection_name = parts[1].trim();
+ 
+-    // Find endfor
+-    let mut i = start + 1;
+-    let mut depth = 1;
++    // Find endfor with the shared scanner (see `scan_for_block`).
++    let i = scan_for_block(lines, start, lines.len());
+     let mut loop_content = String::new();
+-
+-    while i < lines.len() && depth > 0 {
+-        let line = lines[i].trim();
+-
+-        if line.contains("{% endfor %}") {
+-            depth -= 1;
+-            if depth == 0 {
+-                break;
+-            }
+-        } else if line.contains("{% for ") {
+-            depth += 1;
+-        }
+-
+-        if depth > 0 {
+-            loop_content.push_str(lines[i]);
+-            loop_content.push('\n');
+-        }
+-
+-        i += 1;
++    for line in &lines[(start + 1).min(lines.len())..i.min(lines.len())] {
++        loop_content.push_str(line);
++        loop_content.push('\n');
+     }
+ 
+     // Get collection value
+@@ -885,6 +1126,98 @@ mod tests {
+             .contains("=="));
+     }
+ 
++    /// `guard_chains` must agree with the renderer line for line: a line's chain
++    /// says exactly which branch decisions have to go its way for it to be emitted.
++    #[test]
++    fn test_guard_chains_agree_with_renderer() {
++        // The line under test, the guard chain claimed for it, and a context that
++        // satisfies every guard in that chain.
++        let cases: Vec<(&str, usize, Vec<Guard>, Value)> = vec![
++            (
++                "{% if a %}\nyes\n{% else %}\nno\n{% endif %}",
++                1,
++                vec![Guard::IfTrue(0)],
++                json!({ "a": true }),
++            ),
++            (
++                "{% if a %}\nyes\n{% else %}\nno\n{% endif %}",
++                3,
++                vec![Guard::IfElse(0)],
++                json!({ "a": false }),
++            ),
++            (
++                "{% if a %}\n{% if b %}\ndeep\n{% endif %}\n{% endif %}",
++                2,
++                vec![Guard::IfTrue(0), Guard::IfTrue(1)],
++                json!({ "a": true, "b": true }),
++            ),
++            (
++                "{% for x in xs %}\nitem\n{% endfor %}",
++                1,
++                vec![Guard::For(0)],
++                json!({ "xs": [1] }),
++            ),
++            (
++                "top\n{% if a %}\nguarded\n{% endif %}",
++                0,
++                vec![],
++                json!({ "a": false }),
++            ),
++        ];
++
++        for (template, line, expected, ctx) in cases {
++            let chains = guard_chains(template);
++            assert_eq!(chains[line], expected, "chain for {template:?} line {line}");
++            let text = template.lines().nth(line).unwrap();
++            assert!(
++                render(template, &ctx).unwrap().output.contains(text),
++                "{text:?} should render under {ctx}"
++            );
++        }
++    }
++
++    /// A `{% for %}` nested inside an `{% if %}` must not close the `{% if %}`:
++    /// the renderer's if-scanner ignores `{% endfor %}` entirely, and the guard
++    /// chains have to model that, not a single mixed tag stack.
++    #[test]
++    fn test_guard_chains_track_block_types_separately() {
++        let t = "{% if a %}\n{% for x in xs %}\nloop\n{% endfor %}\nafter\n{% else %}\nelse\n{% endif %}";
++        let chains = guard_chains(t);
++        assert_eq!(chains[2], vec![Guard::IfTrue(0), Guard::For(1)]);
++        // `after` is still inside the if — the `{% endfor %}` closed only the loop.
++        assert_eq!(chains[4], vec![Guard::IfTrue(0)]);
++        assert_eq!(chains[6], vec![Guard::IfElse(0)]);
++
++        let out = render(t, &json!({ "a": true, "xs": [1] })).unwrap().output;
++        assert!(out.contains("after") && !out.contains("else"), "{out:?}");
++    }
++
++    /// An `{% else %}` embedded in prose separates the branches for the renderer,
++    /// so `guard_chains` reports it as a separator too.
++    #[test]
++    fn test_guard_chains_see_embedded_else() {
++        let t = "{% if flag %}\nD body\nliteral {% else %} marker\nR body\n{% endif %}";
++        let chains = guard_chains(t);
++        assert_eq!(chains[1], vec![Guard::IfTrue(0)]);
++        assert_eq!(chains[3], vec![Guard::IfElse(0)]);
++
++        let out = render(t, &json!({ "flag": false })).unwrap().output;
++        assert!(out.contains("R body") && !out.contains("D body"), "{out:?}");
++    }
++
++    #[test]
++    fn test_embedded_control_tags() {
++        assert!(embedded_control_tags("{% if a %}\nx\n{% endif %}").is_empty());
++        assert!(embedded_control_tags("  {% endfor %}  \nplain text").is_empty());
++        assert_eq!(embedded_control_tags("a\n* {% for x in xs %}"), vec![1]);
++        assert_eq!(embedded_control_tags("lit {% else %} marker"), vec![0]);
++        assert_eq!(embedded_control_tags("{% if a %}{% endif %}"), vec![0]);
++        assert_eq!(embedded_control_tags("{% if a %}trailing"), vec![0]);
++
++        assert!(is_control_line("  {% if a %}"));
++        assert!(!is_control_line("* {% if a %}"));
++    }
++
+     #[test]
+     fn test_parse_annotations() {
+         let template = r#"// @rule RULE:GREETING category=style
+@@ -1543,4 +1876,34 @@ Now answer."#;
+         let warnings = &ir.meta.as_ref().unwrap().warnings;
+         assert!(warnings.iter().any(|w| w.contains("duplicate node id")));
+     }
++    #[test]
++    fn rejects_a_second_else_in_one_if_block() {
++        // Two depth-1 separators make the renderer emit the text after the first
++        // while anchoring provenance on the last, so a rule body can appear in the
++        // output while coverage reports its rule uncovered. The unreachable-rule
++        // soundness argument reasons from guard chains to what renders, so it
++        // loses its footing on such a template. Reject it at parse time instead.
++        let template = concat!(
++            "// @rule RULE:D category=p priority=2\n",
++            "D body\n",
++            "{% if flag %}\n",
++            "x\n",
++            "{% else %}\n",
++            "// @rule RULE:R category=p priority=1\n",
++            "R body\n",
++            "{% else %}\n",
++            "y\n",
++            "{% endif %}\n"
++        );
++        assert_eq!(duplicate_else_lines(template), vec![7]);
++        let err = render(template, &serde_json::json!({"flag": false}))
++            .expect_err("a second else must be rejected");
++        assert!(matches!(err, TemplateError::ParseError { line: 8, .. }), "got {err:?}");
++
++        // A single else in the same shape stays legal and renders as before.
++        let ok = template.replace("{% else %}\ny\n", "");
++        assert!(duplicate_else_lines(&ok).is_empty());
++        assert!(render(&ok, &serde_json::json!({"flag": false})).is_ok());
++    }
++
+ }
+diff --git a/crates/promptdbg/src/main.rs b/crates/promptdbg/src/main.rs
+index 4853efa..a25a0fd 100644
+--- a/crates/promptdbg/src/main.rs
++++ b/crates/promptdbg/src/main.rs
+@@ -1060,7 +1060,19 @@ fn print_mutation_pretty(r: &prompt_runtime::MutationReport) {
+     );
+     println!("\nBy operator:");
+     for (op, stats) in &r.by_operator {
+-        println!("  {:<16} {}/{}", op, stats.killed, stats.total);
++        // Metadata-only mutants edit annotation comments, which are stripped
++        // before the prompt reaches the model, so no output-based oracle can see
++        // them. Call the two classes out rather than reporting one total.
++        let class = if stats.metadata_only == 0 {
++            String::new()
++        } else {
++            format!(
++                "  ({} metadata-only, {} body-carrying)",
++                stats.metadata_only,
++                stats.total - stats.metadata_only
++            )
++        };
++        println!("  {:<16} {}/{}{}", op, stats.killed, stats.total, class);
+     }
+     if !r.survivors.is_empty() {
+         println!("\nSurvived ({}):", r.survivors.len());

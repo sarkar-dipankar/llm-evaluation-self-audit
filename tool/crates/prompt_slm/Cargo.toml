@@ -1,0 +1,25 @@
+[package]
+name = "prompt_slm"
+description = "LLM-powered static analysis for prompts: IR generation, linting, test generation, autofixes, breakpoint suggestions. Part of PromptDbg."
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+authors.workspace = true
+rust-version.workspace = true
+readme = "README.md"
+keywords = ["llm", "prompt", "lint", "analysis", "openai"]
+categories = ["development-tools::debugging", "api-bindings"]
+
+[dependencies]
+prompt_ir = { workspace = true }
+prompt_config = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+thiserror = { workspace = true }
+tokio = { workspace = true }
+async-trait = { workspace = true }
+reqwest = { workspace = true }
+async-openai = { workspace = true }
+tracing = { workspace = true }

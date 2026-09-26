@@ -1,0 +1,21 @@
+{
+  "prompt": "gen_019_write_sql_from_questions.prompt.rtpl",
+  "mutant": "NegateCondition@L31",
+  "operator": "NegateCondition",
+  "rendered_original": "You are a SQL translator. You translate natural language questions into SQL queries.\n\nGenerate a valid SQL query that answers the question.\n\nDo not include any comments in the SQL query.\n\nUse the table names exactly as provided.\n\nUse the column names exactly as provided.\n\nThe generated SQL query is syntactically correct and executable.\n\nThe question can be answered using the provided schema.\n\n\n\n\n\n\nSQL Query:\nHow many orders shipped last week?\n",
+  "rendered_mutant": "You are a SQL translator. You translate natural language questions into SQL queries.\n\nGenerate a valid SQL query that answers the question.\n\nDo not include any comments in the SQL query.\n\nUse the table names exactly as provided.\n\nUse the column names exactly as provided.\n\nThe generated SQL query is syntactically correct and executable.\n\nThe question can be answered using the provided schema.\n\n\n\nInclude a WHERE clause to filter the results based on the question's criteria.\n\n\n\nSQL Query:\nHow many orders shipped last week?\n",
+  "original_responses": [
+    "SELECT COUNT(*) AS orders_shipped_last_week\nFROM orders\nWHERE ship_date >= CURRENT_DATE - INTERVAL '7' DAY;",
+    "SELECT COUNT(*) \nFROM orders \nWHERE shipped_date >= CURRENT_DATE - INTERVAL '7 days' \n  AND shipped_date < CURRENT_DATE;",
+    "SELECT COUNT(*) AS orders_shipped_last_week\nFROM Orders\nWHERE shipped_date >= DATE_SUB(CURRENT_DATE, INTERVAL 7 DAY)\n  AND shipped_date < CURRENT_DATE;",
+    "SELECT COUNT(*) AS orders_shipped_last_week\nFROM orders\nWHERE shipped_date >= CURRENT_DATE - INTERVAL '7 days'\n  AND shipped_date < CURRENT_DATE;",
+    "SELECT COUNT(*) AS orders_shipped_last_week\nFROM orders\nWHERE shipped_date >= DATE_SUB(CURDATE(), INTERVAL 7 DAY)\n  AND shipped_date < CURDATE();"
+  ],
+  "mutant_responses": [
+    "SELECT COUNT(*) AS order_count\nFROM Orders\nWHERE ShipDate >= DATE_SUB(CURRENT_DATE, INTERVAL 7 DAY)\n  AND ShipDate < CURRENT_DATE;",
+    "SELECT COUNT(*) AS order_count\nFROM Orders\nWHERE ship_date >= DATE_SUB(CURRENT_DATE, INTERVAL 7 DAY)\n  AND ship_date < CURRENT_DATE;",
+    "SELECT COUNT(*) AS orders_shipped_last_week\nFROM Orders\nWHERE shipped_date >= DATE_SUB(CURRENT_DATE, INTERVAL 1 WEEK)\n  AND shipped_date < CURRENT_DATE;",
+    "SELECT COUNT(*) AS order_count\nFROM orders\nWHERE shipped_date >= DATE_SUB(CURRENT_DATE, INTERVAL 7 DAY)\n  AND shipped_date < CURRENT_DATE;",
+    "SELECT COUNT(*) AS order_count\nFROM Orders\nWHERE shipped_date >= CURRENT_DATE - INTERVAL '7 days'\n  AND shipped_date < CURRENT_DATE;"
+  ]
+}

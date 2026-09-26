@@ -1,0 +1,29 @@
+[
+  {
+    "content": {
+      "text": "x"
+    },
+    "context": {
+      "audience": "__not_minor__",
+      "region": "__not_eu__"
+    }
+  },
+  {
+    "content": {
+      "text": "x"
+    },
+    "context": {
+      "audience": "__not_minor__",
+      "region": "eu"
+    }
+  },
+  {
+    "content": {
+      "text": "x"
+    },
+    "context": {
+      "audience": "minor",
+      "region": "eu"
+    }
+  }
+]

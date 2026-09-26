@@ -1,0 +1,88 @@
+[
+  {
+    "accommodation": {
+      "airbnb1_link": "x",
+      "airbnb2_link": "x",
+      "hotel1_name": "x",
+      "hotel2_name": "x"
+    },
+    "itinerary": {
+      "summary": "x"
+    },
+    "user": {
+      "preferences": {
+        "accommodation_type": "__not_hotel__",
+        "budget": "__not_low__",
+        "transportation_mode": "__not_plane__"
+      }
+    }
+  },
+  {
+    "accommodation": {
+      "airbnb1_link": "x",
+      "airbnb2_link": "x",
+      "hotel1_name": "x",
+      "hotel2_name": "x"
+    },
+    "itinerary": {
+      "summary": "x"
+    },
+    "user": {
+      "preferences": true
+    }
+  },
+  {
+    "accommodation": {
+      "airbnb1_link": "x",
+      "airbnb2_link": "x",
+      "hotel1_name": "x",
+      "hotel2_name": "x"
+    },
+    "itinerary": {
+      "summary": "x"
+    },
+    "user": {
+      "preferences": {
+        "accommodation_type": "__not_hotel__",
+        "budget": "low",
+        "transportation_mode": "__not_plane__"
+      }
+    }
+  },
+  {
+    "accommodation": {
+      "airbnb1_link": "x",
+      "airbnb2_link": "x",
+      "hotel1_name": "x",
+      "hotel2_name": "x"
+    },
+    "itinerary": {
+      "summary": "x"
+    },
+    "user": {
+      "preferences": {
+        "accommodation_type": "hotel",
+        "budget": "__not_low__",
+        "transportation_mode": "__not_plane__"
+      }
+    }
+  },
+  {
+    "accommodation": {
+      "airbnb1_link": "x",
+      "airbnb2_link": "x",
+      "hotel1_name": "x",
+      "hotel2_name": "x"
+    },
+    "itinerary": {
+      "summary": "x"
+    },
+    "user": {
+      "preferences": {
+        "accommodation_type": "__not_hotel__",
+        "budget": "__not_low__",
+        "transportation_mode": "plane"
+      }
+    }
+  }
+]

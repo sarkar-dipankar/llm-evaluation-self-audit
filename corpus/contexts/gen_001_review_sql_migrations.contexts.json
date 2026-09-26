@@ -1,0 +1,30 @@
+[
+  {
+    "review_report": {
+      "best_practices_adherence": "x",
+      "data_integrity_concerns": "x",
+      "detailed_recommendations": "x",
+      "migration_type": "__not_initial__",
+      "needs_explanation": "x",
+      "overall_quality": "x",
+      "security_vulnerabilities": "x"
+    },
+    "sql_migration_script": {
+      "contains": "x"
+    }
+  },
+  {
+    "review_report": {
+      "best_practices_adherence": "x",
+      "data_integrity_concerns": "x",
+      "detailed_recommendations": "x",
+      "migration_type": "initial",
+      "needs_explanation": "x",
+      "overall_quality": "x",
+      "security_vulnerabilities": "x"
+    },
+    "sql_migration_script": {
+      "contains": "x"
+    }
+  }
+]

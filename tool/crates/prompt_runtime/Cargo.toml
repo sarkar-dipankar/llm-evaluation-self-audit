@@ -1,0 +1,30 @@
+[package]
+name = "prompt_runtime"
+description = "LLM execution with structured tracing, breakpoints, content-addressed caching, telemetry, and provider clients. Part of PromptDbg."
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+authors.workspace = true
+rust-version.workspace = true
+readme = "README.md"
+keywords = ["llm", "prompt", "debugger", "tracing", "openai"]
+categories = ["development-tools::debugging", "api-bindings"]
+
+[dependencies]
+prompt_ir = { workspace = true }
+prompt_config = { workspace = true }
+prompt_template = { workspace = true }
+prompt_slm = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+thiserror = { workspace = true }
+tokio = { workspace = true }
+async-trait = { workspace = true }
+reqwest = { workspace = true }
+async-openai = { workspace = true }
+tracing = { workspace = true }
+
+[dev-dependencies]
+tempfile = "3"

@@ -1,0 +1,5 @@
+model,annotated_n,annotated_jaccard,annotated_rank,unannotated_cells,unannotated_score,unannotated_rank,rank_movement
+mistral-large-3:675b,19,0.7982,1,19,0.4369,1,0
+gpt-oss:20b,20,0.7571,2,17,0.2076,2,0
+minimax-m2.7,6,0.6963,3,18,0.1061,4,-1
+gpt-oss:120b,18,0.3861,4,19,0.1822,3,1

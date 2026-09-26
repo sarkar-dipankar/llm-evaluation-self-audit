@@ -1,0 +1,4 @@
+prompt,model,successful_runs,mean_nodes,std_nodes,mean_jaccard,id_stability,mean_confidence
+code_review.prompt.rtpl,minimax-m2.1,5,8,0.0,1.0,1.0,1.0
+content_moderation.prompt.rtpl,minimax-m2.1,5,8,0.0,1.0,1.0,1.0
+customer_support.prompt.rtpl,minimax-m2.1,2,8.5,0.5,0.889,0.889,1.0

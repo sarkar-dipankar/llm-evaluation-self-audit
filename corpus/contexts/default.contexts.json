@@ -1,0 +1,18 @@
+[
+  {
+    "user": { "tier": "vip" },
+    "request": { "type": "refund", "message": "I want my money back." },
+    "file": { "language": "rust" },
+    "diff": { "large": true, "body": "fn main() { let x = v.unwrap(); }" },
+    "context": { "region": "eu", "audience": "minor" },
+    "content": { "text": "sample post" }
+  },
+  {
+    "user": { "tier": "standard" },
+    "request": { "type": "question", "message": "How do I reset my password?" },
+    "file": { "language": "python" },
+    "diff": { "large": false, "body": "def f(): pass" },
+    "context": { "region": "us", "audience": "adult" },
+    "content": { "text": "another post" }
+  }
+]

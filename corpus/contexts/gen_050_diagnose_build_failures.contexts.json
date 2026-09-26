@@ -1,0 +1,68 @@
+[
+  {
+    "build_tool": "x",
+    "compiler_error": false,
+    "error_level": "__not_complex__",
+    "error_log": "x",
+    "error_message": "x",
+    "linker_error": false,
+    "user": {
+      "role": "__not_expert__"
+    }
+  },
+  {
+    "build_tool": "x",
+    "compiler_error": false,
+    "error_level": "simple",
+    "error_log": "x",
+    "error_message": "x",
+    "linker_error": false,
+    "user": {
+      "role": "__not_expert__"
+    }
+  },
+  {
+    "build_tool": "x",
+    "compiler_error": false,
+    "error_level": "complex",
+    "error_log": "x",
+    "error_message": "x",
+    "linker_error": false,
+    "user": {
+      "role": "__not_expert__"
+    }
+  },
+  {
+    "build_tool": "x",
+    "compiler_error": true,
+    "error_level": "complex",
+    "error_log": "x",
+    "error_message": "x",
+    "linker_error": false,
+    "user": {
+      "role": "__not_expert__"
+    }
+  },
+  {
+    "build_tool": "x",
+    "compiler_error": false,
+    "error_level": "complex",
+    "error_log": "x",
+    "error_message": "x",
+    "linker_error": true,
+    "user": {
+      "role": "__not_expert__"
+    }
+  },
+  {
+    "build_tool": "x",
+    "compiler_error": false,
+    "error_level": "__not_complex__",
+    "error_log": "x",
+    "error_message": "x",
+    "linker_error": false,
+    "user": {
+      "role": "expert"
+    }
+  }
+]

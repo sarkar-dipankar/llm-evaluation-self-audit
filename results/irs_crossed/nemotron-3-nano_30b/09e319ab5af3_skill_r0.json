@@ -1,0 +1,1 @@
+{"meta": {"confidence": 0.0, "engine": "llm", "parser_version": "1.0", "warnings": ["No explicit annotations (// @rule, // @condition, // @breakpoint) found; no nodes generated."]}, "nodes": [], "uri": "corpus/github-crossed/09e319ab5af3_skill.md", "version": 1}

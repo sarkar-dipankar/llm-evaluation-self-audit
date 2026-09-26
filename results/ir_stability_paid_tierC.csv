@@ -1,0 +1,13 @@
+prompt,model,successful_runs,mean_nodes,std_nodes,mean_jaccard,id_stability,mean_confidence
+content_moderation.prompt.rtpl,gemma3:12b,3,8,0.0,1.0,1.0,1.0
+customer_support.prompt.rtpl,gemma3:12b,2,10,0.0,1.0,1.0,1.0
+gen_000_triage_support_tickets.prompt.rtpl,gemma3:12b,3,7,0.0,1.0,1.0,0.95
+gen_001_review_sql_migrations.prompt.rtpl,gemma3:12b,2,10,0.0,1.0,1.0,0.95
+gen_003_summarize_legal_contracts.prompt.rtpl,gemma3:12b,3,12,0.0,0.897,0.846,0.95
+gen_005_grade_student_essays.prompt.rtpl,gemma3:12b,3,9.33,0.47,0.722,0.583,0.967
+gen_006_route_sales_leads.prompt.rtpl,gemma3:12b,3,11,0.0,1.0,1.0,0.95
+gen_008_screen_job_applications.prompt.rtpl,gemma3:12b,3,9,0.0,1.0,1.0,1.0
+gen_009_translate_with_tone_control.prompt.rtpl,gemma3:12b,2,12,0.0,1.0,1.0,1.0
+gen_013_recommend_products.prompt.rtpl,gemma3:12b,2,12,0.0,0.846,0.846,0.95
+gen_014_extract_invoice_fields.prompt.rtpl,gemma3:12b,3,8,0.0,1.0,1.0,1.0
+gen_015_detect_spam_comments.prompt.rtpl,gemma3:12b,3,8,0.0,1.0,1.0,1.0

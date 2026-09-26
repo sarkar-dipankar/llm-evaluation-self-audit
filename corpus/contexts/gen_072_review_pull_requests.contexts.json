@@ -1,0 +1,86 @@
+[
+  {
+    "is_admin": false,
+    "pull_request": {
+      "approval_reason": "x",
+      "code_changes": "x",
+      "description": "x",
+      "functionality_assessment": "x",
+      "needs_testing": "x",
+      "readability_assessment": "x",
+      "recommendation_reason": "x",
+      "security_assessment": "x",
+      "style_assessment": "x",
+      "test_scenario_1": "x",
+      "test_scenario_2": "x",
+      "title": "x"
+    },
+    "requires_testing": false,
+    "user": {
+      "role": "__not_admin__"
+    }
+  },
+  {
+    "is_admin": false,
+    "pull_request": {
+      "approval_reason": "x",
+      "code_changes": "x",
+      "description": "x",
+      "functionality_assessment": "x",
+      "needs_testing": "x",
+      "readability_assessment": "x",
+      "recommendation_reason": "x",
+      "security_assessment": "x",
+      "style_assessment": "x",
+      "test_scenario_1": "x",
+      "test_scenario_2": "x",
+      "title": "x"
+    },
+    "requires_testing": false,
+    "user": {
+      "role": "admin"
+    }
+  },
+  {
+    "is_admin": false,
+    "pull_request": {
+      "approval_reason": "x",
+      "code_changes": "x",
+      "description": "x",
+      "functionality_assessment": "x",
+      "needs_testing": "x",
+      "readability_assessment": "x",
+      "recommendation_reason": "x",
+      "security_assessment": "x",
+      "style_assessment": "x",
+      "test_scenario_1": "x",
+      "test_scenario_2": "x",
+      "title": "x"
+    },
+    "requires_testing": true,
+    "user": {
+      "role": "__not_admin__"
+    }
+  },
+  {
+    "is_admin": true,
+    "pull_request": {
+      "approval_reason": "x",
+      "code_changes": "x",
+      "description": "x",
+      "functionality_assessment": "x",
+      "needs_testing": "x",
+      "readability_assessment": "x",
+      "recommendation_reason": "x",
+      "security_assessment": "x",
+      "style_assessment": "x",
+      "test_scenario_1": "x",
+      "test_scenario_2": "x",
+      "title": "x"
+    },
+    "requires_testing": false,
+    "user": {
+      "role": "__not_admin__"
+    }
+  }
+]

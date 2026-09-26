@@ -1,0 +1,21 @@
+{
+  "prompt": "gen_026_redact_pii_from_text.prompt.rtpl",
+  "mutant": "NegateCondition@L39",
+  "operator": "NegateCondition",
+  "rendered_original": "You are a redaction assistant. Your task is to identify and redact Personally Identifiable Information (PII) from the provided text. PII includes, but is not limited to: names, addresses, phone numbers, email addresses, social security numbers, dates of birth, and credit card numbers. Redact PII by replacing it with the token \"[REDACTED]\".\n\n// Redact all identified PII.\n\n// Checks if a given string is considered PII.\n\n// Redact names.\n\n// Redact addresses.\n\n// Redact phone numbers.\n\n// Redact email addresses.\n\n// Redact Social Security Numbers.\n\n// Redact Dates of Birth.\n\n// Redact Credit Card Numbers.\n\n\n\n\nHere is the text to redact:\n\nThis product is a complete waste of money and the seller should be ashamed.\n\nRedacted Text:\n\nThis product is a complete waste of money and the seller should be ashamed.\n",
+  "rendered_mutant": "You are a redaction assistant. Your task is to identify and redact Personally Identifiable Information (PII) from the provided text. PII includes, but is not limited to: names, addresses, phone numbers, email addresses, social security numbers, dates of birth, and credit card numbers. Redact PII by replacing it with the token \"[REDACTED]\".\n\n// Redact all identified PII.\n\n// Checks if a given string is considered PII.\n\n// Redact names.\n\n// Redact addresses.\n\n// Redact phone numbers.\n\n// Redact email addresses.\n\n// Redact Social Security Numbers.\n\n// Redact Dates of Birth.\n\n// Redact Credit Card Numbers.\n\n\n\n  Display the original text and the redacted text side-by-side for comparison.\n\nHere is the text to redact:\n\nThis product is a complete waste of money and the seller should be ashamed.\n\nRedacted Text:\n\nThis product is a complete waste of money and the seller should be ashamed.\n",
+  "original_responses": [
+    "Redacted Text:\n\nThis product is a complete waste of money and the seller should be ashamed.",
+    "This product is a complete waste of money and the seller should be ashamed.",
+    "Redacted Text:\n\nThis product is a complete waste of money and the seller should be ashamed.",
+    "Redacted Text:\n\nThis product is a complete waste of money and the seller should be ashamed.",
+    "Redacted Text:\n\nThis product is a complete waste of money and the seller should be ashamed."
+  ],
+  "mutant_responses": [
+    "**Original Text** | **Redacted Text**\n--- | ---\nThis product is a complete waste of money and the seller should be ashamed. | This product is a complete waste of money and the seller should be ashamed.",
+    "**Original Text** | **Redacted Text**\n--- | ---\nThis product is a complete waste of money and the seller should be ashamed. | This product is a complete waste of money and the seller should be ashamed.",
+    "**Original Text** | **Redacted Text**  \n--- | ---  \nThis product is a complete waste of money and the seller should be ashamed. | This product is a complete waste of money and the seller should be ashamed.",
+    "**Original Text** | **Redacted Text**\n--- | ---\nThis product is a complete waste of money and the seller should be ashamed. | This product is a complete waste of money and the seller should be ashamed.",
+    "**Original Text** | **Redacted Text**  \n--- | ---  \nThis product is a complete waste of money and the seller should be ashamed. | This product is a complete waste of money and the seller should be ashamed."
+  ]
+}

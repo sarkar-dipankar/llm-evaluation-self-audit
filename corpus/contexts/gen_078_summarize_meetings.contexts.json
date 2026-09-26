@@ -1,0 +1,37 @@
+[
+  {
+    "action_items": false,
+    "decisions": false,
+    "summary": "x",
+    "topics_discussed": false,
+    "transcript": false
+  },
+  {
+    "action_items": false,
+    "decisions": false,
+    "summary": "x",
+    "topics_discussed": false,
+    "transcript": true
+  },
+  {
+    "action_items": true,
+    "decisions": false,
+    "summary": "x",
+    "topics_discussed": false,
+    "transcript": false
+  },
+  {
+    "action_items": false,
+    "decisions": true,
+    "summary": "x",
+    "topics_discussed": false,
+    "transcript": false
+  },
+  {
+    "action_items": false,
+    "decisions": false,
+    "summary": "x",
+    "topics_discussed": true,
+    "transcript": false
+  }
+]

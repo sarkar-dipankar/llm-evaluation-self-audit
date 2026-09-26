@@ -1,0 +1,71 @@
+[
+  {
+    "change": "x",
+    "feature": "x",
+    "fix": "x",
+    "has_breaking_changes": false,
+    "improvement": "x",
+    "is_major_release": false,
+    "previous_release": {
+      "version": {
+        "major": "x"
+      }
+    },
+    "release": {
+      "breaking_changes": "x",
+      "bug_fixes": [],
+      "improvements": [],
+      "new_features": [],
+      "version": {
+        "full": "x",
+        "major": "x"
+      }
+    }
+  },
+  {
+    "change": "x",
+    "feature": "x",
+    "fix": "x",
+    "has_breaking_changes": false,
+    "improvement": "x",
+    "is_major_release": true,
+    "previous_release": {
+      "version": {
+        "major": "x"
+      }
+    },
+    "release": {
+      "breaking_changes": "x",
+      "bug_fixes": [],
+      "improvements": [],
+      "new_features": [],
+      "version": {
+        "full": "x",
+        "major": "x"
+      }
+    }
+  },
+  {
+    "change": "x",
+    "feature": "x",
+    "fix": "x",
+    "has_breaking_changes": true,
+    "improvement": "x",
+    "is_major_release": true,
+    "previous_release": {
+      "version": {
+        "major": "x"
+      }
+    },
+    "release": {
+      "breaking_changes": "x",
+      "bug_fixes": [],
+      "improvements": [],
+      "new_features": [],
+      "version": {
+        "full": "x",
+        "major": "x"
+      }
+    }
+  }
+]

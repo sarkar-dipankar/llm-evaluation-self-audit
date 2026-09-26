@@ -1,0 +1,21 @@
+{
+  "prompt": "content_moderation.prompt.rtpl",
+  "mutant": "DropRule@L1",
+  "operator": "DropRule",
+  "rendered_original": "You are a content-moderation classifier.\n\nApply the default content policy.\n\nReturn one of: allow, review, block \u2014 with a one-line reason.\nClassify: Login page returns a 500 error after the latest deploy; affects all users.\n",
+  "rendered_mutant": "\nApply the default content policy.\n\nReturn one of: allow, review, block \u2014 with a one-line reason.\nClassify: Login page returns a 500 error after the latest deploy; affects all users.\n",
+  "original_responses": [
+    "allow \u2014 harmless technical issue report with no policy violation.",
+    "allow \u2014 the message is a benign technical issue report with no policy violations.",
+    "allow \u2014 the content is a harmless technical issue report.",
+    "allow \u2014 the message is a benign technical issue report with no policy violations.",
+    "allow \u2013 the content is a benign technical issue report with no policy violations."
+  ],
+  "mutant_responses": [
+    "allow - benign description of a technical issue.",
+    "allow \u2014 the message is a benign technical issue report.",
+    "allow \u2014 benign description of a technical issue.",
+    "allow \u2014 benign technical issue report.",
+    "allow \u2014 the request is a harmless technical issue report."
+  ]
+}

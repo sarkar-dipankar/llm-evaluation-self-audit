@@ -1,0 +1,1 @@
+{"meta": {"confidence": 1.0, "engine": "llm", "parser_version": "1.0", "warnings": ["Input is a markdown documentation file, not a prompt template with variables, logic blocks, or annotations. No parseable template elements found."]}, "nodes": [], "uri": "corpus/github-crossed/7be65a522e03_SKILL.md", "version": 1}

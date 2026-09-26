@@ -1,0 +1,20 @@
+[
+  {
+    "output": "x",
+    "text": "x",
+    "tone": "__not_formal__",
+    "tone_specified": false
+  },
+  {
+    "output": "x",
+    "text": "x",
+    "tone": "__not_formal__",
+    "tone_specified": true
+  },
+  {
+    "output": "x",
+    "text": "x",
+    "tone": "formal",
+    "tone_specified": true
+  }
+]

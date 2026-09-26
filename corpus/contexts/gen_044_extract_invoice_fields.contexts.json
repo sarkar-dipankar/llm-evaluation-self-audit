@@ -1,0 +1,26 @@
+[
+  {
+    "invoice": {
+      "date": "x",
+      "due_date": "x",
+      "number": "x",
+      "text": "x",
+      "total_amount": "x",
+      "vendor_address": "x",
+      "vendor_name": "x"
+    },
+    "invoice_present": false
+  },
+  {
+    "invoice": {
+      "date": "x",
+      "due_date": "x",
+      "number": "x",
+      "text": "x",
+      "total_amount": "x",
+      "vendor_address": "x",
+      "vendor_name": "x"
+    },
+    "invoice_present": true
+  }
+]

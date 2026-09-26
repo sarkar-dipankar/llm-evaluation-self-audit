@@ -1,0 +1,19 @@
+[
+  {
+    "RepresentativePriority": "x",
+    "assigned_representative": {
+      "name": "x"
+    },
+    "lead": {
+      "company_size": "x",
+      "deal_value": "x",
+      "description": "x",
+      "industry": "x"
+    },
+    "representative": {
+      "expertise": "x",
+      "region": "x",
+      "workload": "x"
+    }
+  }
+]

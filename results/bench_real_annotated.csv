@@ -1,0 +1,13 @@
+file,total_rules,rule_cov_structural,rule_cov_trace,condition_cov,branch_cov,total_rule_pairs,rule_pair_cov,mutation_score,total_mutants,killed_mutants
+corpus/github-annotated/053136ecb86a_SKILL.prompt.rtpl,22,1.0000,1.0000,1.0000,1.0000,231,1.0000,0.9730,74,72
+corpus/github-annotated/09e319ab5af3_skill.prompt.rtpl,3,1.0000,1.0000,1.0000,1.0000,3,1.0000,0.8750,8,7
+corpus/github-annotated/194e3e6b9421_SKILL.prompt.rtpl,11,1.0000,1.0000,1.0000,1.0000,55,1.0000,0.9394,33,31
+corpus/github-annotated/23b1dabda63a_SKILL.prompt.rtpl,28,1.0000,1.0000,1.0000,1.0000,378,1.0000,0.9425,87,82
+corpus/github-annotated/541a1bc0d709_SKILL.prompt.rtpl,70,1.0000,1.0000,1.0000,1.0000,2415,1.0000,0.9917,242,240
+corpus/github-annotated/728fe4446723_SKILL.prompt.rtpl,29,1.0000,1.0000,1.0000,1.0000,406,1.0000,0.9560,91,87
+corpus/github-annotated/7a8c0a5fe49b_SKILL.prompt.rtpl,7,1.0000,1.0000,1.0000,1.0000,21,1.0000,0.8571,21,18
+corpus/github-annotated/8ad9c110c8fc_SKILL.prompt.rtpl,48,1.0000,1.0000,1.0000,1.0000,1128,0.9956,0.9603,151,145
+corpus/github-annotated/9deacc979622_SKILL.prompt.rtpl,78,1.0000,1.0000,1.0000,1.0000,3003,1.0000,0.9838,247,243
+corpus/github-annotated/ab8bd009141a_SKILL.prompt.rtpl,49,1.0000,1.0000,1.0000,1.0000,1176,0.9932,0.9808,156,153
+corpus/github-annotated/b1950a5dde10_SKILL.prompt.rtpl,67,1.0000,1.0000,1.0000,1.0000,2211,1.0000,0.9775,222,217
+corpus/github-annotated/ccb5349ebdcc_SKILL.prompt.rtpl,43,1.0000,1.0000,1.0000,1.0000,903,1.0000,0.9701,134,130

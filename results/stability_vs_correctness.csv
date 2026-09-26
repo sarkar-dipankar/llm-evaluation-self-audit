@@ -1,0 +1,5 @@
+metric,n,pearson_r,pearson_p,spearman_rho,spearman_p,drop_one_r,drop_one_p,dropped
+recall,7,0.7632,0.0459,0.5,0.2532,0.2777,0.5942,gpt-oss:120b
+precision_all,7,0.6922,0.0848,0.75,0.0522,0.5782,0.2293,gpt-oss:120b
+precision_explicit,7,0.9027,0.0054,0.8929,0.0068,0.7718,0.0721,gpt-oss:120b
+f1,7,0.7648,0.0452,0.6429,0.1194,0.5337,0.2755,gpt-oss:120b

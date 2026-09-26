@@ -1,0 +1,8 @@
+file,total_rules,rule_cov_structural,rule_cov_trace,condition_cov,branch_cov,total_rule_pairs,rule_pair_cov,mutation_score,total_mutants,killed_mutants
+corpus/synthetic/code_review.prompt.rtpl,5,1.0000,1.0000,1.0000,1.0000,10,0.8000,0.6500,20,13
+corpus/synthetic/content_moderation.prompt.rtpl,5,1.0000,1.0000,1.0000,0.7500,10,0.8000,0.5714,21,12
+corpus/synthetic/customer_support.prompt.rtpl,5,1.0000,1.0000,1.0000,1.0000,10,0.8000,0.6500,20,13
+corpus/synthetic/gen_001_review_sql_migrations.prompt.rtpl,7,1.0000,1.0000,1.0000,0.5000,21,1.0000,0.3529,34,12
+corpus/synthetic/gen_003_summarize_legal_contracts.prompt.rtpl,8,1.0000,1.0000,1.0000,0.5000,28,1.0000,0.3429,35,12
+corpus/synthetic/gen_004_answer_medical_faqs_with_disclaimers.prompt.rtpl,4,1.0000,1.0000,1.0000,0.2500,6,1.0000,0.3333,18,6
+corpus/synthetic/gen_006_route_sales_leads.prompt.rtpl,4,1.0000,1.0000,1.0000,0.1000,6,1.0000,0.3182,22,7

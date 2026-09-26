@@ -1,0 +1,38 @@
+[
+  {
+    "post": {
+      "contains_url": false,
+      "content": "x"
+    },
+    "user": {
+      "role": "__not_admin__"
+    }
+  },
+  {
+    "post": {
+      "contains_url": false,
+      "content": "x"
+    },
+    "user": {
+      "role": "admin"
+    }
+  },
+  {
+    "post": {
+      "contains_url": true,
+      "content": "x"
+    },
+    "user": {
+      "role": "__not_admin__"
+    }
+  },
+  {
+    "post": {
+      "contains_url": true,
+      "content": "x"
+    },
+    "user": {
+      "role": "moderator"
+    }
+  }
+]

@@ -1,0 +1,74 @@
+[
+  {
+    "claim": {
+      "fraud_flag": false,
+      "payout_amount": "x",
+      "rejection_reason": "x",
+      "status": "__not_pending__",
+      "valid": false
+    },
+    "policy": {
+      "coverage_type": "__not_liability__"
+    }
+  },
+  {
+    "claim": {
+      "fraud_flag": false,
+      "payout_amount": "x",
+      "rejection_reason": "x",
+      "status": "pending",
+      "valid": false
+    },
+    "policy": {
+      "coverage_type": "__not_liability__"
+    }
+  },
+  {
+    "claim": {
+      "fraud_flag": false,
+      "payout_amount": "x",
+      "rejection_reason": "x",
+      "status": "pending",
+      "valid": false
+    },
+    "policy": {
+      "coverage_type": "comprehensive"
+    }
+  },
+  {
+    "claim": {
+      "fraud_flag": false,
+      "payout_amount": "x",
+      "rejection_reason": "x",
+      "status": "pending",
+      "valid": false
+    },
+    "policy": {
+      "coverage_type": "liability"
+    }
+  },
+  {
+    "claim": {
+      "fraud_flag": true,
+      "payout_amount": "x",
+      "rejection_reason": "x",
+      "status": "pending",
+      "valid": false
+    },
+    "policy": {
+      "coverage_type": "__not_liability__"
+    }
+  },
+  {
+    "claim": {
+      "fraud_flag": false,
+      "payout_amount": "x",
+      "rejection_reason": "x",
+      "status": "pending",
+      "valid": true
+    },
+    "policy": {
+      "coverage_type": "__not_liability__"
+    }
+  }
+]

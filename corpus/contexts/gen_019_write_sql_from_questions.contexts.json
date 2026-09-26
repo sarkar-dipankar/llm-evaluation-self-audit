@@ -1,0 +1,62 @@
+[
+  {
+    "question_asks_for_count": false,
+    "question_contains_aggregate": false,
+    "question_contains_join": false,
+    "question_contains_where_clause": false,
+    "sql_query": "x",
+    "user": {
+      "role": "__not_expert__"
+    }
+  },
+  {
+    "question_asks_for_count": false,
+    "question_contains_aggregate": true,
+    "question_contains_join": false,
+    "question_contains_where_clause": false,
+    "sql_query": "x",
+    "user": {
+      "role": "__not_expert__"
+    }
+  },
+  {
+    "question_asks_for_count": false,
+    "question_contains_aggregate": false,
+    "question_contains_join": true,
+    "question_contains_where_clause": false,
+    "sql_query": "x",
+    "user": {
+      "role": "__not_expert__"
+    }
+  },
+  {
+    "question_asks_for_count": false,
+    "question_contains_aggregate": false,
+    "question_contains_join": false,
+    "question_contains_where_clause": true,
+    "sql_query": "x",
+    "user": {
+      "role": "__not_expert__"
+    }
+  },
+  {
+    "question_asks_for_count": true,
+    "question_contains_aggregate": false,
+    "question_contains_join": false,
+    "question_contains_where_clause": false,
+    "sql_query": "x",
+    "user": {
+      "role": "__not_expert__"
+    }
+  },
+  {
+    "question_asks_for_count": false,
+    "question_contains_aggregate": false,
+    "question_contains_join": false,
+    "question_contains_where_clause": false,
+    "sql_query": "x",
+    "user": {
+      "role": "expert"
+    }
+  }
+]

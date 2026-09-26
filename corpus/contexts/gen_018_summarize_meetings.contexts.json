@@ -1,0 +1,34 @@
+[
+  {
+    "action_items": "x",
+    "decisions": "x",
+    "meeting_type": false,
+    "summary": "x",
+    "topic": "x",
+    "transcript": false
+  },
+  {
+    "action_items": "x",
+    "decisions": "x",
+    "meeting_type": false,
+    "summary": "x",
+    "topic": "x",
+    "transcript": true
+  },
+  {
+    "action_items": "x",
+    "decisions": "x",
+    "meeting_type": "technical",
+    "summary": "x",
+    "topic": "x",
+    "transcript": true
+  },
+  {
+    "action_items": "x",
+    "decisions": "x",
+    "meeting_type": true,
+    "summary": "x",
+    "topic": "x",
+    "transcript": false
+  }
+]

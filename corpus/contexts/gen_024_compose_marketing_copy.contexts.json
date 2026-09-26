@@ -1,0 +1,221 @@
+[
+  {
+    "audience": {
+      "description": "x"
+    },
+    "audience_specified": false,
+    "copy": {
+      "text": "x"
+    },
+    "desired_action": {
+      "text": "x"
+    },
+    "feature": {
+      "description": "x",
+      "name": "x"
+    },
+    "length": {
+      "max_characters": false
+    },
+    "product": {
+      "description": "x",
+      "features": [],
+      "name": "x"
+    },
+    "tone": {
+      "value": "x"
+    },
+    "tone_specified": false,
+    "tone_specified and tone": {
+      "value": "__not_formal__"
+    }
+  },
+  {
+    "audience": {
+      "description": "x"
+    },
+    "audience_specified": false,
+    "copy": {
+      "text": "x"
+    },
+    "desired_action": {
+      "text": "x"
+    },
+    "feature": {
+      "description": "x",
+      "name": "x"
+    },
+    "length": {
+      "max_characters": false
+    },
+    "product": {
+      "description": "x",
+      "features": [],
+      "name": "x"
+    },
+    "tone": {
+      "value": "x"
+    },
+    "tone_specified": true,
+    "tone_specified and tone": {
+      "value": "__not_formal__"
+    }
+  },
+  {
+    "audience": {
+      "description": "x"
+    },
+    "audience_specified": true,
+    "copy": {
+      "text": "x"
+    },
+    "desired_action": {
+      "text": "x"
+    },
+    "feature": {
+      "description": "x",
+      "name": "x"
+    },
+    "length": {
+      "max_characters": false
+    },
+    "product": {
+      "description": "x",
+      "features": [],
+      "name": "x"
+    },
+    "tone": {
+      "value": "x"
+    },
+    "tone_specified": false,
+    "tone_specified and tone": {
+      "value": "__not_formal__"
+    }
+  },
+  {
+    "audience": {
+      "description": "x"
+    },
+    "audience_specified": false,
+    "copy": {
+      "text": "x"
+    },
+    "desired_action": {
+      "text": "x"
+    },
+    "feature": {
+      "description": "x",
+      "name": "x"
+    },
+    "length": {
+      "max_characters": false
+    },
+    "product": {
+      "description": "x",
+      "features": [
+        "item"
+      ],
+      "name": "x"
+    },
+    "tone": {
+      "value": "x"
+    },
+    "tone_specified": false,
+    "tone_specified and tone": {
+      "value": "__not_formal__"
+    }
+  },
+  {
+    "audience": {
+      "description": "x"
+    },
+    "audience_specified": false,
+    "copy": {
+      "text": "x"
+    },
+    "desired_action": {
+      "text": "x"
+    },
+    "feature": {
+      "description": "x",
+      "name": "x"
+    },
+    "length": {
+      "max_characters": false
+    },
+    "product": {
+      "description": "x",
+      "features": [],
+      "name": "x"
+    },
+    "tone": {
+      "value": "x"
+    },
+    "tone_specified": false,
+    "tone_specified and tone": {
+      "value": "humorous"
+    }
+  },
+  {
+    "audience": {
+      "description": "x"
+    },
+    "audience_specified": false,
+    "copy": {
+      "text": "x"
+    },
+    "desired_action": {
+      "text": "x"
+    },
+    "feature": {
+      "description": "x",
+      "name": "x"
+    },
+    "length": {
+      "max_characters": false
+    },
+    "product": {
+      "description": "x",
+      "features": [],
+      "name": "x"
+    },
+    "tone": {
+      "value": "x"
+    },
+    "tone_specified": false,
+    "tone_specified and tone": {
+      "value": "formal"
+    }
+  },
+  {
+    "audience": {
+      "description": "x"
+    },
+    "audience_specified": false,
+    "copy": {
+      "text": "x"
+    },
+    "desired_action": {
+      "text": "x"
+    },
+    "feature": {
+      "description": "x",
+      "name": "x"
+    },
+    "length": {
+      "max_characters": true
+    },
+    "product": {
+      "description": "x",
+      "features": [],
+      "name": "x"
+    },
+    "tone": {
+      "value": "x"
+    },
+    "tone_specified": false,
+    "tone_specified and tone": {
+      "value": "__not_formal__"
+    }
+  }
+]

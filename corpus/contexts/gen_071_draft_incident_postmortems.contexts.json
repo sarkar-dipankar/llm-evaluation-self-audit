@@ -1,0 +1,178 @@
+[
+  {
+    "corrective_actions": {
+      "action_1": "x",
+      "action_2": "x",
+      "action_3": ""
+    },
+    "incident": {
+      "severity": "__not_\"minor\" and not root_cause.identified__",
+      "timeline": "x"
+    },
+    "lessons_learned": {
+      "lesson_1": "x",
+      "lesson_2": ""
+    },
+    "root_cause": {
+      "description": "x",
+      "identified": false,
+      "preliminary_description": "x",
+      "technical_debt_details": "x",
+      "technical_debt_involved": false
+    }
+  },
+  {
+    "corrective_actions": {
+      "action_1": "x",
+      "action_2": "x",
+      "action_3": ""
+    },
+    "incident": {
+      "severity": "critical",
+      "timeline": "x"
+    },
+    "lessons_learned": {
+      "lesson_1": "x",
+      "lesson_2": ""
+    },
+    "root_cause": {
+      "description": "x",
+      "identified": false,
+      "preliminary_description": "x",
+      "technical_debt_details": "x",
+      "technical_debt_involved": false
+    }
+  },
+  {
+    "corrective_actions": {
+      "action_1": "x",
+      "action_2": "x",
+      "action_3": ""
+    },
+    "incident": {
+      "severity": "__not_\"minor\" and not root_cause.identified__",
+      "timeline": "x"
+    },
+    "lessons_learned": {
+      "lesson_1": "x",
+      "lesson_2": ""
+    },
+    "root_cause": {
+      "description": "x",
+      "identified": true,
+      "preliminary_description": "x",
+      "technical_debt_details": "x",
+      "technical_debt_involved": false
+    }
+  },
+  {
+    "corrective_actions": {
+      "action_1": "x",
+      "action_2": "x",
+      "action_3": ""
+    },
+    "incident": {
+      "severity": "__not_\"minor\" and not root_cause.identified__",
+      "timeline": "x"
+    },
+    "lessons_learned": {
+      "lesson_1": "x",
+      "lesson_2": ""
+    },
+    "root_cause": {
+      "description": "x",
+      "identified": false,
+      "preliminary_description": "x",
+      "technical_debt_details": "x",
+      "technical_debt_involved": true
+    }
+  },
+  {
+    "corrective_actions": {
+      "action_1": "x",
+      "action_2": "x",
+      "action_3": "__not___"
+    },
+    "incident": {
+      "severity": "__not_\"minor\" and not root_cause.identified__",
+      "timeline": "x"
+    },
+    "lessons_learned": {
+      "lesson_1": "x",
+      "lesson_2": ""
+    },
+    "root_cause": {
+      "description": "x",
+      "identified": false,
+      "preliminary_description": "x",
+      "technical_debt_details": "x",
+      "technical_debt_involved": false
+    }
+  },
+  {
+    "corrective_actions": {
+      "action_1": "x",
+      "action_2": "x",
+      "action_3": ""
+    },
+    "incident": {
+      "severity": "__not_\"minor\" and not root_cause.identified__",
+      "timeline": "x"
+    },
+    "lessons_learned": {
+      "lesson_1": "x",
+      "lesson_2": "__not___"
+    },
+    "root_cause": {
+      "description": "x",
+      "identified": false,
+      "preliminary_description": "x",
+      "technical_debt_details": "x",
+      "technical_debt_involved": false
+    }
+  },
+  {
+    "corrective_actions": {
+      "action_1": "x",
+      "action_2": "x",
+      "action_3": ""
+    },
+    "incident": {
+      "severity": "\"critical\" and root_cause.identified",
+      "timeline": "x"
+    },
+    "lessons_learned": {
+      "lesson_1": "x",
+      "lesson_2": ""
+    },
+    "root_cause": {
+      "description": "x",
+      "identified": false,
+      "preliminary_description": "x",
+      "technical_debt_details": "x",
+      "technical_debt_involved": false
+    }
+  },
+  {
+    "corrective_actions": {
+      "action_1": "x",
+      "action_2": "x",
+      "action_3": ""
+    },
+    "incident": {
+      "severity": "\"minor\" and not root_cause.identified",
+      "timeline": "x"
+    },
+    "lessons_learned": {
+      "lesson_1": "x",
+      "lesson_2": ""
+    },
+    "root_cause": {
+      "description": "x",
+      "identified": false,
+      "preliminary_description": "x",
+      "technical_debt_details": "x",
+      "technical_debt_involved": false
+    }
+  }
+]

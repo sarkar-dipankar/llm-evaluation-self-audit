@@ -1,0 +1,38 @@
+[
+  {
+    "applicant": {
+      "education": "None and applicant.education.level >= job.education_required.level"
+    },
+    "job": {
+      "education_required": false,
+      "experience_level": "__not_\"Entry-Level\" and applicant.experience_years < 2__"
+    }
+  },
+  {
+    "applicant": {
+      "education": "None and applicant.education.level >= job.education_required.level"
+    },
+    "job": {
+      "education_required": false,
+      "experience_level": "\"Entry-Level\" and applicant.experience_years < 2"
+    }
+  },
+  {
+    "applicant": {
+      "education": "None and applicant.education.level >= job.education_required.level"
+    },
+    "job": {
+      "education_required": true,
+      "experience_level": "__not_\"Entry-Level\" and applicant.experience_years < 2__"
+    }
+  },
+  {
+    "applicant": {
+      "education": "__not_None and applicant.education.level >= job.education_required.level__"
+    },
+    "job": {
+      "education_required": true,
+      "experience_level": "__not_\"Entry-Level\" and applicant.experience_years < 2__"
+    }
+  }
+]

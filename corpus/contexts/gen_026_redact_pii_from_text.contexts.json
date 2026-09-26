@@ -1,0 +1,54 @@
+[
+  {
+    "redacted_text": {
+      "content": "x"
+    },
+    "text": {
+      "content": "x"
+    },
+    "text_contains_ssn": false,
+    "user": {
+      "debug_mode": false,
+      "role": "__not_admin__"
+    }
+  },
+  {
+    "redacted_text": {
+      "content": "x"
+    },
+    "text": {
+      "content": "x"
+    },
+    "text_contains_ssn": false,
+    "user": {
+      "debug_mode": false,
+      "role": "admin"
+    }
+  },
+  {
+    "redacted_text": {
+      "content": "x"
+    },
+    "text": {
+      "content": "x"
+    },
+    "text_contains_ssn": true,
+    "user": {
+      "debug_mode": false,
+      "role": "__not_admin__"
+    }
+  },
+  {
+    "redacted_text": {
+      "content": "x"
+    },
+    "text": {
+      "content": "x"
+    },
+    "text_contains_ssn": false,
+    "user": {
+      "debug_mode": true,
+      "role": "__not_admin__"
+    }
+  }
+]

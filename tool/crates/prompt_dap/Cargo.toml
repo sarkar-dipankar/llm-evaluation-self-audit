@@ -1,0 +1,24 @@
+[package]
+name = "prompt_dap"
+description = "Debug Adapter Protocol (DAP) server for stepping through LLM prompts: breakpoints, scopes, stack frames, skill phases. Part of PromptDbg."
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+authors.workspace = true
+rust-version.workspace = true
+readme = "README.md"
+keywords = ["llm", "prompt", "dap", "debugger", "debug-adapter"]
+categories = ["development-tools::debugging", "command-line-utilities"]
+
+[dependencies]
+prompt_ir = { workspace = true }
+prompt_config = { workspace = true }
+prompt_runtime = { workspace = true }
+prompt_template = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+thiserror = { workspace = true }
+tokio = { workspace = true }
+tracing = { workspace = true }

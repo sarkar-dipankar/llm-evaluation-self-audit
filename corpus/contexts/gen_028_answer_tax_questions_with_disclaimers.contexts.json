@@ -1,0 +1,26 @@
+[
+  {
+    "answer": "x",
+    "detailed_answer": "x",
+    "is_simple_question": false,
+    "user": {
+      "role": "__not_user__"
+    }
+  },
+  {
+    "answer": "x",
+    "detailed_answer": "x",
+    "is_simple_question": false,
+    "user": {
+      "role": "user"
+    }
+  },
+  {
+    "answer": "x",
+    "detailed_answer": "x",
+    "is_simple_question": true,
+    "user": {
+      "role": "__not_user__"
+    }
+  }
+]

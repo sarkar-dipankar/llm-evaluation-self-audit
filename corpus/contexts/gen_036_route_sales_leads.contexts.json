@@ -1,0 +1,14 @@
+[
+  {
+    "lead": {
+      "id": "x",
+      "industry": false
+    }
+  },
+  {
+    "lead": {
+      "id": "x",
+      "industry": true
+    }
+  }
+]

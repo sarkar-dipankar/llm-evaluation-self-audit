@@ -1,0 +1,35 @@
+[
+  {
+    "comment": {
+      "text": "x",
+      "user": {
+        "is_verified": false
+      }
+    },
+    "user": {
+      "role": "__not_admin__"
+    }
+  },
+  {
+    "comment": {
+      "text": "x",
+      "user": {
+        "is_verified": false
+      }
+    },
+    "user": {
+      "role": "admin"
+    }
+  },
+  {
+    "comment": {
+      "text": "x",
+      "user": {
+        "is_verified": true
+      }
+    },
+    "user": {
+      "role": "__not_admin__"
+    }
+  }
+]

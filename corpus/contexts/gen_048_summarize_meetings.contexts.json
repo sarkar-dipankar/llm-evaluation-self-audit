@@ -1,0 +1,50 @@
+[
+  {
+    "action_item": {
+      "responsible": "x",
+      "task": "x"
+    },
+    "action_items": [],
+    "decision": {
+      "text": "x"
+    },
+    "decisions": [],
+    "meeting_type": "__not_executive__",
+    "transcript": {
+      "content": "x"
+    },
+    "transcript_empty": false
+  },
+  {
+    "action_item": {
+      "responsible": "x",
+      "task": "x"
+    },
+    "action_items": [],
+    "decision": {
+      "text": "x"
+    },
+    "decisions": [],
+    "meeting_type": "__not_executive__",
+    "transcript": {
+      "content": "x"
+    },
+    "transcript_empty": true
+  },
+  {
+    "action_item": {
+      "responsible": "x",
+      "task": "x"
+    },
+    "action_items": [],
+    "decision": {
+      "text": "x"
+    },
+    "decisions": [],
+    "meeting_type": "executive",
+    "transcript": {
+      "content": "x"
+    },
+    "transcript_empty": false
+  }
+]

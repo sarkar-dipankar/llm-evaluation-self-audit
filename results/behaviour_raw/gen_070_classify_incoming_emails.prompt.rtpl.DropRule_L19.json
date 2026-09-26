@@ -1,0 +1,21 @@
+{
+  "prompt": "gen_070_classify_incoming_emails.prompt.rtpl",
+  "mutant": "DropRule@L19",
+  "operator": "DropRule",
+  "rendered_original": "You are an email classification assistant. Your task is to classify incoming emails into categories: \"Important\", \"Newsletter\", \"Social\", or \"Spam\".\n\nClassify the email based on its content and subject line.\n\nemail.content.contains(\"urgent\") or email.content.contains(\"limited time offer\") or email.subject.contains(\"free\")\n\nIf the email appears to be a critical communication from a known contact, classify it as \"Important\".\n\n\nIf the email is clearly a promotional newsletter, classify it as \"Newsletter\".\n\nIf the email appears to be a social media notification, classify it as \"Social\".\n\nIf the email exhibits spam characteristics, classify it as \"Spam\".\n\nemail.sender in user.known_contacts\n\nClassify the email based on the best available information.\n\nClassify the following email:\nSubject: x\nSender: x\nContent:\nThis product is a complete waste of money and the seller should be ashamed.\n\nClassification:\n",
+  "rendered_mutant": "You are an email classification assistant. Your task is to classify incoming emails into categories: \"Important\", \"Newsletter\", \"Social\", or \"Spam\".\n\nClassify the email based on its content and subject line.\n\nemail.content.contains(\"urgent\") or email.content.contains(\"limited time offer\") or email.subject.contains(\"free\")\n\nIf the email appears to be a critical communication from a known contact, classify it as \"Important\".\n\n\n\nIf the email appears to be a social media notification, classify it as \"Social\".\n\nIf the email exhibits spam characteristics, classify it as \"Spam\".\n\nemail.sender in user.known_contacts\n\nClassify the email based on the best available information.\n\nClassify the following email:\nSubject: x\nSender: x\nContent:\nThis product is a complete waste of money and the seller should be ashamed.\n\nClassification:\n",
+  "original_responses": [
+    "**Classification:** Spam",
+    "**Classification:** Spam",
+    "Classification: Spam",
+    "Spam",
+    "**Important**"
+  ],
+  "mutant_responses": [
+    "Spam",
+    "**Classification:** Spam",
+    "Classification: Spam",
+    "Spam",
+    "Classification: Spam"
+  ]
+}

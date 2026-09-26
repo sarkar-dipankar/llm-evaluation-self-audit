@@ -1,0 +1,46 @@
+Summarize the following meeting transcript. Your summary should be concise, accurate, and highlight key decisions and action items.
+
+// @rule RULE:overall_summary category=style priority=1
+Provide a clear and concise summary of the meeting.
+
+// @rule RULE:key_decisions category=style priority=2
+Highlight all key decisions made during the meeting.
+
+// @rule RULE:action_items category=style priority=3
+Clearly list all action items and who is responsible for each.
+
+// @rule RULE:format_list category=format priority=4
+Use bullet points for action items.
+
+// @condition CONDITION:transcript_empty
+{% if transcript_empty %}
+The meeting transcript is empty.  Unable to generate a summary.
+{% else %}
+
+// @breakpoint BREAKPOINT:start_summary conditionRef=transcript_empty
+Transcript: {{ transcript.content }}
+
+{% if meeting_type == "executive" %}
+// @rule RULE:executive_summary_tone category=style priority=5
+Maintain a formal and professional tone.
+
+{% else %}
+// @rule RULE:general_summary_tone category=style priority=6
+Maintain a professional and informative tone.
+{% endif %}
+
+Summary:
+
+Key Decisions:
+
+{% for decision in decisions %}
+* {{ decision.text }}
+{% endfor %}
+
+Action Items:
+
+{% for action_item in action_items %}
+* {{ action_item.task }} - Responsible: {{ action_item.responsible }}
+{% endfor %}
+
+{% endif %}

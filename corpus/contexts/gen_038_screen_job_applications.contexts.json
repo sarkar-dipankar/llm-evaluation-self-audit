@@ -1,0 +1,37 @@
+[
+  {
+    "application_type": "__not_cover_letter__",
+    "is_resume": false,
+    "user": {
+      "role": "__not_admin__"
+    }
+  },
+  {
+    "application_type": "__not_cover_letter__",
+    "is_resume": true,
+    "user": {
+      "role": "__not_admin__"
+    }
+  },
+  {
+    "application_type": "__not_cover_letter__",
+    "is_resume": false,
+    "user": {
+      "role": "admin"
+    }
+  },
+  {
+    "application_type": "resume\" and user.role != \"admin",
+    "is_resume": false,
+    "user": {
+      "role": "__not_admin__"
+    }
+  },
+  {
+    "application_type": "cover_letter",
+    "is_resume": false,
+    "user": {
+      "role": "__not_admin__"
+    }
+  }
+]

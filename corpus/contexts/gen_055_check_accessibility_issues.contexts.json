@@ -1,0 +1,23 @@
+[
+  {
+    "color_contrast_issues": false,
+    "html": false,
+    "user": {
+      "feedback": "x"
+    }
+  },
+  {
+    "color_contrast_issues": false,
+    "html": true,
+    "user": {
+      "feedback": "x"
+    }
+  },
+  {
+    "color_contrast_issues": true,
+    "html": true,
+    "user": {
+      "feedback": "x"
+    }
+  }
+]

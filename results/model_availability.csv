@@ -1,0 +1,16 @@
+audit_date,model,study_role,http_status,available,provider_message
+2026-08-17,gemma3:12b,reported in Table 1,410,0,gemma3:12b was retired at 2026-07-15 00:00:00 -0700 PDT (ref: 9a2ba1b0-727f-4057-9098-1765d64aaf9e)
+2026-08-17,gpt-oss:20b,reported in Table 1,200,1,
+2026-08-17,gpt-oss:120b,reported in Table 1,200,1,
+2026-08-17,ministral-3:8b,reported in Table 1,410,0,ministral-3:8b was retired at 2026-07-15 00:00:00 -0700 PDT (ref: a08335b3-b1e6-4e17-830f-521f256250ff)
+2026-08-17,mistral-large-3:675b,reported in Table 1,200,1,
+2026-08-17,minimax-m2.1,reported in Table 1,410,0,minimax-m2.1 was retired at 2026-07-15 00:00:00 -0700 PDT (ref: dd13bd4e-bba2-44ec-8e4a-fb8ffd2fc3ee)
+2026-08-17,minimax-m2.7,reported in Table 1,200,1,
+2026-08-17,qwen3-coder-next,reported in Table 1,410,0,qwen3-coder-next was retired at 2026-07-15 00:00:00 -0700 PDT (ref: 7d992623-c937-4985-a46b-5cb632b259d6)
+2026-08-17,deepseek-v3.1:671b,"attempted, no successful runs",410,0,deepseek-v3.1:671b was retired at 2026-07-15 00:00:00 -0700 PDT (ref: 9de437ad-dc23-41d6-9ab4-c7f548c09bbc)
+2026-08-17,glm-4.7,"attempted, below inclusion threshold",410,0,glm-4.7 was retired at 2026-07-15 00:00:00 -0700 PDT (ref: 90ade700-6878-441d-ba9d-f81028b32184)
+2026-08-17,deepseek-v3.2,probed as a substitute,410,0,deepseek-v3.2 was retired at 2026-07-15 00:00:00 -0700 PDT (ref: 1a1c3d01-5b2e-420b-9913-b63325794c9c)
+2026-08-17,glm-4.6,probed as a substitute,410,0,glm-4.6 was retired at 2026-06-16 00:00:00 -0700 PDT (ref: e2affa49-056f-4bce-8980-ae6868c19e45)
+2026-08-17,nemotron-3-super,probed as a substitute,200,1,
+2026-08-17,qwen3-next:80b,probed as a substitute,410,0,qwen3-next:80b was retired at 2026-06-16 00:00:00 -0700 PDT (ref: f70a7df1-c3eb-4ce4-ae74-98fed265315c)
+2026-08-17,kimi-k2-thinking,probed as a substitute,410,0,kimi-k2-thinking was retired at 2026-06-16 00:00:00 -0700 PDT (ref: e9b25198-4792-465e-afee-6b034a4edc9e)

@@ -1,0 +1,66 @@
+[workspace]
+resolver = "2"
+members = [
+    "crates/prompt_ir",
+    "crates/prompt_config",
+    "crates/prompt_template",
+    "crates/prompt_slm",
+    "crates/prompt_runtime",
+    "crates/prompt_lsp",
+    "crates/prompt_dap",
+    "crates/promptdbg",
+    "crates/prompt_tests",
+]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+rust-version = "1.75"
+authors = ["Anonymous Authors"]
+repository = "https://example.invalid/anonymised-for-review"
+homepage = "https://example.invalid/anonymised-for-review"
+
+[workspace.dependencies]
+# Serialization
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+serde_yaml = "0.9"
+
+# Async runtime
+tokio = { version = "1.0", features = ["full"] }
+async-trait = "0.1"
+
+# HTTP client
+reqwest = { version = "0.12", features = ["json", "stream", "rustls-tls"] }
+
+# LLM clients
+async-openai = "0.27"
+
+# Error handling
+thiserror = "1.0"
+anyhow = "1.0"
+
+# Logging
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+
+# LSP/DAP
+tower-lsp = "0.20"
+once_cell = "1.19"
+
+# CLI
+clap = { version = "4.0", features = ["derive"] }
+
+# Testing
+pretty_assertions = "1.0"
+
+# Internal crates (path + version so `cargo publish` rewrites deps correctly)
+prompt_ir = { path = "crates/prompt_ir", version = "0.1.0" }
+prompt_config = { path = "crates/prompt_config", version = "0.1.0" }
+prompt_template = { path = "crates/prompt_template", version = "0.1.0" }
+prompt_slm = { path = "crates/prompt_slm", version = "0.1.0" }
+prompt_runtime = { path = "crates/prompt_runtime", version = "0.1.0" }
+prompt_lsp = { path = "crates/prompt_lsp", version = "0.1.0" }
+prompt_dap = { path = "crates/prompt_dap", version = "0.1.0" }
+prompt_tests = { path = "crates/prompt_tests", version = "0.1.0" }

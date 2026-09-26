@@ -1,0 +1,26 @@
+[
+  {
+    "contract": {
+      "text": "x"
+    },
+    "user": {
+      "role": "__not_lawyer__"
+    }
+  },
+  {
+    "contract": {
+      "text": "x"
+    },
+    "user": {
+      "role": "client"
+    }
+  },
+  {
+    "contract": {
+      "text": "x"
+    },
+    "user": {
+      "role": "lawyer"
+    }
+  }
+]

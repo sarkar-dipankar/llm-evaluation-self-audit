@@ -1,0 +1,62 @@
+[
+  {
+    "post": {
+      "contains_url": false,
+      "mentions_user": "__not_moderator__",
+      "url_domain": "__not_example.com__"
+    },
+    "user": {
+      "role": "__not_admin__"
+    }
+  },
+  {
+    "post": {
+      "contains_url": false,
+      "mentions_user": "__not_moderator__",
+      "url_domain": "__not_example.com__"
+    },
+    "user": {
+      "role": "admin"
+    }
+  },
+  {
+    "post": {
+      "contains_url": true,
+      "mentions_user": "__not_moderator__",
+      "url_domain": "__not_example.com__"
+    },
+    "user": {
+      "role": "__not_admin__"
+    }
+  },
+  {
+    "post": {
+      "contains_url": true,
+      "mentions_user": "__not_moderator__",
+      "url_domain": "example.com"
+    },
+    "user": {
+      "role": "__not_admin__"
+    }
+  },
+  {
+    "post": {
+      "contains_url": false,
+      "mentions_user": true,
+      "url_domain": "__not_example.com__"
+    },
+    "user": {
+      "role": "__not_admin__"
+    }
+  },
+  {
+    "post": {
+      "contains_url": false,
+      "mentions_user": "moderator",
+      "url_domain": "__not_example.com__"
+    },
+    "user": {
+      "role": "__not_admin__"
+    }
+  }
+]

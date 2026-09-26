@@ -1,0 +1,26 @@
+[
+  {
+    "config": {
+      "exists": true
+    },
+    "runtime": {
+      "claude_code": false
+    }
+  },
+  {
+    "config": {
+      "exists": true
+    },
+    "runtime": {
+      "claude_code": true
+    }
+  },
+  {
+    "config": {
+      "exists": false
+    },
+    "runtime": {
+      "claude_code": false
+    }
+  }
+]

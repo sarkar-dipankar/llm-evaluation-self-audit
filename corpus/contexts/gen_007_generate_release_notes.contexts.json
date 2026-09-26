@@ -1,0 +1,155 @@
+[
+  {
+    "change": {
+      "description": "x",
+      "migration_guide": false
+    },
+    "feature": {
+      "description": "x"
+    },
+    "fix": {
+      "description": "x"
+    },
+    "has_breaking_changes": false,
+    "is_major_version": false,
+    "release": {
+      "breaking_changes": [],
+      "bug_fixes": [],
+      "new_features": [],
+      "other_changes": [],
+      "version": "x"
+    }
+  },
+  {
+    "change": {
+      "description": "x",
+      "migration_guide": false
+    },
+    "feature": {
+      "description": "x"
+    },
+    "fix": {
+      "description": "x"
+    },
+    "has_breaking_changes": false,
+    "is_major_version": true,
+    "release": {
+      "breaking_changes": [],
+      "bug_fixes": [],
+      "new_features": [],
+      "other_changes": [],
+      "version": "x"
+    }
+  },
+  {
+    "change": {
+      "description": "x",
+      "migration_guide": false
+    },
+    "feature": {
+      "description": "x"
+    },
+    "fix": {
+      "description": "x"
+    },
+    "has_breaking_changes": false,
+    "is_major_version": false,
+    "release": {
+      "breaking_changes": [],
+      "bug_fixes": [],
+      "new_features": [
+        "item"
+      ],
+      "other_changes": [],
+      "version": "x"
+    }
+  },
+  {
+    "change": {
+      "description": "x",
+      "migration_guide": false
+    },
+    "feature": {
+      "description": "x"
+    },
+    "fix": {
+      "description": "x"
+    },
+    "has_breaking_changes": false,
+    "is_major_version": false,
+    "release": {
+      "breaking_changes": [],
+      "bug_fixes": [
+        "item"
+      ],
+      "new_features": [],
+      "other_changes": [],
+      "version": "x"
+    }
+  },
+  {
+    "change": {
+      "description": "x",
+      "migration_guide": false
+    },
+    "feature": {
+      "description": "x"
+    },
+    "fix": {
+      "description": "x"
+    },
+    "has_breaking_changes": true,
+    "is_major_version": false,
+    "release": {
+      "breaking_changes": [],
+      "bug_fixes": [],
+      "new_features": [],
+      "other_changes": [],
+      "version": "x"
+    }
+  },
+  {
+    "change": {
+      "description": "x",
+      "migration_guide": true
+    },
+    "feature": {
+      "description": "x"
+    },
+    "fix": {
+      "description": "x"
+    },
+    "has_breaking_changes": true,
+    "is_major_version": false,
+    "release": {
+      "breaking_changes": [],
+      "bug_fixes": [],
+      "new_features": [],
+      "other_changes": [],
+      "version": "x"
+    }
+  },
+  {
+    "change": {
+      "description": "x",
+      "migration_guide": false
+    },
+    "feature": {
+      "description": "x"
+    },
+    "fix": {
+      "description": "x"
+    },
+    "has_breaking_changes": false,
+    "is_major_version": false,
+    "release": {
+      "breaking_changes": [],
+      "bug_fixes": [],
+      "new_features": [],
+      "other_changes": [
+        "item"
+      ],
+      "version": "x"
+    }
+  }
+]

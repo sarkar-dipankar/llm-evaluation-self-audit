@@ -1,0 +1,50 @@
+[
+  {
+    "action_items_sufficiency": "__not_No__",
+    "actionable_items": "x",
+    "if": "x",
+    "incident_id": "x",
+    "incident_impact": "x",
+    "incident_mitigation": "x",
+    "incident_summary": "x",
+    "incident_timeline": "x",
+    "lessons_learned": "x",
+    "revised_actionable_items": "x",
+    "root_cause_analysis": "x",
+    "user": {
+      "role": "__not_admin__"
+    }
+  },
+  {
+    "action_items_sufficiency": "__not_No__",
+    "actionable_items": "x",
+    "if": "x",
+    "incident_id": "x",
+    "incident_impact": "x",
+    "incident_mitigation": "x",
+    "incident_summary": "x",
+    "incident_timeline": "x",
+    "lessons_learned": "x",
+    "revised_actionable_items": "x",
+    "root_cause_analysis": "x",
+    "user": {
+      "role": "admin"
+    }
+  },
+  {
+    "action_items_sufficiency": "No",
+    "actionable_items": "x",
+    "if": "x",
+    "incident_id": "x",
+    "incident_impact": "x",
+    "incident_mitigation": "x",
+    "incident_summary": "x",
+    "incident_timeline": "x",
+    "lessons_learned": "x",
+    "revised_actionable_items": "x",
+    "root_cause_analysis": "x",
+    "user": {
+      "role": "__not_admin__"
+    }
+  }
+]

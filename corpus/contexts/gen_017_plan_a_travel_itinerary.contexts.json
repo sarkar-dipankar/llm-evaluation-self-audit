@@ -1,0 +1,32 @@
+[
+  {
+    "activity": "x",
+    "budget_summary": "x",
+    "day": "x",
+    "notes": "x",
+    "user": {
+      "destination": false,
+      "travelers": 2
+    }
+  },
+  {
+    "activity": "x",
+    "budget_summary": "x",
+    "day": "x",
+    "notes": "x",
+    "user": {
+      "destination": true,
+      "travelers": 2
+    }
+  },
+  {
+    "activity": "x",
+    "budget_summary": "x",
+    "day": "x",
+    "notes": "x",
+    "user": {
+      "destination": false,
+      "travelers": 1
+    }
+  }
+]

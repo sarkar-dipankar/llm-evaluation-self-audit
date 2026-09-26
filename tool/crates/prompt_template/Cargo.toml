@@ -1,0 +1,23 @@
+[package]
+name = "prompt_template"
+description = "Rust-style templating ({{ }}, {% if %}, {% for %}) with branch/variable tracing for LLM prompts. Part of PromptDbg."
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+authors.workspace = true
+rust-version.workspace = true
+readme = "README.md"
+keywords = ["llm", "prompt", "template", "templating", "debugger"]
+categories = ["template-engine", "parser-implementations"]
+
+[dependencies]
+prompt_ir = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+serde_yaml = { workspace = true }
+thiserror = { workspace = true }
+
+[dev-dependencies]
+tempfile = "3"

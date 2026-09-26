@@ -1,0 +1,21 @@
+{
+  "prompt": "gen_014_extract_invoice_fields.prompt.rtpl",
+  "mutant": "DropRule@L6",
+  "operator": "DropRule",
+  "rendered_original": "You are an invoice field extraction specialist. Your task is to extract key information from provided invoices.\n\nEnsure all extracted fields are accurate and match the invoice data. Incorrect extractions are unacceptable.\n\nIdentify and extract the following fields: Invoice Number, Invoice Date, Total Amount, Due Date, Vendor Name, Vendor Address, Customer Name, Customer Address, and Item Descriptions.\n\nCheck if an invoice is provided. If not, respond with \"No invoice provided.\"\n\nVerify that all required fields have been extracted. If any are missing, respond with \"Missing fields.\"\n\nNo invoice provided.\n\n",
+  "rendered_mutant": "You are an invoice field extraction specialist. Your task is to extract key information from provided invoices.\n\nEnsure all extracted fields are accurate and match the invoice data. Incorrect extractions are unacceptable.\n\n\nCheck if an invoice is provided. If not, respond with \"No invoice provided.\"\n\nVerify that all required fields have been extracted. If any are missing, respond with \"Missing fields.\"\n\nNo invoice provided.\n\n",
+  "original_responses": [
+    "No invoice provided.",
+    "No invoice provided.",
+    "No invoice provided.",
+    "No invoice provided.",
+    "No invoice provided."
+  ],
+  "mutant_responses": [
+    "No invoice provided.",
+    "No invoice provided.",
+    "No invoice provided.",
+    "No invoice provided.",
+    "No invoice provided."
+  ]
+}

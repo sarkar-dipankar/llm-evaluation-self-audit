@@ -1,0 +1,17 @@
+[
+  {
+    "code": "x",
+    "has_docstring": false,
+    "is_public": false
+  },
+  {
+    "code": "x",
+    "has_docstring": false,
+    "is_public": true
+  },
+  {
+    "code": "x",
+    "has_docstring": true,
+    "is_public": true
+  }
+]

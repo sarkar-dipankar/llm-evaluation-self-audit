@@ -1,0 +1,53 @@
+{
+  "uri": "./corpus/synthetic/customer_support.prompt.rtpl",
+  "num_inputs": 2,
+  "total_mutants": 16,
+  "killed": 14,
+  "survived": 2,
+  "mutation_score": 0.875,
+  "by_operator": {
+    "ChangeCategory": {
+      "total": 5,
+      "killed": 5,
+      "metadata_only": 5
+    },
+    "ChangePriority": {
+      "total": 2,
+      "killed": 0,
+      "metadata_only": 2
+    },
+    "DropCondition": {
+      "total": 2,
+      "killed": 2,
+      "metadata_only": 2
+    },
+    "DropRule": {
+      "total": 5,
+      "killed": 5,
+      "metadata_only": 1
+    },
+    "NegateCondition": {
+      "total": 2,
+      "killed": 2,
+      "metadata_only": 0
+    }
+  },
+  "survivors": [
+    {
+      "id": "ChangePriority@L7",
+      "operator": "ChangePriority",
+      "description": "bump rule priority by 1000",
+      "line": 6,
+      "metadata_only": true,
+      "killed": false
+    },
+    {
+      "id": "ChangePriority@L10",
+      "operator": "ChangePriority",
+      "description": "bump rule priority by 1000",
+      "line": 9,
+      "metadata_only": true,
+      "killed": false
+    }
+  ]
+}
