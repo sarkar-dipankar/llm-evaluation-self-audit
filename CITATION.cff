@@ -7,6 +7,7 @@ authors:
     given-names: Dipankar
     affiliation: Skelf Research
     orcid: "https://orcid.org/0000-0001-5431-6367"
+license: CC-BY-4.0
 doi: 10.48550/arXiv.2609.30074
 url: "https://arxiv.org/abs/2609.30074"
 repository-code: "https://github.com/sarkar-dipankar/llm-evaluation-self-audit"

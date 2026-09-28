@@ -28,6 +28,7 @@ Use Python 3 and install the dependencies into a virtual environment:
 python3 -m venv .venv
 . .venv/bin/activate
 pip install -r requirements.txt
+(cd tool && cargo build --release -p promptdbg)   # needed by ir_correctness.py
 python scripts/merge_ir_stability.py
 python scripts/stats_analysis.py
 python scripts/drift_decompose.py
@@ -36,7 +37,7 @@ python scripts/ir_correctness.py
 python scripts/stability_vs_correctness.py
 ```
 
-Run commands from the repository root. Scripts may overwrite their derived result files. See the manuscript and each script for inputs, assumptions, and output interpretation.
+Run commands from the repository root. `ir_correctness.py` calls the `promptdbg` binary from `tool/target/release/`, so build it first (Rust toolchain required, about a minute). Scripts may overwrite their derived result files. See the manuscript and each script for inputs, assumptions, and output interpretation.
 
 The live endpoint checks in `model_availability.py` and `failure_attribution.py` are optional, require provider access, and cannot recreate retired endpoints. Four of the eight evaluated model variants were no longer served at the paper's audit date. Preserved responses enable offline analysis; they do not make the original collection process repeatable.
 
@@ -44,7 +45,7 @@ For Rust-based companion experiments, build the workspace in `tool/` and follow 
 
 ## Provenance and reuse
 
-The arXiv paper and original author-contributed materials were released with the arXiv submission under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Third-party prompt files and style files retain their original terms; `corpus/MANIFEST.csv` records prompt-source repositories, revisions, URLs, and licenses. Do not interpret the paper license as replacing third-party terms.
+The arXiv paper and original author-contributed materials were released with the arXiv submission under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/); the full text is in `LICENSE`. Third-party prompt files and style files retain their original terms; `corpus/MANIFEST.csv` records prompt-source repositories, revisions, URLs, and licenses. Do not interpret the paper license as replacing third-party terms.
 
 The repository contains a release snapshot, not the private working repository or its history. Raw evidence and scientific claims are unchanged from the published artifact.
 
